@@ -20,6 +20,11 @@ class SinodaliaController extends Controller
 
     public function create(Request $request, Sinodalia $sinodalia)
     {
+    	/*
+			DB::updated in
+			https://www.tutorialspoint.com/laravel/update_records.htm
+    	*/
+    	
     	// presidente
     	$theUser = User::find($request->presidente);
     	$asignaciones = $theUser->num_asignaciones + 1;
