@@ -15,11 +15,12 @@ class CreateSinodaliasTable extends Migration
     {
         Schema::create('sinodalias', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->unsigned();
             $table->string('residente');
             $table->string('carrera');
             $table->double('num_control');
             $table->string('proyecto');
-            $table->integer('id_presidente')->unsigned();
+            // $table->integer('id_presidente')->unsigned();
             $table->integer('id_secretario')->unsigned();
             $table->integer('id_vocal')->unsigned();
             $table->integer('id_vocal_sup')->unsigned();
@@ -28,7 +29,7 @@ class CreateSinodaliasTable extends Migration
 
             // foreign keys
             // presidente
-            $table->foreign('id_presidente')
+            $table->foreign('user_id')
                     ->references('id')
                     ->on('users')
                     ->onDelete('cascade');

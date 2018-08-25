@@ -36,6 +36,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    // protected $primaryKey = 'id';
+
     public function sinodalia() 
     {
         return $this->hasMany(Sinodalia::class);

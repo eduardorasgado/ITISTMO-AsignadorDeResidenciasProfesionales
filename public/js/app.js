@@ -56021,8 +56021,7 @@ var CreateNewAssigment = function (_Component) {
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 								'select',
 								{ className: 'form-control', id: 'carrera',
-									onChange: this.handleChangeCarrera, value: this.state.carrera,
-									required: true },
+									onChange: this.handleChangeCarrera, value: this.state.carrera },
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'option',
 									{ value: 'electrica' },

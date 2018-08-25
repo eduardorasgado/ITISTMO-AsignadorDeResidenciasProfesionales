@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Sinodalia;
 
 class SinodaliaController extends Controller
 {
-    public function create(Request $request)
+    public function create(Request $request, Sinodalia $sinodalia)
     {
     	// creando la sinodalia
     	$createdSinodalia = $request->user()->sinodalia()->create([
@@ -21,6 +22,6 @@ class SinodaliaController extends Controller
     	]);
 
     	// regresar una respuesta
-    	return 'Sinodalia creada';
+    	return response()->json($sinodalia->with('user')->find($createdSinodalia));
     }
 }

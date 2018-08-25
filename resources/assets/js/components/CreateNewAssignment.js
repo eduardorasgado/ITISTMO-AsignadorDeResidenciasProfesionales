@@ -109,8 +109,7 @@ class CreateNewAssigment extends Component {
 						<div className="form-group">
 							<label htmlFor="carrera">Carrera</label>
 							<select className="form-control" id="carrera"
-											onChange={this.handleChangeCarrera} value={this.state.carrera}
-											required>
+											onChange={this.handleChangeCarrera} value={this.state.carrera}>
 								<option value="electrica">Ingeniería Eléctrica</option>
 								<option value="mecatronica">Ingeniería Mecatrónica</option>
 								<option value="electromecanica">Ingeniería Electromecánica</option>
