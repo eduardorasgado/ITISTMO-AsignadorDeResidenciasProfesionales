@@ -6,7 +6,7 @@ class CreateNewAssigment extends Component {
 		super(props)
 		this.state = {
 			residente: '',
-			carrera: '',
+			carrera: 'electrica',
 			num_control: 0,
 			proyecto: '',
 			presidente: 0,
@@ -39,7 +39,21 @@ class CreateNewAssigment extends Component {
 			secretario: this.state.secretario,
 			vocal: this.state.vocal,
 			vocalSuplente: this.state.vocalSuplente,
+		}).then(
+			response => {
+				console.log(response)
+			}
+		)
+	}
+
+	getTeachersData() {
+		axios.get('/teachers', {
+
 		})
+	}
+
+	componentWillMount() {
+
 	}
 
 	handleSubmit(event) {

@@ -55873,7 +55873,7 @@ var CreateNewAssigment = function (_Component) {
 
 		_this.state = {
 			residente: '',
-			carrera: '',
+			carrera: 'electrica',
 			num_control: 0,
 			proyecto: '',
 			presidente: 0,
@@ -55908,8 +55908,18 @@ var CreateNewAssigment = function (_Component) {
 				secretario: this.state.secretario,
 				vocal: this.state.vocal,
 				vocalSuplente: this.state.vocalSuplente
+			}).then(function (response) {
+				console.log(response);
 			});
 		}
+	}, {
+		key: 'getTeachersData',
+		value: function getTeachersData() {
+			__WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/teachers', {});
+		}
+	}, {
+		key: 'componentWillMount',
+		value: function componentWillMount() {}
 	}, {
 		key: 'handleSubmit',
 		value: function handleSubmit(event) {
