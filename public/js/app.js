@@ -55899,6 +55899,8 @@ var CreateNewAssigment = function (_Component) {
 	_createClass(CreateNewAssigment, [{
 		key: 'postSinodaliaData',
 		value: function postSinodaliaData() {
+			var _this2 = this;
+
 			__WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/newsinodalia', {
 				residente: this.state.residente,
 				carrera: this.state.carrera,
@@ -55910,7 +55912,19 @@ var CreateNewAssigment = function (_Component) {
 				vocalSuplente: this.state.vocalSuplente
 			}).then(function (response) {
 				var text = "La sinodalía se creó con éxito.";
+				_this2.setState({
+					residente: '',
+					carrera: 'electrica',
+					num_control: 0,
+					proyecto: '',
+					presidente: 0,
+					secretario: 0,
+					vocal: 0,
+					vocalSuplente: 0,
+					teachers: []
+				});
 				alert(text);
+				console.log(response);
 			});
 		}
 	}, {

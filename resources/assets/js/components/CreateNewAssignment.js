@@ -42,7 +42,19 @@ class CreateNewAssigment extends Component {
 		}).then(
 			response => {
 				var text = "La sinodalía se creó con éxito."
+				this.setState({
+					residente: '',
+					carrera: 'electrica',
+					num_control: 0,
+					proyecto: '',
+					presidente: 0,
+					secretario: 0,
+					vocal: 0,
+					vocalSuplente: 0,
+					teachers: [],
+				})
 				alert(text)
+				console.log(response)
 			}
 		)
 	}
