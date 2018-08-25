@@ -38,6 +38,6 @@ class User extends Authenticatable
 
     public function sinodalia() 
     {
-        return $this->hasMany(Sinodalias::class);
+        return $this->hasMany(Sinodalia::class);
     }
 }
