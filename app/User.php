@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -42,14 +42,5 @@ class User extends Authenticatable
     public function sinodalia() 
     {
         return $this->hasMany(Sinodalia::class);
-    }
-
-    public function addOne(User $user)
-    {
-        $newNum = $user->num_asignaciones + 1;
-        
-        DB::table('users')
-            ->where('users.id', '=', $user->id)
-            ->update(['users.num_asignaciones' => $newNum ]);
     }
 }

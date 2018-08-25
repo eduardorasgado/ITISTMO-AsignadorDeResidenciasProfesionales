@@ -69,7 +69,7 @@ class CreateNewAssigment extends Component {
 
 		// })
 		console.log(this.state)
-
+		this.getTeachersData()
 	}
 
 	getTeachersData() {

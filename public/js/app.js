@@ -55976,6 +55976,7 @@ var CreateNewAssigment = function (_Component) {
 
 			// })
 			console.log(this.state);
+			this.getTeachersData();
 		}
 	}, {
 		key: 'getTeachersData',
