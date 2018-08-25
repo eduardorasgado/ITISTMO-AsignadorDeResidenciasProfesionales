@@ -66,6 +66,21 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // para acceder al cargo
+        // ver en register.blade
+        // boss = asignador
+        //admon = Personal administrativo
+        // profesor => Profesorado
+        $cargoNum;
+        $cargos = ['boss' => 0,
+                'admon' =>1,
+                'profesor' =>2];
+
+        foreach ($cargos as $key => $value) {
+            if($key == $data['cargo']){
+                $cargoNum = $value;
+            }
+        }
         $num_phone = 0;
         if (isset($data['telefono'])) {
             $num_phone = $data['telefono']; 
@@ -73,7 +88,7 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'cargo' => $data['cargo'],
+            'cargo' => $cargoNum,
             'disponibilidad' => 1,
             'num_asignaciones' => 0,
             'anteproyecto_cuenta' => 0,

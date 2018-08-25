@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Tu actividad</div>
+                <div class="card-header">Hola Asignador, bienvenido.</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -15,7 +15,6 @@
                     @endif
 
                     You are logged in!
-                    Tu eres {{ $cargo }}
                 </div>
             </div>
         </div>
