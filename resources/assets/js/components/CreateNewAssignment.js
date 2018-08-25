@@ -17,6 +17,14 @@ class CreateNewAssigment extends Component {
 		}
 		//bindings
 		this.handleSubmit = this.handleSubmit.bind(this)
+		this.handleChangeResidente = this.handleChangeResidente.bind(this)
+		this.handleChangeCarrera = this.handleChangeCarrera.bind(this)
+		this.handleChangeControl = this.handleChangeControl.bind(this)
+		this.handleChangeProyecto = this.handleChangeProyecto.bind(this)
+		this.handleChangePresidente = this.handleChangePresidente.bind(this)
+		this.handleChangeSecretario = this.handleChangeSecretario.bind(this)
+		this.handleChangeVocal = this.handleChangeVocal.bind(this)
+		this.handleChangeVocalSuplente = this.handleChangeVocalSuplente.bind(this)
 	}
 
 	postTeachersData() {
@@ -25,6 +33,50 @@ class CreateNewAssigment extends Component {
 
 	handleSubmit(event) {
 		event.preventDefault()
+		// this.seState({
+
+		// })
+		console.log("data here!!")
+	}
+	handleChangeResidente(event) {
+		this.setState({
+			residente: event.target.value,
+		})
+	}
+	handleChangeCarrera(event) {
+		this.setState({
+			carrera: event.target.value,
+		})
+	}
+	handleChangeControl(event) {
+		this.setState({
+			num_control: event.target.value,
+		})
+	}
+	handleChangeProyecto(event) {
+		this.setState({
+			proyecto: event.target.value,
+		})
+	}
+	handleChangePresidente(event) {
+		this.setState({
+			presidente: event.target.value,
+		})
+	}
+	handleChangeSecretario(event) {
+		this.setState({
+			secretario: event.target.value,
+		})
+	}
+	handleChangeVocal(event) {
+		this.setState({
+			vocal: event.target.value,
+		})
+	}
+	handleChangeVocalSuplente(event) {
+		this.setState({
+			vocalSuplente: event.target.value,
+		})
 	}
 	render(){
 		return(
@@ -35,60 +87,64 @@ class CreateNewAssigment extends Component {
 					<div className="card-body">
 						<form onSubmit={this.handleSubmit}>
 						<div className="form-group">
-							<label for="residente">Nombre del residente</label>
+							<label htmlFor="residente">Nombre del residente</label>
 							<input id="residente" type="text" className="form-control"
-								onChange={this.handleChange} value={this.state.residente}
+								onChange={this.handleChangeResidente} value={this.state.residente}
 								required/>
 						</div>
 						<div className="form-group">
-							<label for="carrera">Carrera</label>
-							<input id="carrera" type="text" className="form-control" 
-									onChange={this.handleChange} value={this.state.carrera}
-							required/>
+							<label htmlFor="carrera">Carrera</label>
+							<select className="form-control" id="carrera"
+											onChange={this.handleChangeCarrera} value={this.state.carrera}
+											required>
+								<option value="electrica">Ingeniería Eléctrica</option>
+								<option value="mecatronica">Ingeniería Mecatrónica</option>
+								<option value="electromecanica">Ingeniería Electromecánica</option>
+							</select>	
 						</div>
 						<div className="form-group">
-							<label for="num_control">Num. de Control</label>
+							<label htmlFor="num_control">Num. de Control</label>
 							<input id="num_control" type="number" className="form-control" 
-											onChange={this.handleChange} value={this.state.num_control}
+											onChange={this.handleChangeControl} value={this.state.num_control}
 							required/>
 						</div>
 						<div className="form-group">
-							<label for="proyecto">Nombre del Proyecto</label>
+							<label htmlFor="proyecto">Nombre del Proyecto</label>
 							<input id="proyecto" type="text" className="form-control" 
-								onChange={this.handleChange} value={this.state.proyecto}
+								onChange={this.handleChangeProyecto} value={this.state.proyecto}
 							required/>
 						</div>
 						<div className="form-group">
-							<label for="presidente">Asignado Presidente(disponibles)</label>
+							<label htmlFor="presidente">Asignado Presidente(disponibles)</label>
 							<select className="form-control" id="presidente" 
-											onChange={this.handleChange} value={this.state.presidente}>
+											onChange={this.handleChangePresidente} value={this.state.presidente}>
 								<option value="1">Juan Guerra</option>
 								<option value="2">Marcelo Bustamante</option>
 								<option value="3">Patricio Cuevas</option>
 							</select>
 						</div>
 						<div className="form-group">
-							<label for="secretario">Asignado Secretario(disponibles)</label>
+							<label htmlFor="secretario">Asignado Secretario(disponibles)</label>
 							<select className="form-control" id="secretario"
-											onChange={this.handleChange} value={this.state.secretario}>
+											onChange={this.handleChangeSecretario} value={this.state.secretario}>
 								<option value="1">Juan Guerra</option>
 								<option value="2">Marcelo Bustamante</option>
 								<option value="3">Patricio Cuevas</option>
 							</select>
 						</div>
 						<div className="form-group">
-							<label for="vocal">Asignado Vocal(disponibles)</label>
+							<label htmlFor="vocal">Asignado Vocal(disponibles)</label>
 							<select className="form-control" id="vocal" 
-												onChange={this.handleChange} value={this.state.vocal}>>
+												onChange={this.handleChangeVocal} value={this.state.vocal}>>
 								<option value="1">Juan Guerra</option>
 								<option value="2">Marcelo Bustamante</option>
 								<option value="3">Patricio Cuevas</option>
 							</select>
 						</div>
 						<div className="form-group">
-							<label for="vocalSuplente">Asignado Vocal Suplente(disponibles)</label>
+							<label htmlFor="vocalSuplente">Asignado Vocal Suplente(disponibles)</label>
 							<select className="form-control" id="vocalSuplente"
-												onChange={this.handleChange} value={this.state.vocalSuplente}>>
+												onChange={this.handleChangeVocalSuplente} value={this.state.vocalSuplente}>>
 								<option value="1">Juan Guerra</option>
 								<option value="2">Marcelo Bustamante</option>
 								<option value="3">Patricio Cuevas</option>

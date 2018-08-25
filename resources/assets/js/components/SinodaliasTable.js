@@ -7,7 +7,7 @@ class SinodaliasTable extends Component {
 					<div>
 						<h2 className="text-justify">Lista de Sinodalías creadas</h2>
 					</div>
-					<table class="table">
+					<table className="table">
 						<thead className="thead-dark">
 					    <tr>
 					      <th scope="col">#</th>

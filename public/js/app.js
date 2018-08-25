@@ -55883,6 +55883,14 @@ var CreateNewAssigment = function (_Component) {
 			teachers: []
 			//bindings
 		};_this.handleSubmit = _this.handleSubmit.bind(_this);
+		_this.handleChangeResidente = _this.handleChangeResidente.bind(_this);
+		_this.handleChangeCarrera = _this.handleChangeCarrera.bind(_this);
+		_this.handleChangeControl = _this.handleChangeControl.bind(_this);
+		_this.handleChangeProyecto = _this.handleChangeProyecto.bind(_this);
+		_this.handleChangePresidente = _this.handleChangePresidente.bind(_this);
+		_this.handleChangeSecretario = _this.handleChangeSecretario.bind(_this);
+		_this.handleChangeVocal = _this.handleChangeVocal.bind(_this);
+		_this.handleChangeVocalSuplente = _this.handleChangeVocalSuplente.bind(_this);
 		return _this;
 	}
 
@@ -55895,6 +55903,66 @@ var CreateNewAssigment = function (_Component) {
 		key: 'handleSubmit',
 		value: function handleSubmit(event) {
 			event.preventDefault();
+			// this.seState({
+
+			// })
+			console.log("data here!!");
+		}
+	}, {
+		key: 'handleChangeResidente',
+		value: function handleChangeResidente(event) {
+			this.setState({
+				residente: event.target.value
+			});
+		}
+	}, {
+		key: 'handleChangeCarrera',
+		value: function handleChangeCarrera(event) {
+			this.setState({
+				carrera: event.target.value
+			});
+		}
+	}, {
+		key: 'handleChangeControl',
+		value: function handleChangeControl(event) {
+			this.setState({
+				num_control: event.target.value
+			});
+		}
+	}, {
+		key: 'handleChangeProyecto',
+		value: function handleChangeProyecto(event) {
+			this.setState({
+				proyecto: event.target.value
+			});
+		}
+	}, {
+		key: 'handleChangePresidente',
+		value: function handleChangePresidente(event) {
+			this.setState({
+				presidente: event.target.value
+			});
+		}
+	}, {
+		key: 'handleChangeSecretario',
+		value: function handleChangeSecretario(event) {
+			this.setState({
+				secretario: event.target.value
+			});
+		}
+	}, {
+		key: 'handleChangeVocal',
+		value: function handleChangeVocal(event) {
+			this.setState({
+				vocal: event.target.value
+			});
+		}
+	}, {
+		key: 'handleChangeVocalSuplente',
+		value: function handleChangeVocalSuplente(event) {
+			this.setState({
+				vocalSuplente: event.target.value
+			});
 		}
 	}, {
 		key: 'render',
@@ -55922,11 +55990,11 @@ var CreateNewAssigment = function (_Component) {
 							{ className: 'form-group' },
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 								'label',
-								{ 'for': 'residente' },
+								{ htmlFor: 'residente' },
 								'Nombre del residente'
 							),
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { id: 'residente', type: 'text', className: 'form-control',
-								onChange: this.handleChange, value: this.state.residente,
+								onChange: this.handleChangeResidente, value: this.state.residente,
 								required: true })
 						),
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -55934,23 +56002,41 @@ var CreateNewAssigment = function (_Component) {
 							{ className: 'form-group' },
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 								'label',
-								{ 'for': 'carrera' },
+								{ htmlFor: 'carrera' },
 								'Carrera'
 							),
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { id: 'carrera', type: 'text', className: 'form-control',
-								onChange: this.handleChange, value: this.state.carrera,
-								required: true })
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'select',
+								{ className: 'form-control', id: 'carrera',
+									onChange: this.handleChangeCarrera, value: this.state.carrera,
+									required: true },
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'option',
+									{ value: 'electrica' },
+									'Ingenier\xEDa El\xE9ctrica'
+								),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'option',
+									{ value: 'mecatronica' },
+									'Ingenier\xEDa Mecatr\xF3nica'
+								),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'option',
+									{ value: 'electromecanica' },
+									'Ingenier\xEDa Electromec\xE1nica'
+								)
+							)
 						),
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 							'div',
 							{ className: 'form-group' },
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 								'label',
-								{ 'for': 'num_control' },
+								{ htmlFor: 'num_control' },
 								'Num. de Control'
 							),
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { id: 'num_control', type: 'number', className: 'form-control',
-								onChange: this.handleChange, value: this.state.num_control,
+								onChange: this.handleChangeControl, value: this.state.num_control,
 								required: true })
 						),
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -55958,11 +56044,11 @@ var CreateNewAssigment = function (_Component) {
 							{ className: 'form-group' },
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 								'label',
-								{ 'for': 'proyecto' },
+								{ htmlFor: 'proyecto' },
 								'Nombre del Proyecto'
 							),
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { id: 'proyecto', type: 'text', className: 'form-control',
-								onChange: this.handleChange, value: this.state.proyecto,
+								onChange: this.handleChangeProyecto, value: this.state.proyecto,
 								required: true })
 						),
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -55970,13 +56056,13 @@ var CreateNewAssigment = function (_Component) {
 							{ className: 'form-group' },
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 								'label',
-								{ 'for': 'presidente' },
+								{ htmlFor: 'presidente' },
 								'Asignado Presidente(disponibles)'
 							),
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 								'select',
 								{ className: 'form-control', id: 'presidente',
-									onChange: this.handleChange, value: this.state.presidente },
+									onChange: this.handleChangePresidente, value: this.state.presidente },
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'option',
 									{ value: '1' },
@@ -55999,13 +56085,13 @@ var CreateNewAssigment = function (_Component) {
 							{ className: 'form-group' },
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 								'label',
-								{ 'for': 'secretario' },
+								{ htmlFor: 'secretario' },
 								'Asignado Secretario(disponibles)'
 							),
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 								'select',
 								{ className: 'form-control', id: 'secretario',
-									onChange: this.handleChange, value: this.state.secretario },
+									onChange: this.handleChangeSecretario, value: this.state.secretario },
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'option',
 									{ value: '1' },
@@ -56028,13 +56114,13 @@ var CreateNewAssigment = function (_Component) {
 							{ className: 'form-group' },
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 								'label',
-								{ 'for': 'vocal' },
+								{ htmlFor: 'vocal' },
 								'Asignado Vocal(disponibles)'
 							),
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 								'select',
 								{ className: 'form-control', id: 'vocal',
-									onChange: this.handleChange, value: this.state.vocal },
+									onChange: this.handleChangeVocal, value: this.state.vocal },
 								'>',
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'option',
@@ -56058,13 +56144,13 @@ var CreateNewAssigment = function (_Component) {
 							{ className: 'form-group' },
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 								'label',
-								{ 'for': 'vocalSuplente' },
+								{ htmlFor: 'vocalSuplente' },
 								'Asignado Vocal Suplente(disponibles)'
 							),
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 								'select',
 								{ className: 'form-control', id: 'vocalSuplente',
-									onChange: this.handleChange, value: this.state.vocalSuplente },
+									onChange: this.handleChangeVocalSuplente, value: this.state.vocalSuplente },
 								'>',
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'option',
@@ -56138,7 +56224,7 @@ var SinodaliasTable = function (_Component) {
 				),
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					"table",
-					{ "class": "table" },
+					{ className: "table" },
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 						"thead",
 						{ className: "thead-dark" },
