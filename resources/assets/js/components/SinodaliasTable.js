@@ -19,6 +19,16 @@ class SinodaliasTable extends Component {
 			this.getTeachersData()
 		}
 
+		componentDidMount() {
+			// actualizar cada 10 segundos
+			this.interval = setInterval(() => this.getSinodaliasData(), 10000)
+		}
+
+		componentWillUnMount() {
+			// limpiar el montaje
+			clearInterval(this.interval)
+		}
+
 		getSinodaliasData() {
 			axios.get('/sinodalias')
 			.then((response) => {

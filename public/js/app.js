@@ -55858,7 +55858,7 @@ var Index = function (_Component) {
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 						'div',
 						{ className: 'col-md-6' },
-						'Hola'
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__AllTeachersListing__["a" /* default */], null)
 					)
 				),
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
@@ -56284,13 +56284,29 @@ var SinodaliasTable = function (_Component) {
 			this.getTeachersData();
 		}
 	}, {
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			var _this2 = this;
+
+			// actualizar cada 10 segundos
+			this.interval = setInterval(function () {
+				return _this2.getSinodaliasData();
+			}, 10000);
+		}
+	}, {
+		key: 'componentWillUnMount',
+		value: function componentWillUnMount() {
+			// limpiar el montaje
+			clearInterval(this.interval);
+		}
+	}, {
 		key: 'getSinodaliasData',
 		value: function getSinodaliasData() {
-			var _this2 = this;
+			var _this3 = this;
 
 			__WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/sinodalias').then(function (response) {
 				console.log(response);
-				_this2.setState({
+				_this3.setState({
 					sinodalias: [].concat(_toConsumableArray(response.data.sinodalias))
 				});
 			});
@@ -56298,11 +56314,11 @@ var SinodaliasTable = function (_Component) {
 	}, {
 		key: 'getTeachersData',
 		value: function getTeachersData() {
-			var _this3 = this;
+			var _this4 = this;
 
 			__WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/teachers').then(function (response) {
 				console.log("done");
-				_this3.setState({
+				_this4.setState({
 					teachers: [].concat(_toConsumableArray(response.data.teachers))
 				});
 			});
@@ -56330,7 +56346,7 @@ var SinodaliasTable = function (_Component) {
 	}, {
 		key: 'render',
 		value: function render() {
-			var _this4 = this;
+			var _this5 = this;
 
 			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 				'div',
@@ -56431,22 +56447,22 @@ var SinodaliasTable = function (_Component) {
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'td',
 									null,
-									_this4.compareTeaching(sinodalia.user_id)
+									_this5.compareTeaching(sinodalia.user_id)
 								),
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'td',
 									null,
-									_this4.compareTeaching(sinodalia.id_secretario)
+									_this5.compareTeaching(sinodalia.id_secretario)
 								),
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'td',
 									null,
-									_this4.compareTeaching(sinodalia.id_vocal)
+									_this5.compareTeaching(sinodalia.id_vocal)
 								),
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'td',
 									null,
-									_this4.compareTeaching(sinodalia.id_vocal_sup)
+									_this5.compareTeaching(sinodalia.id_vocal_sup)
 								),
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'td',
@@ -56455,7 +56471,7 @@ var SinodaliasTable = function (_Component) {
 										'button',
 										{ className: 'btn btn-success',
 											onClick: function onClick() {
-												return _this4.changeAprobacion(sinodalia.id);
+												return _this5.changeAprobacion(sinodalia.id);
 											} },
 										'Aprobar'
 									)
@@ -56482,6 +56498,8 @@ var SinodaliasTable = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -56493,19 +56511,62 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var AllTeachersListing = function (_Component) {
 	_inherits(AllTeachersListing, _Component);
 
-	function AllTeachersListing() {
+	function AllTeachersListing(props) {
 		_classCallCheck(this, AllTeachersListing);
 
-		return _possibleConstructorReturn(this, (AllTeachersListing.__proto__ || Object.getPrototypeOf(AllTeachersListing)).apply(this, arguments));
+		var _this = _possibleConstructorReturn(this, (AllTeachersListing.__proto__ || Object.getPrototypeOf(AllTeachersListing)).call(this, props));
+
+		_this.state = {
+			teachers: []
+		};
+		return _this;
 	}
 
 	_createClass(AllTeachersListing, [{
+		key: 'componentWillMount',
+		value: function componentWillMount() {
+			this.getTeachersData();
+		}
+	}, {
+		key: 'getTeachersData',
+		value: function getTeachersData() {
+			var _this2 = this;
+
+			axios.get('/teachers').then(function (response) {
+				console.log("done");
+				_this2.setState({
+					teachers: [].concat(_toConsumableArray(response.data.teachers))
+				});
+			});
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 				'div',
-				null,
-				'Maestros'
+				{ className: 'container' },
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'div',
+					null,
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'h2',
+						null,
+						'Detalles de maestros'
+					)
+				),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'div',
+					{ className: 'row' },
+					this.state.teachers.map(function (teacher) {
+						return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'div',
+							{ 'class': 'alert alert-success', role: 'alert', style: { marginRight: 15 } },
+							teacher.name,
+							' | ',
+							teacher.num_asignaciones
+						);
+					})
+				)
 			);
 		}
 	}]);
@@ -56513,7 +56574,7 @@ var AllTeachersListing = function (_Component) {
 	return AllTeachersListing;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
-/* unused harmony default export */ var _unused_webpack_default_export = (AllTeachersListing);
+/* harmony default export */ __webpack_exports__["a"] = (AllTeachersListing);
 
 /***/ }),
 /* 62 */

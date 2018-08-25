@@ -44,7 +44,7 @@ class Index extends Component {
          						<CreateNewAssignment />
          				</div>
          				<div className="col-md-6">
-         					Hola
+         					<AllTeachersListing />
          				</div>
          			</div>
          			<br/>
