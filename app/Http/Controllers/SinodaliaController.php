@@ -8,6 +8,10 @@ use App\User;
 
 class SinodaliaController extends Controller
 {
+		public function index(Request $request Sinodalia $sinodalia)
+		{
+			return 'hola';
+		}
     public function create(Request $request, Sinodalia $sinodalia)
     {
     	$theUser = User::find($request->presidente);

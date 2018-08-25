@@ -168,7 +168,7 @@ class CreateNewAssigment extends Component {
 							<select className="form-control" id="presidente" 
 											onChange={this.handleChangePresidente} value={this.state.presidente}>
 								{ this.state.teachers.map( teacher => (
-										<option value={ teacher.id }>{ teacher.name }</option>
+										<option key={ teacher.id } value={ teacher.id }>{ teacher.name }</option>
 									)) }
 							</select>
 						</div>
@@ -176,27 +176,27 @@ class CreateNewAssigment extends Component {
 							<label htmlFor="secretario">Asignado Secretario(disponibles)</label>
 							<select className="form-control" id="secretario"
 											onChange={this.handleChangeSecretario} value={this.state.secretario}>
-								<option value="1">Juan Guerra</option>
-								<option value="2">Marcelo Bustamante</option>
-								<option value="3">Patricio Cuevas</option>
+								{ this.state.teachers.map( teacher => (
+										<option key={ teacher.id } value={ teacher.id }>{ teacher.name }</option>
+									)) }
 							</select>
 						</div>
 						<div className="form-group">
 							<label htmlFor="vocal">Asignado Vocal(disponibles)</label>
 							<select className="form-control" id="vocal" 
 												onChange={this.handleChangeVocal} value={this.state.vocal}>>
-								<option value="1">Juan Guerra</option>
-								<option value="2">Marcelo Bustamante</option>
-								<option value="3">Patricio Cuevas</option>
+								{ this.state.teachers.map( teacher => (
+										<option key={ teacher.id } value={ teacher.id }>{ teacher.name }</option>
+									)) }
 							</select>
 						</div>
 						<div className="form-group">
 							<label htmlFor="vocalSuplente">Asignado Vocal Suplente(disponibles)</label>
 							<select className="form-control" id="vocalSuplente"
 												onChange={this.handleChangeVocalSuplente} value={this.state.vocalSuplente}>>
-								<option value="1">Juan Guerra</option>
-								<option value="2">Marcelo Bustamante</option>
-								<option value="3">Patricio Cuevas</option>
+								{ this.state.teachers.map( teacher => (
+										<option key={ teacher.id } value={ teacher.id }>{ teacher.name }</option>
+									)) }
 							</select>
 						</div>
 						<input type="submit" value="Crear sinodalía" className="form-control" />

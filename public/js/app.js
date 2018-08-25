@@ -55775,7 +55775,11 @@ module.exports = camelize;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CreateNewAssignment__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__SinodaliasTable__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__AllTeachersListing__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_axios__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_axios__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -55788,57 +55792,90 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+
+
 var Index = function (_Component) {
-    _inherits(Index, _Component);
+	_inherits(Index, _Component);
 
-    function Index() {
-        _classCallCheck(this, Index);
+	function Index(props) {
+		_classCallCheck(this, Index);
 
-        return _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).apply(this, arguments));
-    }
+		var _this = _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this, props));
 
-    _createClass(Index, [{
-        key: 'render',
-        value: function render() {
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'div',
-                { className: 'container-fluid' },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'p',
-                    null,
-                    'Total de integrantes de la academia: 0'
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    { className: 'row' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'div',
-                        { className: 'col-md-6' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__CreateNewAssignment__["a" /* default */], null)
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'div',
-                        { className: 'col-md-6' },
-                        'Hola'
-                    )
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    { className: 'row' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'div',
-                        { className: 'col-md-12' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__SinodaliasTable__["a" /* default */], null)
-                    )
-                )
-            );
-        }
-    }]);
+		_this.state = {
+			teachers: []
+			// bindings
+		};_this.totalTeachers = _this.totalTeachers.bind(_this);
+		return _this;
+	}
 
-    return Index;
+	_createClass(Index, [{
+		key: 'getTeachersData',
+		value: function getTeachersData() {
+			var _this2 = this;
+
+			__WEBPACK_IMPORTED_MODULE_4_axios___default.a.get('/teachers').then(function (response) {
+				console.log("done");
+				_this2.setState({
+					teachers: [].concat(_toConsumableArray(response.data.teachers))
+				});
+			});
+		}
+	}, {
+		key: 'componentWillMount',
+		value: function componentWillMount() {
+			// loading teachers lists
+			this.getTeachersData();
+		}
+	}, {
+		key: 'totalTeachers',
+		value: function totalTeachers() {
+			var total = this.state.teachers.length;
+			return total;
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+				'div',
+				{ className: 'container-fluid' },
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'p',
+					null,
+					'Total de integrantes de la academia: ',
+					this.totalTeachers()
+				),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'div',
+					{ className: 'row' },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'div',
+						{ className: 'col-md-6' },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__CreateNewAssignment__["a" /* default */], null)
+					),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'div',
+						{ className: 'col-md-6' },
+						'Hola'
+					)
+				),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'div',
+					{ className: 'row' },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'div',
+						{ className: 'col-md-12' },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__SinodaliasTable__["a" /* default */], null)
+					)
+				)
+			);
+		}
+	}]);
+
+	return Index;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
 /* harmony default export */ __webpack_exports__["a"] = (Index);
@@ -56115,7 +56152,7 @@ var CreateNewAssigment = function (_Component) {
 								this.state.teachers.map(function (teacher) {
 									return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 										'option',
-										{ value: teacher.id },
+										{ key: teacher.id, value: teacher.id },
 										teacher.name
 									);
 								})
@@ -56133,21 +56170,13 @@ var CreateNewAssigment = function (_Component) {
 								'select',
 								{ className: 'form-control', id: 'secretario',
 									onChange: this.handleChangeSecretario, value: this.state.secretario },
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									'option',
-									{ value: '1' },
-									'Juan Guerra'
-								),
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									'option',
-									{ value: '2' },
-									'Marcelo Bustamante'
-								),
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									'option',
-									{ value: '3' },
-									'Patricio Cuevas'
-								)
+								this.state.teachers.map(function (teacher) {
+									return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+										'option',
+										{ key: teacher.id, value: teacher.id },
+										teacher.name
+									);
+								})
 							)
 						),
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -56163,21 +56192,13 @@ var CreateNewAssigment = function (_Component) {
 								{ className: 'form-control', id: 'vocal',
 									onChange: this.handleChangeVocal, value: this.state.vocal },
 								'>',
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									'option',
-									{ value: '1' },
-									'Juan Guerra'
-								),
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									'option',
-									{ value: '2' },
-									'Marcelo Bustamante'
-								),
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									'option',
-									{ value: '3' },
-									'Patricio Cuevas'
-								)
+								this.state.teachers.map(function (teacher) {
+									return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+										'option',
+										{ key: teacher.id, value: teacher.id },
+										teacher.name
+									);
+								})
 							)
 						),
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -56193,21 +56214,13 @@ var CreateNewAssigment = function (_Component) {
 								{ className: 'form-control', id: 'vocalSuplente',
 									onChange: this.handleChangeVocalSuplente, value: this.state.vocalSuplente },
 								'>',
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									'option',
-									{ value: '1' },
-									'Juan Guerra'
-								),
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									'option',
-									{ value: '2' },
-									'Marcelo Bustamante'
-								),
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									'option',
-									{ value: '3' },
-									'Patricio Cuevas'
-								)
+								this.state.teachers.map(function (teacher) {
+									return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+										'option',
+										{ key: teacher.id, value: teacher.id },
+										teacher.name
+									);
+								})
 							)
 						),
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'submit', value: 'Crear sinodal\xEDa', className: 'form-control' })
@@ -56229,6 +56242,8 @@ var CreateNewAssigment = function (_Component) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -56236,6 +56251,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -56249,124 +56265,124 @@ var SinodaliasTable = function (_Component) {
 	}
 
 	_createClass(SinodaliasTable, [{
-		key: "render",
+		key: 'render',
 		value: function render() {
 			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-				"div",
+				'div',
 				null,
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-					"div",
+					'div',
 					null,
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						"h2",
-						{ className: "text-justify" },
-						"Lista de Sinodal\xEDas creadas"
+						'h2',
+						{ className: 'text-justify' },
+						'Lista de Sinodal\xEDas creadas'
 					)
 				),
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-					"table",
-					{ className: "table" },
+					'table',
+					{ className: 'table' },
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						"thead",
-						{ className: "thead-dark" },
+						'thead',
+						{ className: 'thead-dark' },
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							"tr",
+							'tr',
 							null,
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"th",
-								{ scope: "col" },
-								"#"
+								'th',
+								{ scope: 'col' },
+								'#'
 							),
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"th",
-								{ scope: "col" },
-								"First"
+								'th',
+								{ scope: 'col' },
+								'First'
 							),
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"th",
-								{ scope: "col" },
-								"Last"
+								'th',
+								{ scope: 'col' },
+								'Last'
 							),
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"th",
-								{ scope: "col" },
-								"Handle"
+								'th',
+								{ scope: 'col' },
+								'Handle'
 							)
 						)
 					),
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						"tbody",
+						'tbody',
 						null,
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							"tr",
+							'tr',
 							null,
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"th",
-								{ scope: "row" },
-								"1"
+								'th',
+								{ scope: 'row' },
+								'1'
 							),
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"td",
+								'td',
 								null,
-								"Mark"
+								'Mark'
 							),
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"td",
+								'td',
 								null,
-								"Otto"
+								'Otto'
 							),
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"td",
+								'td',
 								null,
-								"@mdo"
+								'@mdo'
 							)
 						),
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							"tr",
+							'tr',
 							null,
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"th",
-								{ scope: "row" },
-								"2"
+								'th',
+								{ scope: 'row' },
+								'2'
 							),
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"td",
+								'td',
 								null,
-								"Jacob"
+								'Jacob'
 							),
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"td",
+								'td',
 								null,
-								"Thornton"
+								'Thornton'
 							),
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"td",
+								'td',
 								null,
-								"@fat"
+								'@fat'
 							)
 						),
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							"tr",
+							'tr',
 							null,
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"th",
-								{ scope: "row" },
-								"3"
+								'th',
+								{ scope: 'row' },
+								'3'
 							),
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"td",
+								'td',
 								null,
-								"Larry"
+								'Larry'
 							),
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"td",
+								'td',
 								null,
-								"the Bird"
+								'the Bird'
 							),
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"td",
+								'td',
 								null,
-								"@twitter"
+								'@twitter'
 							)
 						)
 					)
