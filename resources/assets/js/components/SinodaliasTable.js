@@ -6,12 +6,17 @@ class SinodaliasTable extends Component {
 		super(props)
 		this.state = {
 			sinodalias: [],
+			teachers: [],
 		}
+
+		// bindings
+		this.compareTeaching = this.compareTeaching.bind(this)
 	}
 
 	// traer las sinodalias
 		componentWillMount () {
 			this.getSinodaliasData()
+			this.getTeachersData()
 		}
 
 		getSinodaliasData() {
@@ -19,9 +24,31 @@ class SinodaliasTable extends Component {
 			.then((response) => {
 				console.log(response)
 				this.setState({
-					sinodalias: [...this.state.sinodalias,...response.data.sinodalias],
+					sinodalias: [...response.data.sinodalias],
 				})
 			})
+		}
+
+		getTeachersData() {
+		axios.get('/teachers')
+		.then((response) => {
+					console.log("done")
+					this.setState({
+						teachers: [...response.data.teachers],
+					})
+				}
+			)
+		}
+
+		compareTeaching(sinodal) {
+			let teacher= ''
+			// buscando el maestro que corresponde al id
+			for(let i = 0; i < this.state.teachers.length; i++){
+				if (this.state.teachers[i].id == sinodal) {
+					teacher = this.state.teachers[i].name
+				}
+			}
+			return teacher
 		}
 
 	render() {
@@ -47,31 +74,18 @@ class SinodaliasTable extends Component {
 					  </thead>
 					  <tbody>
 					  	{ this.state.sinodalias.map(sinodalia => (
-					  			<tr>
+					  			<tr key={sinodalia.id}>
 							      <th scope="row">{sinodalia.residente}</th>
 							      <td>{sinodalia.proyecto}</td>
 							      <td>{sinodalia.carrera}</td>
-							      <td>@mdo</td>
+							      <td>{sinodalia.num_control}</td>
+							      <td>{this.compareTeaching(sinodalia.user_id)}</td>
+							      <td>{this.compareTeaching(sinodalia.id_secretario)}</td>
+							      <td>{this.compareTeaching(sinodalia.id_vocal)}</td>
+							      <td>{this.compareTeaching(sinodalia.id_vocal_sup)}</td>
+							      <td><button className="btn btn-success">Aprobar</button></td>
 							    </tr>
 					  		)) }
-					    <tr>
-					      <th scope="row">1</th>
-					      <td>Mark</td>
-					      <td>Otto</td>
-					      <td>@mdo</td>
-					    </tr>
-					    <tr>
-					      <th scope="row">2</th>
-					      <td>Jacob</td>
-					      <td>Thornton</td>
-					      <td>@fat</td>
-					    </tr>
-					    <tr>
-					      <th scope="row">3</th>
-					      <td>Larry</td>
-					      <td>the Bird</td>
-					      <td>@twitter</td>
-					    </tr>
 					  </tbody>
 					</table>
 				</div>

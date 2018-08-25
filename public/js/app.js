@@ -56266,8 +56266,11 @@ var SinodaliasTable = function (_Component) {
 		var _this = _possibleConstructorReturn(this, (SinodaliasTable.__proto__ || Object.getPrototypeOf(SinodaliasTable)).call(this, props));
 
 		_this.state = {
-			sinodalias: []
-		};
+			sinodalias: [],
+			teachers: []
+
+			// bindings
+		};_this.compareTeaching = _this.compareTeaching.bind(_this);
 		return _this;
 	}
 
@@ -56278,6 +56281,7 @@ var SinodaliasTable = function (_Component) {
 		key: 'componentWillMount',
 		value: function componentWillMount() {
 			this.getSinodaliasData();
+			this.getTeachersData();
 		}
 	}, {
 		key: 'getSinodaliasData',
@@ -56287,13 +56291,39 @@ var SinodaliasTable = function (_Component) {
 			__WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/sinodalias').then(function (response) {
 				console.log(response);
 				_this2.setState({
-					sinodalias: [].concat(_toConsumableArray(_this2.state.sinodalias), _toConsumableArray(response.data.sinodalias))
+					sinodalias: [].concat(_toConsumableArray(response.data.sinodalias))
 				});
 			});
 		}
 	}, {
+		key: 'getTeachersData',
+		value: function getTeachersData() {
+			var _this3 = this;
+
+			__WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/teachers').then(function (response) {
+				console.log("done");
+				_this3.setState({
+					teachers: [].concat(_toConsumableArray(response.data.teachers))
+				});
+			});
+		}
+	}, {
+		key: 'compareTeaching',
+		value: function compareTeaching(sinodal) {
+			var teacher = '';
+			// buscando el maestro que corresponde al id
+			for (var i = 0; i < this.state.teachers.length; i++) {
+				if (this.state.teachers[i].id == sinodal) {
+					teacher = this.state.teachers[i].name;
+				}
+			}
+			return teacher;
+		}
+	}, {
 		key: 'render',
 		value: function render() {
+			var _this4 = this;
+
 			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 				'div',
 				null,
@@ -56369,7 +56399,7 @@ var SinodaliasTable = function (_Component) {
 						this.state.sinodalias.map(function (sinodalia) {
 							return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 								'tr',
-								null,
+								{ key: sinodalia.id },
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'th',
 									{ scope: 'row' },
@@ -56388,82 +56418,39 @@ var SinodaliasTable = function (_Component) {
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'td',
 									null,
-									'@mdo'
+									sinodalia.num_control
+								),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'td',
+									null,
+									_this4.compareTeaching(sinodalia.user_id)
+								),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'td',
+									null,
+									_this4.compareTeaching(sinodalia.id_secretario)
+								),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'td',
+									null,
+									_this4.compareTeaching(sinodalia.id_vocal)
+								),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'td',
+									null,
+									_this4.compareTeaching(sinodalia.id_vocal_sup)
+								),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'td',
+									null,
+									__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+										'button',
+										{ className: 'btn btn-success' },
+										'Aprobar'
+									)
 								)
 							);
-						}),
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							'tr',
-							null,
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								'th',
-								{ scope: 'row' },
-								'1'
-							),
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								'td',
-								null,
-								'Mark'
-							),
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								'td',
-								null,
-								'Otto'
-							),
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								'td',
-								null,
-								'@mdo'
-							)
-						),
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							'tr',
-							null,
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								'th',
-								{ scope: 'row' },
-								'2'
-							),
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								'td',
-								null,
-								'Jacob'
-							),
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								'td',
-								null,
-								'Thornton'
-							),
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								'td',
-								null,
-								'@fat'
-							)
-						),
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							'tr',
-							null,
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								'th',
-								{ scope: 'row' },
-								'3'
-							),
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								'td',
-								null,
-								'Larry'
-							),
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								'td',
-								null,
-								'the Bird'
-							),
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								'td',
-								null,
-								'@twitter'
-							)
-						)
+						})
 					)
 				)
 			);
