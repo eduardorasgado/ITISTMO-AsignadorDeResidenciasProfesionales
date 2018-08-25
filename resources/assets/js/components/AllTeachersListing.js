@@ -4,7 +4,7 @@ class AllTeachersListing extends Component {
 	render() {
 		return (
 			<div>
-				Teachers
+				Maestros
 			</div>
 			)
 	}

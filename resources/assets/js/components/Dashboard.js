@@ -7,9 +7,20 @@ class Index extends Component {
     render() {
         return (
             <div className="container-fluid">
-         			<CreateNewAssigment />
-         			<SinodaliasTable />
-         			<AllTeachersListing />
+            <br/>
+            <hr/>
+         			<div className="row">
+
+         				<div className="col-md-2 jumbotron">
+         					<AllTeachersListing />
+         				</div>
+         				
+         				<div className="col-md-6">
+         						<CreateNewAssigment />
+         						<SinodaliasTable />
+         				</div>
+         			</div>
+
             </div>
         );
     }

@@ -55813,9 +55813,23 @@ var Index = function (_Component) {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 { className: 'container-fluid' },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__CreateNewAssigment__["a" /* default */], null),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__SinodaliasTable__["a" /* default */], null),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__AllTeachersListing__["a" /* default */], null)
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'row' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'col-md-2 jumbotron' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__AllTeachersListing__["a" /* default */], null)
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'col-md-6' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__CreateNewAssigment__["a" /* default */], null),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__SinodaliasTable__["a" /* default */], null)
+                    )
+                )
             );
         }
     }]);
@@ -55845,19 +55859,37 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var CreateNewAssigment = function (_Component) {
 	_inherits(CreateNewAssigment, _Component);
 
-	function CreateNewAssigment() {
+	function CreateNewAssigment(props) {
 		_classCallCheck(this, CreateNewAssigment);
 
-		return _possibleConstructorReturn(this, (CreateNewAssigment.__proto__ || Object.getPrototypeOf(CreateNewAssigment)).apply(this, arguments));
+		return _possibleConstructorReturn(this, (CreateNewAssigment.__proto__ || Object.getPrototypeOf(CreateNewAssigment)).call(this, props));
 	}
 
 	_createClass(CreateNewAssigment, [{
-		key: 'render',
+		key: "render",
 		value: function render() {
 			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-				'div',
+				"div",
 				null,
-				'formulario'
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					"h2",
+					null,
+					"Asignaci\xF3n de nueva Sinodal\xEDa"
+				),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					"form",
+					null,
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						"div",
+						{ "class": "form-group" },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							"label",
+							{ "for": "profesor" },
+							"Asignado"
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("select", { className: "" })
+					)
+				)
 			);
 		}
 	}]);
@@ -55941,7 +55973,7 @@ var AllTeachersListing = function (_Component) {
 			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 				'div',
 				null,
-				'Teachers'
+				'Maestros'
 			);
 		}
 	}]);
