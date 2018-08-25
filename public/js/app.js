@@ -56246,6 +56246,8 @@ var CreateNewAssigment = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -56280,11 +56282,13 @@ var SinodaliasTable = function (_Component) {
 	}, {
 		key: 'getSinodaliasData',
 		value: function getSinodaliasData() {
+			var _this2 = this;
+
 			__WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/sinodalias').then(function (response) {
 				console.log(response);
-				// this.setState({
-				// 	sinodalias: [...response.data.sinodalias],
-				// })
+				_this2.setState({
+					sinodalias: [].concat(_toConsumableArray(_this2.state.sinodalias), _toConsumableArray(response.data.sinodalias))
+				});
 			});
 		}
 	}, {
@@ -56298,9 +56302,10 @@ var SinodaliasTable = function (_Component) {
 					null,
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 						'h2',
-						{ className: 'text-justify' },
+						{ className: 'text-center' },
 						'Lista de Sinodal\xEDas creadas'
-					)
+					),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null)
 				),
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'table',
@@ -56314,28 +56319,79 @@ var SinodaliasTable = function (_Component) {
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 								'th',
 								{ scope: 'col' },
-								'#'
+								'Residente'
 							),
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 								'th',
 								{ scope: 'col' },
-								'First'
+								'Proyecto'
 							),
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 								'th',
 								{ scope: 'col' },
-								'Last'
+								'Carrera'
 							),
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 								'th',
 								{ scope: 'col' },
-								'Handle'
+								'N.de Control'
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'th',
+								{ scope: 'col' },
+								'Presidente'
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'th',
+								{ scope: 'col' },
+								'Secretario'
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'th',
+								{ scope: 'col' },
+								'Vocal'
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'th',
+								{ scope: 'col' },
+								'Vocal Suplente'
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'th',
+								{ scope: 'col' },
+								'Aprobar'
 							)
 						)
 					),
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 						'tbody',
 						null,
+						this.state.sinodalias.map(function (sinodalia) {
+							return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'tr',
+								null,
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'th',
+									{ scope: 'row' },
+									sinodalia.residente
+								),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'td',
+									null,
+									sinodalia.proyecto
+								),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'td',
+									null,
+									sinodalia.carrera
+								),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'td',
+									null,
+									'@mdo'
+								)
+							);
+						}),
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 							'tr',
 							null,

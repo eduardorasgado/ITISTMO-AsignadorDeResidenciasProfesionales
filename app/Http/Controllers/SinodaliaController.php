@@ -10,11 +10,13 @@ class SinodaliaController extends Controller
 {
 		public function index(Request $request, Sinodalia $sinodalia)
 		{
-			$allSinodalias = Sinodalia::where('aprobacion', '!=', 1);
+			$allSinodalias = Sinodalia::where('aprobacion', '!=', 1)->get();
 			return response()->json([
 				'sinodalias' => $allSinodalias,
 			]);
 		}
+
+
     public function create(Request $request, Sinodalia $sinodalia)
     {
     	$theUser = User::find($request->presidente);
