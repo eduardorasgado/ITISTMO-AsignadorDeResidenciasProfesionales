@@ -56294,8 +56294,8 @@ var SinodaliasTable = function (_Component) {
 			}, 10000);
 		}
 	}, {
-		key: 'componentWillUnMount',
-		value: function componentWillUnMount() {
+		key: 'componentWillUnmount',
+		value: function componentWillUnmount() {
 			// limpiar el montaje
 			clearInterval(this.interval);
 		}
@@ -56528,13 +56528,29 @@ var AllTeachersListing = function (_Component) {
 			this.getTeachersData();
 		}
 	}, {
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			var _this2 = this;
+
+			// actualizar cada 10 segundos
+			this.interval = setInterval(function () {
+				return _this2.getTeachersData();
+			}, 10000);
+		}
+	}, {
+		key: 'componentWillUnmount',
+		value: function componentWillUnmount() {
+			// limpiar el montaje
+			clearInterval(this.interval);
+		}
+	}, {
 		key: 'getTeachersData',
 		value: function getTeachersData() {
-			var _this2 = this;
+			var _this3 = this;
 
 			axios.get('/teachers').then(function (response) {
 				console.log("done");
-				_this2.setState({
+				_this3.setState({
 					teachers: [].concat(_toConsumableArray(response.data.teachers))
 				});
 			});
@@ -56550,7 +56566,7 @@ var AllTeachersListing = function (_Component) {
 	}, {
 		key: 'render',
 		value: function render() {
-			var _this3 = this;
+			var _this4 = this;
 
 			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 				'div',
@@ -56570,12 +56586,12 @@ var AllTeachersListing = function (_Component) {
 					this.state.teachers.map(function (teacher) {
 						return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 							'div',
-							{ 'class': 'alert alert-success', role: 'alert', style: { marginRight: 15 } },
+							{ key: teacher.id, className: 'alert alert-success', role: 'alert', style: { marginRight: 15 } },
 							teacher.name,
 							' | ',
 							teacher.num_asignaciones,
 							' | ',
-							_this3.disponible(teacher.disponibilidad)
+							_this4.disponible(teacher.disponibilidad)
 						);
 					})
 				),

@@ -11,6 +11,15 @@ class AllTeachersListing extends Component {
 	componentWillMount () {
 		this.getTeachersData()
 	}
+	componentDidMount() {
+		// actualizar cada 10 segundos
+			this.interval = setInterval(() => this.getTeachersData(), 10000)
+	}
+
+	componentWillUnmount() {
+		// limpiar el montaje
+			clearInterval(this.interval)
+	}
 
 	getTeachersData() {
 		axios.get('/teachers')
@@ -39,7 +48,7 @@ class AllTeachersListing extends Component {
 				<div className="row">
 				
 					{ this.state.teachers.map((teacher) => (
-						<div class="alert alert-success" role="alert" style={{ marginRight:15 }}>
+						<div key={teacher.id} className="alert alert-success" role="alert" style={{ marginRight:15 }}>
 						  {teacher.name} | {teacher.num_asignaciones} | { this.disponible(teacher.disponibilidad) }
 						</div>
 						)) }

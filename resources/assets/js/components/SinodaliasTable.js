@@ -24,7 +24,7 @@ class SinodaliasTable extends Component {
 			this.interval = setInterval(() => this.getSinodaliasData(), 10000)
 		}
 
-		componentWillUnMount() {
+		componentWillUnmount() {
 			// limpiar el montaje
 			clearInterval(this.interval)
 		}
