@@ -23,9 +23,31 @@ class CreateSinodaliasTable extends Migration
             $table->boolean('aprobacion');
             $table->timestamps();
 
+            // foreign keys
+            // alumno
             $table->foreign('id_alumno')
                     ->references('id')
                     ->on('alumnos')
+                    ->onDelete('cascade');
+            // presidente
+            $table->foreign('id_presidente')
+                    ->references('id')
+                    ->on('users')
+                    ->onDelete('cascade');
+            // secretario
+            $table->foreign('id_secretario')
+                    ->references('id')
+                    ->on('users')
+                    ->onDelete('cascade');
+            // vocal
+            $table->foreign('id_vocal')
+                    ->references('id')
+                    ->on('users')
+                    ->onDelete('cascade');
+            // vocal suplente
+            $table->foreign('id_vocal_sup')
+                    ->references('id')
+                    ->on('users')
                     ->onDelete('cascade');
         });
     }
