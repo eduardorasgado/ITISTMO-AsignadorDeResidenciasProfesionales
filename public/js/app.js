@@ -56121,6 +56121,16 @@ var CreateNewAssigment = function (_Component) {
 							{ className: "form-group" },
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 								"label",
+								{ "for": "num_control" },
+								"Num. de Control"
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { id: "num_control", type: "number", className: "form-control", required: true })
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							"div",
+							{ className: "form-group" },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"label",
 								{ "for": "proyecto" },
 								"Nombre del Proyecto"
 							),

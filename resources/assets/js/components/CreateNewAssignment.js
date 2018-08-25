@@ -22,6 +22,10 @@ class CreateNewAssigment extends Component {
 							<input id="carrera" type="text" className="form-control" required/>
 						</div>
 						<div className="form-group">
+							<label for="num_control">Num. de Control</label>
+							<input id="num_control" type="number" className="form-control" required/>
+						</div>
+						<div className="form-group">
 							<label for="proyecto">Nombre del Proyecto</label>
 							<input id="proyecto" type="text" className="form-control" required/>
 						</div>

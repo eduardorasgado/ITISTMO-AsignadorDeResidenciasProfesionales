@@ -15,7 +15,18 @@ class CreateSinodaliasTable extends Migration
     {
         Schema::create('sinodalias', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('id_alumno')->unsigned();
+            $table->integer('id_presidente')->unsigned();
+            $table->integer('id_secretario')->unsigned();
+            $table->integer('id_vocal')->unsigned();
+            $table->integer('id_vocal_sup')->unsigned();
+            $table->boolean('aprobacion');
             $table->timestamps();
+
+            $table->foreign('id_alumno')
+                    ->references('id')
+                    ->on('alumnos')
+                    ->onDelete('cascade');
         });
     }
 
