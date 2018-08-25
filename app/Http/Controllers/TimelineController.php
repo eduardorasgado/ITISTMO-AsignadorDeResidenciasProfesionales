@@ -10,6 +10,11 @@ class TimelineController extends Controller
 	public function index()
 	{
 		$userCargo = Auth::user()->cargo;
-		return view('home')->with("cargo", $userCargo);
+		if ($userCargo) {
+			// en caso de ser profesor o secretaria
+			return view('home')->with("cargo", $userCargo);
+		}
+		// en caso de ser administrador
+		return view('admin');
 	}
 }
