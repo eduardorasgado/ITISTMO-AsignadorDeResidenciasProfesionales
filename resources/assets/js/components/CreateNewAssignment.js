@@ -18,6 +18,7 @@ class CreateNewAssigment extends Component {
 		//bindings
 		this.handleSubmit = this.handleSubmit.bind(this)
 		// this.postSinodaliaData = this.postSinodaliaData.bind(this)
+		// this.getTeachersData = this.getTeachersData.bind(this)
 
 		this.handleChangeResidente = this.handleChangeResidente.bind(this)
 		this.handleChangeCarrera = this.handleChangeCarrera.bind(this)
@@ -42,7 +43,12 @@ class CreateNewAssigment extends Component {
 		}).then(
 			response => {
 				var text = "La sinodalía se creó con éxito."
-				this.setState({
+				alert(text)
+				console.log(response)
+			}
+		)
+		// limpiar los campos a los estandar
+		this.setState({
 					residente: '',
 					carrera: 'electrica',
 					num_control: 0,
@@ -52,21 +58,7 @@ class CreateNewAssigment extends Component {
 					vocal: 0,
 					vocalSuplente: 0,
 					teachers: [],
-				})
-				alert(text)
-				console.log(response)
-			}
-		)
-	}
-
-	getTeachersData() {
-		axios.get('/teachers', {
-
 		})
-	}
-
-	componentWillMount() {
-
 	}
 
 	handleSubmit(event) {
@@ -79,6 +71,23 @@ class CreateNewAssigment extends Component {
 		console.log(this.state)
 
 	}
+
+	getTeachersData() {
+		axios.get('/teachers')
+		.then((response) => {
+					console.log("done")
+					this.setState({
+						teachers: [...response.data.teachers],
+					})
+				}
+			)
+		}
+
+	componentWillMount () {
+		// loading teachers lists
+		this.getTeachersData()
+	}
+
 	handleChangeResidente(event) {
 		this.setState({
 			residente: event.target.value,
@@ -158,9 +167,9 @@ class CreateNewAssigment extends Component {
 							<label htmlFor="presidente">Asignado Presidente(disponibles)</label>
 							<select className="form-control" id="presidente" 
 											onChange={this.handleChangePresidente} value={this.state.presidente}>
-								<option value="1">Juan Guerra</option>
-								<option value="2">Marcelo Bustamante</option>
-								<option value="3">Patricio Cuevas</option>
+								{ this.state.teachers.map( teacher => (
+										<option value={ teacher.id }>{ teacher.name }</option>
+									)) }
 							</select>
 						</div>
 						<div className="form-group">

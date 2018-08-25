@@ -20,6 +20,8 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function() {
 	// rutas para el usuario debidamente regustrado
 	Route::get('/home', 'TimelineController@index');
+	
 	Route::post('/newsinodalia', 'SinodaliaController@create');
+
 	Route::get('/teachers', 'admintableController@teachers');
 });

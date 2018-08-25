@@ -55854,6 +55854,8 @@ var Index = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -55884,6 +55886,7 @@ var CreateNewAssigment = function (_Component) {
 			//bindings
 		};_this.handleSubmit = _this.handleSubmit.bind(_this);
 		// this.postSinodaliaData = this.postSinodaliaData.bind(this)
+		// this.getTeachersData = this.getTeachersData.bind(this)
 
 		_this.handleChangeResidente = _this.handleChangeResidente.bind(_this);
 		_this.handleChangeCarrera = _this.handleChangeCarrera.bind(_this);
@@ -55899,8 +55902,6 @@ var CreateNewAssigment = function (_Component) {
 	_createClass(CreateNewAssigment, [{
 		key: 'postSinodaliaData',
 		value: function postSinodaliaData() {
-			var _this2 = this;
-
 			__WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/newsinodalia', {
 				residente: this.state.residente,
 				carrera: this.state.carrera,
@@ -55912,29 +55913,22 @@ var CreateNewAssigment = function (_Component) {
 				vocalSuplente: this.state.vocalSuplente
 			}).then(function (response) {
 				var text = "La sinodalía se creó con éxito.";
-				_this2.setState({
-					residente: '',
-					carrera: 'electrica',
-					num_control: 0,
-					proyecto: '',
-					presidente: 0,
-					secretario: 0,
-					vocal: 0,
-					vocalSuplente: 0,
-					teachers: []
-				});
 				alert(text);
 				console.log(response);
 			});
+			// limpiar los campos a los estandar
+			this.setState({
+				residente: '',
+				carrera: 'electrica',
+				num_control: 0,
+				proyecto: '',
+				presidente: 0,
+				secretario: 0,
+				vocal: 0,
+				vocalSuplente: 0,
+				teachers: []
+			});
 		}
-	}, {
-		key: 'getTeachersData',
-		value: function getTeachersData() {
-			__WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/teachers', {});
-		}
-	}, {
-		key: 'componentWillMount',
-		value: function componentWillMount() {}
 	}, {
 		key: 'handleSubmit',
 		value: function handleSubmit(event) {
@@ -55945,6 +55939,24 @@ var CreateNewAssigment = function (_Component) {
 
 			// })
 			console.log(this.state);
+		}
+	}, {
+		key: 'getTeachersData',
+		value: function getTeachersData() {
+			var _this2 = this;
+
+			__WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/teachers').then(function (response) {
+				console.log("done");
+				_this2.setState({
+					teachers: [].concat(_toConsumableArray(response.data.teachers))
+				});
+			});
+		}
+	}, {
+		key: 'componentWillMount',
+		value: function componentWillMount() {
+			// loading teachers lists
+			this.getTeachersData();
 		}
 	}, {
 		key: 'handleChangeResidente',
@@ -56100,21 +56112,13 @@ var CreateNewAssigment = function (_Component) {
 								'select',
 								{ className: 'form-control', id: 'presidente',
 									onChange: this.handleChangePresidente, value: this.state.presidente },
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									'option',
-									{ value: '1' },
-									'Juan Guerra'
-								),
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									'option',
-									{ value: '2' },
-									'Marcelo Bustamante'
-								),
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									'option',
-									{ value: '3' },
-									'Patricio Cuevas'
-								)
+								this.state.teachers.map(function (teacher) {
+									return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+										'option',
+										{ value: teacher.id },
+										teacher.name
+									);
+								})
 							)
 						),
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
