@@ -16,7 +16,8 @@ class Sinodalia extends Model
 												'id_vocal_sup',
 												'aprobacion',
 	];
-    public function user() {
+    public function user() 
+    {
     	return $this->hasMany(User::class);
     }
 }

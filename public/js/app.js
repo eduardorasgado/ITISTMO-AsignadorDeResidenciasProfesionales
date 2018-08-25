@@ -55883,7 +55883,7 @@ var CreateNewAssigment = function (_Component) {
 			teachers: []
 			//bindings
 		};_this.handleSubmit = _this.handleSubmit.bind(_this);
-		_this.postSinodaliaData = _this.postSinodaliaData.bind(_this);
+		// this.postSinodaliaData = this.postSinodaliaData.bind(this)
 
 		_this.handleChangeResidente = _this.handleChangeResidente.bind(_this);
 		_this.handleChangeCarrera = _this.handleChangeCarrera.bind(_this);

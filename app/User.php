@@ -36,7 +36,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function sinodalias() {
+    public function sinodalias() 
+    {
         return $this->hasMany(Sinodalias::class);
     }
 }

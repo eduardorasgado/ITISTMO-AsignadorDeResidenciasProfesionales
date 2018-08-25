@@ -17,7 +17,7 @@ class CreateNewAssigment extends Component {
 		}
 		//bindings
 		this.handleSubmit = this.handleSubmit.bind(this)
-		this.postSinodaliaData = this.postSinodaliaData.bind(this)
+		// this.postSinodaliaData = this.postSinodaliaData.bind(this)
 
 		this.handleChangeResidente = this.handleChangeResidente.bind(this)
 		this.handleChangeCarrera = this.handleChangeCarrera.bind(this)
