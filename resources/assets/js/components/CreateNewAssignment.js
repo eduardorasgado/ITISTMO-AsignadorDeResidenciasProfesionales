@@ -15,15 +15,15 @@ class CreateNewAssigment extends Component {
 						<form>
 						<div className="form-group">
 							<label for="residente">Nombre del residente</label>
-							<input id="residente" type="text" className="form-control"/>
+							<input id="residente" type="text" className="form-control" required/>
 						</div>
 						<div className="form-group">
 							<label for="carrera">Carrera</label>
-							<input id="carrera" type="text" className="form-control"/>
+							<input id="carrera" type="text" className="form-control" required/>
 						</div>
 						<div className="form-group">
 							<label for="proyecto">Nombre del Proyecto</label>
-							<input id="proyecto" type="text" className="form-control"/>
+							<input id="proyecto" type="text" className="form-control" required/>
 						</div>
 						<div className="form-group">
 							<label for="presidente">Asignado Presidente(disponibles)</label>
@@ -57,6 +57,7 @@ class CreateNewAssigment extends Component {
 								<option value="3">Patricio Cuevas</option>
 							</select>
 						</div>
+						<input type="submit" value="Creat sinodalía" className="form-control" />
 					</form>
 					</div>
 				</div>

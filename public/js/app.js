@@ -55895,7 +55895,7 @@ var SinodaliasTable = function (_Component) {
 					{ "class": "table" },
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 						"thead",
-						null,
+						{ className: "thead-dark" },
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 							"tr",
 							null,
@@ -56104,7 +56104,7 @@ var CreateNewAssigment = function (_Component) {
 								{ "for": "residente" },
 								"Nombre del residente"
 							),
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { id: "residente", type: "text", className: "form-control" })
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { id: "residente", type: "text", className: "form-control", required: true })
 						),
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 							"div",
@@ -56114,7 +56114,7 @@ var CreateNewAssigment = function (_Component) {
 								{ "for": "carrera" },
 								"Carrera"
 							),
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { id: "carrera", type: "text", className: "form-control" })
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { id: "carrera", type: "text", className: "form-control", required: true })
 						),
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 							"div",
@@ -56124,7 +56124,7 @@ var CreateNewAssigment = function (_Component) {
 								{ "for": "proyecto" },
 								"Nombre del Proyecto"
 							),
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { id: "proyecto", type: "text", className: "form-control" })
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { id: "proyecto", type: "text", className: "form-control", required: true })
 						),
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 							"div",
@@ -56237,7 +56237,8 @@ var CreateNewAssigment = function (_Component) {
 									"Patricio Cuevas"
 								)
 							)
-						)
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "submit", value: "Creat sinodal\xEDa", className: "form-control" })
 					)
 				)
 			);
