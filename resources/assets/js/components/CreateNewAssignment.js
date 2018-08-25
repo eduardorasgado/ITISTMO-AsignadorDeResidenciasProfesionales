@@ -17,6 +17,8 @@ class CreateNewAssigment extends Component {
 		}
 		//bindings
 		this.handleSubmit = this.handleSubmit.bind(this)
+		this.postTeachersData = this.postTeachersData.bind(this)
+
 		this.handleChangeResidente = this.handleChangeResidente.bind(this)
 		this.handleChangeCarrera = this.handleChangeCarrera.bind(this)
 		this.handleChangeControl = this.handleChangeControl.bind(this)
@@ -36,7 +38,8 @@ class CreateNewAssigment extends Component {
 		// this.seState({
 
 		// })
-		console.log("data here!!")
+		console.log(this.state)
+
 	}
 	handleChangeResidente(event) {
 		this.setState({

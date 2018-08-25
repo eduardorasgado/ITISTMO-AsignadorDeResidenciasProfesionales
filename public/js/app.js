@@ -55883,6 +55883,8 @@ var CreateNewAssigment = function (_Component) {
 			teachers: []
 			//bindings
 		};_this.handleSubmit = _this.handleSubmit.bind(_this);
+		_this.postTeachersData = _this.postTeachersData.bind(_this);
+
 		_this.handleChangeResidente = _this.handleChangeResidente.bind(_this);
 		_this.handleChangeCarrera = _this.handleChangeCarrera.bind(_this);
 		_this.handleChangeControl = _this.handleChangeControl.bind(_this);
@@ -55906,7 +55908,7 @@ var CreateNewAssigment = function (_Component) {
 			// this.seState({
 
 			// })
-			console.log("data here!!");
+			console.log(this.state);
 		}
 	}, {
 		key: 'handleChangeResidente',
