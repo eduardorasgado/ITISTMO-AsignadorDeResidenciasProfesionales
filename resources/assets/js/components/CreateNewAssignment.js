@@ -41,7 +41,8 @@ class CreateNewAssigment extends Component {
 			vocalSuplente: this.state.vocalSuplente,
 		}).then(
 			response => {
-				console.log(response)
+				var text = "La sinodalía se creó con éxito."
+				alert(text)
 			}
 		)
 	}

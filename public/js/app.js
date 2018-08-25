@@ -55909,7 +55909,8 @@ var CreateNewAssigment = function (_Component) {
 				vocal: this.state.vocal,
 				vocalSuplente: this.state.vocalSuplente
 			}).then(function (response) {
-				console.log(response);
+				var text = "La sinodalía se creó con éxito.";
+				alert(text);
 			});
 		}
 	}, {
