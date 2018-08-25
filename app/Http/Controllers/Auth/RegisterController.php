@@ -89,7 +89,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'cargo' => $cargoNum,
-            'disponibilidad' => 1,
+            'disponibilidad' => 0,
             'num_asignaciones' => 0,
             'anteproyecto_cuenta' => 0,
             'proyecto_cuenta' => 0,

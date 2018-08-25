@@ -56540,8 +56540,18 @@ var AllTeachersListing = function (_Component) {
 			});
 		}
 	}, {
+		key: 'disponible',
+		value: function disponible(disp) {
+			if (disp) {
+				return "L";
+			}
+			return "D";
+		}
+	}, {
 		key: 'render',
 		value: function render() {
+			var _this3 = this;
+
 			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 				'div',
 				{ className: 'container' },
@@ -56563,9 +56573,16 @@ var AllTeachersListing = function (_Component) {
 							{ 'class': 'alert alert-success', role: 'alert', style: { marginRight: 15 } },
 							teacher.name,
 							' | ',
-							teacher.num_asignaciones
+							teacher.num_asignaciones,
+							' | ',
+							_this3.disponible(teacher.disponibilidad)
 						);
 					})
+				),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'p',
+					null,
+					'L = Lleno; D = Disponible'
 				)
 			);
 		}
