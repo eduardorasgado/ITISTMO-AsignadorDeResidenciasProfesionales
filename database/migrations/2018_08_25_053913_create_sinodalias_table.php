@@ -15,7 +15,10 @@ class CreateSinodaliasTable extends Migration
     {
         Schema::create('sinodalias', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_alumno')->unsigned();
+            $table->string('residente');
+            $table->string('carrera');
+            $table->double('num_control');
+            $table->string('proyecto');
             $table->integer('id_presidente')->unsigned();
             $table->integer('id_secretario')->unsigned();
             $table->integer('id_vocal')->unsigned();
@@ -24,11 +27,6 @@ class CreateSinodaliasTable extends Migration
             $table->timestamps();
 
             // foreign keys
-            // alumno
-            $table->foreign('id_alumno')
-                    ->references('id')
-                    ->on('alumnos')
-                    ->onDelete('cascade');
             // presidente
             $table->foreign('id_presidente')
                     ->references('id')

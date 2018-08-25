@@ -15,7 +15,16 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'cargo', 'disponibilidad', 'num_asignaciones', 'anteproyecto_cuenta', 'proyecto_cuenta', 'num_control', 'telefono', 'password',
+                    'name',
+                    'email',
+                    'cargo',
+                    'disponibilidad',
+                    'num_asignaciones',
+                    'anteproyecto_cuenta',
+                    'proyecto_cuenta',
+                    'num_control',
+                    'telefono',
+                    'password',
     ];
 
     /**
@@ -26,4 +35,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function sinodalias() {
+        return $this->hasMany(Sinodalias::class);
+    }
 }

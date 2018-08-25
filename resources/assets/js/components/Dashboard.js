@@ -9,6 +9,7 @@ class Index extends Component {
             <div className="container-fluid">
             <br/>
             <hr/>
+            	<p>Total de integrantes de la academia: 0</p>
          			<div className="row">
          				<div className="col-md-6">
          						<CreateNewAssignment />
