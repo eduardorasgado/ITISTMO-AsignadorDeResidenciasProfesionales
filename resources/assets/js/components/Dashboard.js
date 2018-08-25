@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import CreateNewAssigment from './CreateNewAssigment'
+import CreateNewAssignment from './CreateNewAssignment'
 import SinodaliasTable from './SinodaliasTable'
 import AllTeachersListing from './AllTeachersListing'
 
@@ -10,17 +10,19 @@ class Index extends Component {
             <br/>
             <hr/>
          			<div className="row">
-
-         				<div className="col-md-2 jumbotron">
-         					<AllTeachersListing />
-         				</div>
-         				
          				<div className="col-md-6">
-         						<CreateNewAssigment />
-         						<SinodaliasTable />
+         						<CreateNewAssignment />
+         				</div>
+         				<div className="col-md-6">
+         					Hola
          				</div>
          			</div>
-
+         			<br/>
+         			<div className="row">
+         				<div className="col-md-12">
+         					<SinodaliasTable />
+         				</div>
+         			</div>
             </div>
         );
     }

@@ -55782,7 +55782,7 @@ module.exports = camelize;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CreateNewAssigment__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CreateNewAssignment__ = __webpack_require__(67);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__SinodaliasTable__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__AllTeachersListing__ = __webpack_require__(66);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -55820,13 +55820,22 @@ var Index = function (_Component) {
                     { className: 'row' },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
-                        { className: 'col-md-2 jumbotron' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__AllTeachersListing__["a" /* default */], null)
+                        { className: 'col-md-6' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__CreateNewAssignment__["a" /* default */], null)
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
                         { className: 'col-md-6' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__CreateNewAssigment__["a" /* default */], null),
+                        'Hola'
+                    )
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'row' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'col-md-12' },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__SinodaliasTable__["a" /* default */], null)
                     )
                 )
@@ -55840,85 +55849,7 @@ var Index = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (Index);
 
 /***/ }),
-/* 64 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-var CreateNewAssigment = function (_Component) {
-	_inherits(CreateNewAssigment, _Component);
-
-	function CreateNewAssigment(props) {
-		_classCallCheck(this, CreateNewAssigment);
-
-		return _possibleConstructorReturn(this, (CreateNewAssigment.__proto__ || Object.getPrototypeOf(CreateNewAssigment)).call(this, props));
-	}
-
-	_createClass(CreateNewAssigment, [{
-		key: "render",
-		value: function render() {
-			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-				"div",
-				null,
-				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-					"h2",
-					null,
-					"Asignaci\xF3n de nueva Sinodal\xEDa"
-				),
-				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-					"form",
-					null,
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						"div",
-						{ className: "form-group" },
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							"label",
-							{ "for": "profesor" },
-							"Asignado(disponibles)"
-						),
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							"select",
-							{ className: "form-control", id: "profesor" },
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"option",
-								{ value: "1" },
-								"Juan Guerra"
-							),
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"option",
-								{ value: "2" },
-								"Marcelo Bustamante"
-							),
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"option",
-								{ value: "3" },
-								"Patricio Cuevas"
-							)
-						)
-					),
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", { className: "form-group" })
-				)
-			);
-		}
-	}]);
-
-	return CreateNewAssigment;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
-
-/* harmony default export */ __webpack_exports__["a"] = (CreateNewAssigment);
-
-/***/ }),
+/* 64 */,
 /* 65 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -55945,12 +55876,128 @@ var SinodaliasTable = function (_Component) {
 	}
 
 	_createClass(SinodaliasTable, [{
-		key: 'render',
+		key: "render",
 		value: function render() {
 			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-				'div',
+				"div",
 				null,
-				'Sinodalias table'
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					"div",
+					null,
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						"h2",
+						{ className: "text-justify" },
+						"Lista de Sinodal\xEDas creadas"
+					)
+				),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					"table",
+					{ "class": "table" },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						"thead",
+						null,
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							"tr",
+							null,
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"th",
+								{ scope: "col" },
+								"#"
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"th",
+								{ scope: "col" },
+								"First"
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"th",
+								{ scope: "col" },
+								"Last"
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"th",
+								{ scope: "col" },
+								"Handle"
+							)
+						)
+					),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						"tbody",
+						null,
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							"tr",
+							null,
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"th",
+								{ scope: "row" },
+								"1"
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"td",
+								null,
+								"Mark"
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"td",
+								null,
+								"Otto"
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"td",
+								null,
+								"@mdo"
+							)
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							"tr",
+							null,
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"th",
+								{ scope: "row" },
+								"2"
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"td",
+								null,
+								"Jacob"
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"td",
+								null,
+								"Thornton"
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"td",
+								null,
+								"@fat"
+							)
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							"tr",
+							null,
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"th",
+								{ scope: "row" },
+								"3"
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"td",
+								null,
+								"Larry"
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"td",
+								null,
+								"the Bird"
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"td",
+								null,
+								"@twitter"
+							)
+						)
+					)
+				)
 			);
 		}
 	}]);
@@ -56000,7 +56047,207 @@ var AllTeachersListing = function (_Component) {
 	return AllTeachersListing;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
-/* harmony default export */ __webpack_exports__["a"] = (AllTeachersListing);
+/* unused harmony default export */ var _unused_webpack_default_export = (AllTeachersListing);
+
+/***/ }),
+/* 67 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+var CreateNewAssigment = function (_Component) {
+	_inherits(CreateNewAssigment, _Component);
+
+	function CreateNewAssigment(props) {
+		_classCallCheck(this, CreateNewAssigment);
+
+		return _possibleConstructorReturn(this, (CreateNewAssigment.__proto__ || Object.getPrototypeOf(CreateNewAssigment)).call(this, props));
+	}
+
+	_createClass(CreateNewAssigment, [{
+		key: "render",
+		value: function render() {
+			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+				"div",
+				{ className: "card" },
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					"div",
+					{ className: "card-header" },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						"h2",
+						null,
+						"Asignaci\xF3n de nueva Sinodal\xEDa"
+					)
+				),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					"div",
+					{ className: "card-body" },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						"form",
+						null,
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							"div",
+							{ className: "form-group" },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"label",
+								{ "for": "residente" },
+								"Nombre del residente"
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { id: "residente", type: "text", className: "form-control" })
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							"div",
+							{ className: "form-group" },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"label",
+								{ "for": "carrera" },
+								"Carrera"
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { id: "carrera", type: "text", className: "form-control" })
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							"div",
+							{ className: "form-group" },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"label",
+								{ "for": "proyecto" },
+								"Nombre del Proyecto"
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { id: "proyecto", type: "text", className: "form-control" })
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							"div",
+							{ className: "form-group" },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"label",
+								{ "for": "presidente" },
+								"Asignado Presidente(disponibles)"
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"select",
+								{ className: "form-control", id: "presidente" },
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									"option",
+									{ value: "1" },
+									"Juan Guerra"
+								),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									"option",
+									{ value: "2" },
+									"Marcelo Bustamante"
+								),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									"option",
+									{ value: "3" },
+									"Patricio Cuevas"
+								)
+							)
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							"div",
+							{ className: "form-group" },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"label",
+								{ "for": "secretario" },
+								"Asignado Secretario(disponibles)"
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"select",
+								{ className: "form-control", id: "secretario" },
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									"option",
+									{ value: "1" },
+									"Juan Guerra"
+								),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									"option",
+									{ value: "2" },
+									"Marcelo Bustamante"
+								),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									"option",
+									{ value: "3" },
+									"Patricio Cuevas"
+								)
+							)
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							"div",
+							{ className: "form-group" },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"label",
+								{ "for": "vocal" },
+								"Asignado Vocal(disponibles)"
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"select",
+								{ className: "form-control", id: "vocal" },
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									"option",
+									{ value: "1" },
+									"Juan Guerra"
+								),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									"option",
+									{ value: "2" },
+									"Marcelo Bustamante"
+								),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									"option",
+									{ value: "3" },
+									"Patricio Cuevas"
+								)
+							)
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							"div",
+							{ className: "form-group" },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"label",
+								{ "for": "vocal-suplente" },
+								"Asignado Vocal Suplente(disponibles)"
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"select",
+								{ className: "form-control", id: "vocal-suplente" },
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									"option",
+									{ value: "1" },
+									"Juan Guerra"
+								),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									"option",
+									{ value: "2" },
+									"Marcelo Bustamante"
+								),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									"option",
+									{ value: "3" },
+									"Patricio Cuevas"
+								)
+							)
+						)
+					)
+				)
+			);
+		}
+	}]);
+
+	return CreateNewAssigment;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (CreateNewAssigment);
 
 /***/ })
 /******/ ]);
