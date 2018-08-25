@@ -20,4 +20,5 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function() {
 	// rutas para el usuario debidamente regustrado
 	Route::get('/home', 'TimelineController@index');
+	Route::get('/teachers', 'admintableController@teachers');
 });

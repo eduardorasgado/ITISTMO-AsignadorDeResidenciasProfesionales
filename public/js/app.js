@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 17);
+/******/ 	return __webpack_require__(__webpack_require__.s = 18);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -70,7 +70,7 @@
 "use strict";
 
 
-var bind = __webpack_require__(6);
+var bind = __webpack_require__(8);
 var isBuffer = __webpack_require__(25);
 
 /*global toString:true*/
@@ -378,6 +378,20 @@ module.exports = {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+if (false) {
+  module.exports = require('./cjs/react.production.min.js');
+} else {
+  module.exports = __webpack_require__(44);
+}
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(0);
@@ -397,10 +411,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(7);
+    adapter = __webpack_require__(9);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(7);
+    adapter = __webpack_require__(9);
   }
   return adapter;
 }
@@ -478,7 +492,7 @@ module.exports = defaults;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(27)))
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -520,7 +534,7 @@ emptyFunction.thatReturnsArgument = function (arg) {
 module.exports = emptyFunction;
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports) {
 
 var g;
@@ -547,7 +561,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3085,10 +3099,10 @@ Popper.Defaults = Defaults;
 /* harmony default export */ __webpack_exports__["default"] = (Popper);
 //# sourceMappingURL=popper.js.map
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(4)))
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -13459,7 +13473,13 @@ return jQuery;
 
 
 /***/ }),
-/* 6 */
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(24);
+
+/***/ }),
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13477,7 +13497,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 7 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13488,7 +13508,7 @@ var settle = __webpack_require__(29);
 var buildURL = __webpack_require__(31);
 var parseHeaders = __webpack_require__(32);
 var isURLSameOrigin = __webpack_require__(33);
-var createError = __webpack_require__(8);
+var createError = __webpack_require__(10);
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(34);
 
 module.exports = function xhrAdapter(config) {
@@ -13664,7 +13684,7 @@ module.exports = function xhrAdapter(config) {
 
 
 /***/ }),
-/* 8 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13689,7 +13709,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 9 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13701,7 +13721,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 10 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13727,21 +13747,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-if (false) {
-  module.exports = require('./cjs/react.production.min.js');
-} else {
-  module.exports = __webpack_require__(44);
-}
-
-
-/***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13838,7 +13844,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13897,7 +13903,7 @@ function invariant(condition, format, a, b, c, d, e, f) {
 module.exports = invariant;
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13920,7 +13926,7 @@ if (true) {
 module.exports = emptyObject;
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13934,7 +13940,7 @@ module.exports = emptyObject;
 
 
 
-var emptyFunction = __webpack_require__(2);
+var emptyFunction = __webpack_require__(3);
 
 /**
  * Similar to invariant but only logs a warning if the condition is not met.
@@ -13988,7 +13994,7 @@ if (true) {
 module.exports = warning;
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14086,15 +14092,15 @@ module.exports = checkPropTypes;
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(18);
-module.exports = __webpack_require__(58);
+__webpack_require__(19);
+module.exports = __webpack_require__(62);
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -14104,7 +14110,7 @@ module.exports = __webpack_require__(58);
  * building robust, powerful web applications using React + Laravel.
  */
 
-__webpack_require__(19);
+__webpack_require__(20);
 
 /**
  * Next, we will create a fresh React component instance and attach it to
@@ -14115,12 +14121,12 @@ __webpack_require__(19);
 __webpack_require__(43);
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-window._ = __webpack_require__(20);
-window.Popper = __webpack_require__(4).default;
+window._ = __webpack_require__(21);
+window.Popper = __webpack_require__(5).default;
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -14129,9 +14135,9 @@ window.Popper = __webpack_require__(4).default;
  */
 
 try {
-  window.$ = window.jQuery = __webpack_require__(5);
+  window.$ = window.jQuery = __webpack_require__(6);
 
-  __webpack_require__(22);
+  __webpack_require__(23);
 } catch (e) {}
 
 /**
@@ -14140,7 +14146,7 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = __webpack_require__(23);
+window.axios = __webpack_require__(7);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -14176,7 +14182,7 @@ if (token) {
 // });
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -31286,10 +31292,10 @@ if (token) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(21)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(22)(module)))
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -31317,7 +31323,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -31326,7 +31332,7 @@ module.exports = function(module) {
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
 (function (global, factory) {
-   true ? factory(exports, __webpack_require__(5), __webpack_require__(4)) :
+   true ? factory(exports, __webpack_require__(6), __webpack_require__(5)) :
   typeof define === 'function' && define.amd ? define(['exports', 'jquery', 'popper.js'], factory) :
   (factory((global.bootstrap = {}),global.jQuery,global.Popper));
 }(this, (function (exports,$,Popper) { 'use strict';
@@ -35267,12 +35273,6 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 23 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(24);
-
-/***/ }),
 /* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -35280,9 +35280,9 @@ module.exports = __webpack_require__(24);
 
 
 var utils = __webpack_require__(0);
-var bind = __webpack_require__(6);
+var bind = __webpack_require__(8);
 var Axios = __webpack_require__(26);
-var defaults = __webpack_require__(1);
+var defaults = __webpack_require__(2);
 
 /**
  * Create an instance of Axios
@@ -35315,9 +35315,9 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(10);
+axios.Cancel = __webpack_require__(12);
 axios.CancelToken = __webpack_require__(41);
-axios.isCancel = __webpack_require__(9);
+axios.isCancel = __webpack_require__(11);
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -35365,7 +35365,7 @@ function isSlowBuffer (obj) {
 "use strict";
 
 
-var defaults = __webpack_require__(1);
+var defaults = __webpack_require__(2);
 var utils = __webpack_require__(0);
 var InterceptorManager = __webpack_require__(36);
 var dispatchRequest = __webpack_require__(37);
@@ -35660,7 +35660,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 "use strict";
 
 
-var createError = __webpack_require__(8);
+var createError = __webpack_require__(10);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -36093,8 +36093,8 @@ module.exports = InterceptorManager;
 
 var utils = __webpack_require__(0);
 var transformData = __webpack_require__(38);
-var isCancel = __webpack_require__(9);
-var defaults = __webpack_require__(1);
+var isCancel = __webpack_require__(11);
+var defaults = __webpack_require__(2);
 var isAbsoluteURL = __webpack_require__(39);
 var combineURLs = __webpack_require__(40);
 
@@ -36253,7 +36253,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 "use strict";
 
 
-var Cancel = __webpack_require__(10);
+var Cancel = __webpack_require__(12);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -36350,11 +36350,11 @@ module.exports = function spread(callback) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Dashboard__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Dashboard__ = __webpack_require__(58);
 
 
 
@@ -36385,12 +36385,12 @@ if (true) {
   (function() {
 'use strict';
 
-var _assign = __webpack_require__(12);
-var invariant = __webpack_require__(13);
-var emptyObject = __webpack_require__(14);
-var warning = __webpack_require__(15);
-var emptyFunction = __webpack_require__(2);
-var checkPropTypes = __webpack_require__(16);
+var _assign = __webpack_require__(13);
+var invariant = __webpack_require__(14);
+var emptyObject = __webpack_require__(15);
+var warning = __webpack_require__(16);
+var emptyFunction = __webpack_require__(3);
+var checkPropTypes = __webpack_require__(17);
 
 // TODO: this is special because it gets imported during build.
 
@@ -37942,17 +37942,17 @@ if (true) {
   (function() {
 'use strict';
 
-var invariant = __webpack_require__(13);
-var React = __webpack_require__(11);
-var warning = __webpack_require__(15);
+var invariant = __webpack_require__(14);
+var React = __webpack_require__(1);
+var warning = __webpack_require__(16);
 var ExecutionEnvironment = __webpack_require__(48);
-var _assign = __webpack_require__(12);
-var emptyFunction = __webpack_require__(2);
-var checkPropTypes = __webpack_require__(16);
+var _assign = __webpack_require__(13);
+var emptyFunction = __webpack_require__(3);
+var checkPropTypes = __webpack_require__(17);
 var getActiveElement = __webpack_require__(49);
 var shallowEqual = __webpack_require__(50);
 var containsNode = __webpack_require__(51);
-var emptyObject = __webpack_require__(14);
+var emptyObject = __webpack_require__(15);
 var hyphenateStyleName = __webpack_require__(54);
 var camelizeStyleName = __webpack_require__(56);
 
@@ -55767,24 +55767,14 @@ module.exports = camelize;
 
 /***/ }),
 /* 58 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 59 */,
-/* 60 */,
-/* 61 */,
-/* 62 */,
-/* 63 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CreateNewAssignment__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__SinodaliasTable__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__AllTeachersListing__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CreateNewAssignment__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__SinodaliasTable__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__AllTeachersListing__ = __webpack_require__(61);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -55854,12 +55844,263 @@ var Index = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (Index);
 
 /***/ }),
-/* 64 */,
-/* 65 */
+/* 59 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+var CreateNewAssigment = function (_Component) {
+	_inherits(CreateNewAssigment, _Component);
+
+	function CreateNewAssigment(props) {
+		_classCallCheck(this, CreateNewAssigment);
+
+		var _this = _possibleConstructorReturn(this, (CreateNewAssigment.__proto__ || Object.getPrototypeOf(CreateNewAssigment)).call(this, props));
+
+		_this.state = {
+			residente: '',
+			carrera: '',
+			num_control: 0,
+			proyecto: '',
+			presidente: 0,
+			secretario: 0,
+			vocal: 0,
+			vocalSuplente: 0,
+			teachers: []
+			//bindings
+		};_this.handleSubmit = _this.handleSubmit.bind(_this);
+		return _this;
+	}
+
+	_createClass(CreateNewAssigment, [{
+		key: 'postTeachersData',
+		value: function postTeachersData() {
+			__WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/teachers');
+		}
+	}, {
+		key: 'handleSubmit',
+		value: function handleSubmit(event) {
+			event.preventDefault();
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+				'div',
+				{ className: 'card' },
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'div',
+					{ className: 'card-header' },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'h2',
+						null,
+						'Asignaci\xF3n de nueva Sinodal\xEDa'
+					)
+				),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'div',
+					{ className: 'card-body' },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'form',
+						{ onSubmit: this.handleSubmit },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'div',
+							{ className: 'form-group' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'label',
+								{ 'for': 'residente' },
+								'Nombre del residente'
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { id: 'residente', type: 'text', className: 'form-control',
+								onChange: this.handleChange, value: this.state.residente,
+								required: true })
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'div',
+							{ className: 'form-group' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'label',
+								{ 'for': 'carrera' },
+								'Carrera'
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { id: 'carrera', type: 'text', className: 'form-control',
+								onChange: this.handleChange, value: this.state.carrera,
+								required: true })
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'div',
+							{ className: 'form-group' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'label',
+								{ 'for': 'num_control' },
+								'Num. de Control'
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { id: 'num_control', type: 'number', className: 'form-control',
+								onChange: this.handleChange, value: this.state.num_control,
+								required: true })
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'div',
+							{ className: 'form-group' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'label',
+								{ 'for': 'proyecto' },
+								'Nombre del Proyecto'
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { id: 'proyecto', type: 'text', className: 'form-control',
+								onChange: this.handleChange, value: this.state.proyecto,
+								required: true })
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'div',
+							{ className: 'form-group' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'label',
+								{ 'for': 'presidente' },
+								'Asignado Presidente(disponibles)'
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'select',
+								{ className: 'form-control', id: 'presidente',
+									onChange: this.handleChange, value: this.state.presidente },
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'option',
+									{ value: '1' },
+									'Juan Guerra'
+								),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'option',
+									{ value: '2' },
+									'Marcelo Bustamante'
+								),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'option',
+									{ value: '3' },
+									'Patricio Cuevas'
+								)
+							)
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'div',
+							{ className: 'form-group' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'label',
+								{ 'for': 'secretario' },
+								'Asignado Secretario(disponibles)'
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'select',
+								{ className: 'form-control', id: 'secretario',
+									onChange: this.handleChange, value: this.state.secretario },
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'option',
+									{ value: '1' },
+									'Juan Guerra'
+								),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'option',
+									{ value: '2' },
+									'Marcelo Bustamante'
+								),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'option',
+									{ value: '3' },
+									'Patricio Cuevas'
+								)
+							)
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'div',
+							{ className: 'form-group' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'label',
+								{ 'for': 'vocal' },
+								'Asignado Vocal(disponibles)'
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'select',
+								{ className: 'form-control', id: 'vocal',
+									onChange: this.handleChange, value: this.state.vocal },
+								'>',
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'option',
+									{ value: '1' },
+									'Juan Guerra'
+								),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'option',
+									{ value: '2' },
+									'Marcelo Bustamante'
+								),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'option',
+									{ value: '3' },
+									'Patricio Cuevas'
+								)
+							)
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'div',
+							{ className: 'form-group' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'label',
+								{ 'for': 'vocalSuplente' },
+								'Asignado Vocal Suplente(disponibles)'
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'select',
+								{ className: 'form-control', id: 'vocalSuplente',
+									onChange: this.handleChange, value: this.state.vocalSuplente },
+								'>',
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'option',
+									{ value: '1' },
+									'Juan Guerra'
+								),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'option',
+									{ value: '2' },
+									'Marcelo Bustamante'
+								),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'option',
+									{ value: '3' },
+									'Patricio Cuevas'
+								)
+							)
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'submit', value: 'Crear sinodal\xEDa', className: 'form-control' })
+					)
+				)
+			);
+		}
+	}]);
+
+	return CreateNewAssigment;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (CreateNewAssigment);
+
+/***/ }),
+/* 60 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -56013,11 +56254,11 @@ var SinodaliasTable = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (SinodaliasTable);
 
 /***/ }),
-/* 66 */
+/* 61 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -56055,215 +56296,10 @@ var AllTeachersListing = function (_Component) {
 /* unused harmony default export */ var _unused_webpack_default_export = (AllTeachersListing);
 
 /***/ }),
-/* 67 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 62 */
+/***/ (function(module, exports) {
 
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-var CreateNewAssigment = function (_Component) {
-	_inherits(CreateNewAssigment, _Component);
-
-	function CreateNewAssigment(props) {
-		_classCallCheck(this, CreateNewAssigment);
-
-		return _possibleConstructorReturn(this, (CreateNewAssigment.__proto__ || Object.getPrototypeOf(CreateNewAssigment)).call(this, props));
-	}
-
-	_createClass(CreateNewAssigment, [{
-		key: "render",
-		value: function render() {
-			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-				"div",
-				{ className: "card" },
-				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-					"div",
-					{ className: "card-header" },
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						"h2",
-						null,
-						"Asignaci\xF3n de nueva Sinodal\xEDa"
-					)
-				),
-				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-					"div",
-					{ className: "card-body" },
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						"form",
-						null,
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							"div",
-							{ className: "form-group" },
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"label",
-								{ "for": "residente" },
-								"Nombre del residente"
-							),
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { id: "residente", type: "text", className: "form-control", required: true })
-						),
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							"div",
-							{ className: "form-group" },
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"label",
-								{ "for": "carrera" },
-								"Carrera"
-							),
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { id: "carrera", type: "text", className: "form-control", required: true })
-						),
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							"div",
-							{ className: "form-group" },
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"label",
-								{ "for": "num_control" },
-								"Num. de Control"
-							),
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { id: "num_control", type: "number", className: "form-control", required: true })
-						),
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							"div",
-							{ className: "form-group" },
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"label",
-								{ "for": "proyecto" },
-								"Nombre del Proyecto"
-							),
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { id: "proyecto", type: "text", className: "form-control", required: true })
-						),
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							"div",
-							{ className: "form-group" },
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"label",
-								{ "for": "presidente" },
-								"Asignado Presidente(disponibles)"
-							),
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"select",
-								{ className: "form-control", id: "presidente" },
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									"option",
-									{ value: "1" },
-									"Juan Guerra"
-								),
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									"option",
-									{ value: "2" },
-									"Marcelo Bustamante"
-								),
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									"option",
-									{ value: "3" },
-									"Patricio Cuevas"
-								)
-							)
-						),
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							"div",
-							{ className: "form-group" },
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"label",
-								{ "for": "secretario" },
-								"Asignado Secretario(disponibles)"
-							),
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"select",
-								{ className: "form-control", id: "secretario" },
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									"option",
-									{ value: "1" },
-									"Juan Guerra"
-								),
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									"option",
-									{ value: "2" },
-									"Marcelo Bustamante"
-								),
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									"option",
-									{ value: "3" },
-									"Patricio Cuevas"
-								)
-							)
-						),
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							"div",
-							{ className: "form-group" },
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"label",
-								{ "for": "vocal" },
-								"Asignado Vocal(disponibles)"
-							),
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"select",
-								{ className: "form-control", id: "vocal" },
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									"option",
-									{ value: "1" },
-									"Juan Guerra"
-								),
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									"option",
-									{ value: "2" },
-									"Marcelo Bustamante"
-								),
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									"option",
-									{ value: "3" },
-									"Patricio Cuevas"
-								)
-							)
-						),
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							"div",
-							{ className: "form-group" },
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"label",
-								{ "for": "vocal-suplente" },
-								"Asignado Vocal Suplente(disponibles)"
-							),
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"select",
-								{ className: "form-control", id: "vocal-suplente" },
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									"option",
-									{ value: "1" },
-									"Juan Guerra"
-								),
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									"option",
-									{ value: "2" },
-									"Marcelo Bustamante"
-								),
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									"option",
-									{ value: "3" },
-									"Patricio Cuevas"
-								)
-							)
-						),
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "submit", value: "Creat sinodal\xEDa", className: "form-control" })
-					)
-				)
-			);
-		}
-	}]);
-
-	return CreateNewAssigment;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
-
-/* harmony default export */ __webpack_exports__["a"] = (CreateNewAssigment);
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
