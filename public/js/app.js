@@ -56258,13 +56258,36 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var SinodaliasTable = function (_Component) {
 	_inherits(SinodaliasTable, _Component);
 
-	function SinodaliasTable() {
+	function SinodaliasTable(props) {
 		_classCallCheck(this, SinodaliasTable);
 
-		return _possibleConstructorReturn(this, (SinodaliasTable.__proto__ || Object.getPrototypeOf(SinodaliasTable)).apply(this, arguments));
+		var _this = _possibleConstructorReturn(this, (SinodaliasTable.__proto__ || Object.getPrototypeOf(SinodaliasTable)).call(this, props));
+
+		_this.state = {
+			sinodalias: []
+		};
+		return _this;
 	}
 
+	// traer las sinodalias
+
+
 	_createClass(SinodaliasTable, [{
+		key: 'componentWillMount',
+		value: function componentWillMount() {
+			this.getSinodaliasData();
+		}
+	}, {
+		key: 'getSinodaliasData',
+		value: function getSinodaliasData() {
+			__WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/sinodalias').then(function (response) {
+				console.log(response);
+				// this.setState({
+				// 	sinodalias: [...response.data.sinodalias],
+				// })
+			});
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(

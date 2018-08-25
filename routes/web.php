@@ -24,4 +24,6 @@ Route::group(['middleware' => ['auth']], function() {
 	Route::post('/newsinodalia', 'SinodaliaController@create');
 
 	Route::get('/teachers', 'admintableController@teachers');
+
+	Route::get('/sinodalias', 'SinodaliaController@index');
 });

@@ -2,6 +2,28 @@ import React, { Component } from 'react'
 import axios from 'axios';
 
 class SinodaliasTable extends Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+			sinodalias: [],
+		}
+	}
+
+	// traer las sinodalias
+		componentWillMount () {
+			this.getSinodaliasData()
+		}
+
+		getSinodaliasData() {
+			axios.get('/sinodalias')
+			.then((response) => {
+				console.log(response)
+				// this.setState({
+				// 	sinodalias: [...response.data.sinodalias],
+				// })
+			})
+		}
+
 	render() {
 		return (
 				<div>

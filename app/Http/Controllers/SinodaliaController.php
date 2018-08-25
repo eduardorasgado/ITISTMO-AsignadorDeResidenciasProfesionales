@@ -8,9 +8,12 @@ use App\User;
 
 class SinodaliaController extends Controller
 {
-		public function index(Request $request Sinodalia $sinodalia)
+		public function index(Request $request, Sinodalia $sinodalia)
 		{
-			return 'hola';
+			$allSinodalias = Sinodalia::where('aprobacion', '!=', 1);
+			return response()->json([
+				'sinodalias' => $allSinodalias,
+			]);
 		}
     public function create(Request $request, Sinodalia $sinodalia)
     {
