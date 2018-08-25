@@ -14,7 +14,8 @@
                         </div>
                     @endif
 
-                    Estás en linea
+                    Este es tu dashboard, aquí puedes trabajar con todas las asignaciones,
+                    es privado y sólo tú lo puedes ver.
                 </div>
             </div>
         </div>

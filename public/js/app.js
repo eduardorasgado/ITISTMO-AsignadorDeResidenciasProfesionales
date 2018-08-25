@@ -55881,14 +55881,33 @@ var CreateNewAssigment = function (_Component) {
 					null,
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 						"div",
-						{ "class": "form-group" },
+						{ className: "form-group" },
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 							"label",
 							{ "for": "profesor" },
-							"Asignado"
+							"Asignado(disponibles)"
 						),
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("select", { className: "" })
-					)
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							"select",
+							{ className: "form-control", id: "profesor" },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"option",
+								{ value: "1" },
+								"Juan Guerra"
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"option",
+								{ value: "2" },
+								"Marcelo Bustamante"
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"option",
+								{ value: "3" },
+								"Patricio Cuevas"
+							)
+						)
+					),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", { className: "form-group" })
 				)
 			);
 		}
