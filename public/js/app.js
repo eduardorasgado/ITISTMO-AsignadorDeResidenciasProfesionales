@@ -55883,7 +55883,7 @@ var CreateNewAssigment = function (_Component) {
 			teachers: []
 			//bindings
 		};_this.handleSubmit = _this.handleSubmit.bind(_this);
-		_this.postTeachersData = _this.postTeachersData.bind(_this);
+		_this.postSinodaliaData = _this.postSinodaliaData.bind(_this);
 
 		_this.handleChangeResidente = _this.handleChangeResidente.bind(_this);
 		_this.handleChangeCarrera = _this.handleChangeCarrera.bind(_this);
@@ -55897,14 +55897,25 @@ var CreateNewAssigment = function (_Component) {
 	}
 
 	_createClass(CreateNewAssigment, [{
-		key: 'postTeachersData',
-		value: function postTeachersData() {
-			__WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/teachers');
+		key: 'postSinodaliaData',
+		value: function postSinodaliaData() {
+			__WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/newsinodalia', {
+				residente: this.state.residente,
+				carrera: this.state.carrera,
+				num_control: this.state.num_control,
+				proyecto: this.state.proyecto,
+				presidente: this.state.presidente,
+				secretario: this.state.secretario,
+				vocal: this.state.vocal,
+				vocalSuplente: this.state.vocalSuplente
+			});
 		}
 	}, {
 		key: 'handleSubmit',
 		value: function handleSubmit(event) {
 			event.preventDefault();
+			// posted to the backend
+			this.postSinodaliaData();
 			// this.seState({
 
 			// })

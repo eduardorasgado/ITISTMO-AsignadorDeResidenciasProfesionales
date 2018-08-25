@@ -17,7 +17,7 @@ class CreateNewAssigment extends Component {
 		}
 		//bindings
 		this.handleSubmit = this.handleSubmit.bind(this)
-		this.postTeachersData = this.postTeachersData.bind(this)
+		this.postSinodaliaData = this.postSinodaliaData.bind(this)
 
 		this.handleChangeResidente = this.handleChangeResidente.bind(this)
 		this.handleChangeCarrera = this.handleChangeCarrera.bind(this)
@@ -29,12 +29,23 @@ class CreateNewAssigment extends Component {
 		this.handleChangeVocalSuplente = this.handleChangeVocalSuplente.bind(this)
 	}
 
-	postTeachersData() {
-		axios.post('/teachers')
+	postSinodaliaData() {
+		axios.post('/newsinodalia', {
+			residente: this.state.residente,
+			carrera: this.state.carrera,
+			num_control: this.state.num_control,
+			proyecto: this.state.proyecto,
+			presidente: this.state.presidente,
+			secretario: this.state.secretario,
+			vocal: this.state.vocal,
+			vocalSuplente: this.state.vocalSuplente,
+		})
 	}
 
 	handleSubmit(event) {
 		event.preventDefault()
+		// posted to the backend
+		this.postSinodaliaData()
 		// this.seState({
 
 		// })
