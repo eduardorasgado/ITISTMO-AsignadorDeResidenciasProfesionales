@@ -14,10 +14,12 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    Estás en linea
                 </div>
             </div>
         </div>
     </div>
+    <!--React component-->
+    <div id="Index"></div>
 </div>
 @endsection
