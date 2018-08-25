@@ -56320,6 +56320,14 @@ var SinodaliasTable = function (_Component) {
 			return teacher;
 		}
 	}, {
+		key: 'changeAprobacion',
+		value: function changeAprobacion(sinodal_id) {
+			var changeSino = confirm("Esta seguro de aprobar esta sinodalía?");
+			if (changeSino) {
+				alert(":)");
+			}
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 			var _this4 = this;
@@ -56445,7 +56453,10 @@ var SinodaliasTable = function (_Component) {
 									null,
 									__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 										'button',
-										{ className: 'btn btn-success' },
+										{ className: 'btn btn-success',
+											onClick: function onClick() {
+												return _this4.changeAprobacion(sinodalia.id);
+											} },
 										'Aprobar'
 									)
 								)

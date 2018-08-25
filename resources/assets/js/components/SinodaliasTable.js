@@ -51,6 +51,13 @@ class SinodaliasTable extends Component {
 			return teacher
 		}
 
+		changeAprobacion(sinodal_id) {
+			let changeSino = confirm("Esta seguro de aprobar esta sinodalía?")
+			if (changeSino){
+				alert(":)")
+			}
+		}
+
 	render() {
 		return (
 				<div>
@@ -83,7 +90,8 @@ class SinodaliasTable extends Component {
 							      <td>{this.compareTeaching(sinodalia.id_secretario)}</td>
 							      <td>{this.compareTeaching(sinodalia.id_vocal)}</td>
 							      <td>{this.compareTeaching(sinodalia.id_vocal_sup)}</td>
-							      <td><button className="btn btn-success">Aprobar</button></td>
+							      <td><button className="btn btn-success" 
+							      			onClick={() => this.changeAprobacion(sinodalia.id)}>Aprobar</button></td>
 							    </tr>
 					  		)) }
 					  </tbody>
