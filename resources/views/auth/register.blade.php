@@ -5,14 +5,14 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header">{{ __('Registro') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
+                    <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Registro') }}">
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Correo Electrónico') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
@@ -40,9 +40,13 @@
                         </div>
                         <div class="form-group row">
                             <label for="cargo" class="col-md-4 col-form-label text-md-right">{{ __('Cargo') }}</label>
-
+                            <br>
                             <div class="col-md-6">
-                                <input id="cargo" type="text" class="form-control{{ $errors->has('cargo') ? ' is-invalid' : '' }}" name="cargo" value="{{ old('cargo') }}" required>
+                                 <select class="textWidth form-control {{ $errors->has('cargo') ? ' is-invalid' : '' }}" name="cargo" id="cargo" type="text" value="{{ old('cargo') }}">
+                                  <option value="boss">Asignador</option>
+                                  <option value="admon">Personal Administrativo</option>
+                                  <option value="profesor">Profesorado</option>
+                                </select>
 
                                 @if ($errors->has('cargo'))
                                     <span class="invalid-feedback" role="alert">
@@ -53,10 +57,10 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="num_control" class="col-md-4 col-form-label text-md-right">{{ __('Num de Control') }}</label>
+                            <label for="num_control" class="col-md-4 col-form-label text-md-right">{{ __('Num. de Control') }}</label>
 
                             <div class="col-md-6">
-                                <input id="num_control" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="num_control" value="{{ old('num_control') }}" required>
+                                <input id="num_control" type="number" class="form-control{{ $errors->has('num_control') ? ' is-invalid' : '' }}" name="num_control" value="{{ old('num_control') }}" required>
 
                                 @if ($errors->has('num_control'))
                                     <span class="invalid-feedback" role="alert">
@@ -67,7 +71,21 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="telefono" class="col-md-4 col-form-label text-md-right">{{ __('Num. telefónico') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="telefono" type="number" class="form-control{{ $errors->has('telefono') ? ' is-invalid' : '' }}" name="telefono" value="{{ old('telefono') }}" required>
+
+                                @if ($errors->has('telefono'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('telefono') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Contraseña') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
@@ -81,7 +99,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirmar Contraseña') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
@@ -91,7 +109,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{ __('Registrar') }}
                                 </button>
                             </div>
                         </div>
