@@ -33,20 +33,20 @@ class CreateSinodaliasTable extends Migration
                     ->on('users')
                     ->onDelete('cascade');
             // secretario
-            $table->foreign('id_secretario')
-                    ->references('id')
-                    ->on('users')
-                    ->onDelete('cascade');
-            // vocal
-            $table->foreign('id_vocal')
-                    ->references('id')
-                    ->on('users')
-                    ->onDelete('cascade');
-            // vocal suplente
-            $table->foreign('id_vocal_sup')
-                    ->references('id')
-                    ->on('users')
-                    ->onDelete('cascade');
+            // $table->foreign('id_secretario')
+            //         ->references('id')
+            //         ->on('users')
+            //         ->onDelete('cascade');
+            // // vocal
+            // $table->foreign('id_vocal')
+            //         ->references('id')
+            //         ->on('users')
+            //         ->onDelete('cascade');
+            // // vocal suplente
+            // $table->foreign('id_vocal_sup')
+            //         ->references('id')
+            //         ->on('users')
+            //         ->onDelete('cascade');
         });
     }
 
