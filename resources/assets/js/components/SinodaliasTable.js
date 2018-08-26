@@ -68,6 +68,13 @@ class SinodaliasTable extends Component {
 			}
 		}
 
+		changeNoAprobacion(sinodal_id) {
+			let changeSino = confirm("Esta seguro pasar esta sinodalía como no aprobada?")
+			if (changeSino){
+				alert(":(")
+			}
+		}
+
 	render() {
 		return (
 				<div>
@@ -86,7 +93,7 @@ class SinodaliasTable extends Component {
 					      <th scope="col">Secretario</th>
 					      <th scope="col">Vocal</th>
 					      <th scope="col">Vocal Suplente</th>
-					      <th scope="col">Aprobar</th>
+					      <th scope="col">Aprobación Final</th>
 					    </tr>
 					  </thead>
 					  <tbody>
@@ -101,7 +108,12 @@ class SinodaliasTable extends Component {
 							      <td>{this.compareTeaching(sinodalia.id_vocal)}</td>
 							      <td>{this.compareTeaching(sinodalia.id_vocal_sup)}</td>
 							      <td><button className="btn btn-success" 
-							      			onClick={() => this.changeAprobacion(sinodalia.id)}>Aprobar</button></td>
+							      			onClick={() => this.changeAprobacion(sinodalia.id)}>
+							      			Aprobar</button>
+							      		<button style={{marginTop:5}}className="btn btn-danger" 
+							      			onClick={() => this.changeAprobacion(sinodalia.id)}>
+							      			No aprobar</button>
+							      </td>
 							    </tr>
 					  		)) }
 					  </tbody>

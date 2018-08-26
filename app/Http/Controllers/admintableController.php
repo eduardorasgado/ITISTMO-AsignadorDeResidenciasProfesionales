@@ -13,7 +13,12 @@ class admintableController extends Controller
     	return view('admin');
     }
 
-    public function teachers(Request $request, User $user) {
+    public function teachers(Request $request, User $user) 
+    {
+    	// evitar acceso de maestros y secretaria
+			if (Auth::user()->cargo != 0){
+				return view('home');
+			}
     	$teachers = User::where('cargo', '!=', 1)->get();
     	return response()->json([
     		'teachers' => $teachers,

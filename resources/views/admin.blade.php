@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -20,7 +20,22 @@
             </div>
         </div>
     </div>
+    <br>
+    <div class="row">
+        <div class="col-md-7"></div>
+        <div class="col-md-1">
+            <a class="btn btn-primary" href="{{ route('nuevoPeriodo') }}">Periodos</a>
+        </div>
+        <div class="col-md-1">
+            <a class="btn btn-primary" href="">Historial</a>
+        </div>
+        <div class="col-md-1">
+            <a class="btn btn-primary" href="">Gráficas</a>
+        </div>
+    </div>
     <!--React component-->
     <div id="Index"></div>
 </div>
+
+
 @endsection

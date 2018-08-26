@@ -15,7 +15,7 @@
                     @endif
 
                     You are logged in!
-                    Tu eres {{ $cargo }}
+                    
                 </div>
             </div>
         </div>

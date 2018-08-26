@@ -12,7 +12,7 @@ class TimelineController extends Controller
 		$userCargo = Auth::user()->cargo;
 		if ($userCargo) {
 			// en caso de ser profesor o secretaria
-			return view('home')->with("cargo", $userCargo);
+			return view('home');
 		}
 		// en caso de ser administrador
 		return view('admin');

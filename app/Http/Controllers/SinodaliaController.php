@@ -6,11 +6,16 @@ use Illuminate\Http\Request;
 use App\Sinodalia;
 use App\User;
 use DB;
+use Auth;
 
 class SinodaliaController extends Controller
 {
 		public function index(Request $request, Sinodalia $sinodalia)
 		{
+			// evitar acceso de maestros y secretaria
+			if (Auth::user()->cargo != 0){
+				return view('home');
+			}
 			$allSinodalias = Sinodalia::where('aprobacion', '!=', 1)->get();
 			return response()->json([
 				'sinodalias' => $allSinodalias,
@@ -20,6 +25,10 @@ class SinodaliaController extends Controller
 
     public function create(Request $request, Sinodalia $sinodalia)
     {
+    	// evitar acceso de maestros y secretaria
+			if (Auth::user()->cargo != 0){
+				return view('home');
+			}
     	/*
 			DB::updated in
 			https://www.tutorialspoint.com/laravel/update_records.htm
@@ -69,4 +78,5 @@ class SinodaliaController extends Controller
     	// regresar una respuesta
     	return response()->json($sinodalia->with('user')->find($createdSinodalia));
     }
+
 }

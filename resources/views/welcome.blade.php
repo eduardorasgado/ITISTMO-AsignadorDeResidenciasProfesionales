@@ -66,6 +66,17 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            .footty {
+                width: 50vw;
+                margin: auto;
+            }
+
+            @media (max-width: 700px){
+                .portada {
+                    display: none;
+                }
+            }
         </style>
     </head>
     <body>
@@ -83,14 +94,17 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Departamento de Eléctrica
+                    Academia de Eléctrica del Instituto Tecnológico De Istmo
                 </div>
                 <div class="subtitle">
                     Asignador de Sinodalías de Residencias Profesionales
                 </div>
                 <br>
-                 <img src="{{asset('images/portada.png')}}" alt="Portada" height="100">
+                 <img class="portada" src="{{asset('images/portada.png')}}" alt="Portada" height="100">
             </div>
         </div>
+        <footer class="footty">
+                <p>Desarrollado por: <a href="https://lalodigitaliza.me">Eduardo Rasgado</a></p>
+        </footer>
     </body>
 </html>

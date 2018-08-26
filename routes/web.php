@@ -26,4 +26,6 @@ Route::group(['middleware' => ['auth']], function() {
 	Route::get('/teachers', 'admintableController@teachers');
 
 	Route::get('/sinodalias', 'SinodaliaController@index');
+
+	Route::get('/periodo', 'periodoController@index')->name('nuevoPeriodo');
 });
