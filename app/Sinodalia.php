@@ -21,4 +21,9 @@ class Sinodalia extends Model
     {
     	return $this->belongsTo(User::class);
     }
+
+    public function periodo()
+    {
+    	return $this->belongsTo(Periodo::class);
+    }
 }
