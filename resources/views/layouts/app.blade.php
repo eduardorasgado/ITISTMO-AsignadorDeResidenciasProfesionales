@@ -29,6 +29,8 @@
 
         .logo {
                 height: 50px;
+                margin-right: 10px;
+                border-radius: 5px;
             }
 
             .nameApp2 {
