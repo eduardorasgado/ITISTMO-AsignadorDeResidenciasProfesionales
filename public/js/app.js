@@ -55803,7 +55803,8 @@ var Index = function (_Component) {
 		var _this = _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this, props));
 
 		_this.state = {
-			teachers: []
+			teachers: [],
+			period: false
 			// bindings
 		};_this.totalTeachers = _this.totalTeachers.bind(_this);
 		return _this;
@@ -55822,9 +55823,17 @@ var Index = function (_Component) {
 			});
 		}
 	}, {
+		key: 'getPeriodAccess',
+		value: function getPeriodAccess() {
+			this.setState({
+				period: false
+			});
+		}
+	}, {
 		key: 'componentWillMount',
 		value: function componentWillMount() {
 			// loading teachers lists
+			this.getPeriodAccess();
 			this.getTeachersData();
 		}
 	}, {
@@ -55847,28 +55856,56 @@ var Index = function (_Component) {
 					'Total de integrantes de la academia: ',
 					this.totalTeachers()
 				),
-				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+				this.state.period ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
-					{ className: 'row' },
+					null,
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 						'div',
-						{ className: 'col-md-6' },
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__CreateNewAssignment__["a" /* default */], null)
+						{ className: 'row' },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'div',
+							{ className: 'col-md-6' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__CreateNewAssignment__["a" /* default */], null)
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'div',
+							{ className: 'col-md-6' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__AllTeachersListing__["a" /* default */], null)
+						)
+					),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'div',
+						{ className: 'row' },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'div',
+							{ className: 'col-md-12' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__SinodaliasTable__["a" /* default */], null)
+						)
+					)
+				) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'div',
+					null,
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'div',
+						null,
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'div',
+							{ style: { width: 800, fontSize: 40, marginLeft: 300 }, className: 'alert alert-success', role: 'alert' },
+							'A\xFAn no has agregado ning\xFAn periodo'
+						)
 					),
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'div',
-						{ className: 'col-md-6' },
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__AllTeachersListing__["a" /* default */], null)
-					)
-				),
-				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
-				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-					'div',
-					{ className: 'row' },
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'div',
-						{ className: 'col-md-12' },
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__SinodaliasTable__["a" /* default */], null)
+						'p',
+						{ className: 'text-center' },
+						'Agregar un nuevo periodo en el bot\xF3n',
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'span',
+							{ style: { color: 'blue' } },
+							' Periodos'
+						)
 					)
 				)
 			);

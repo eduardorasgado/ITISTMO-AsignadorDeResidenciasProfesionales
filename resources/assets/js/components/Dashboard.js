@@ -10,6 +10,7 @@ class Index extends Component {
 			super(props)
 			this.state = {
 				teachers: [],
+				period: false,
 			}
 			// bindings
 			this.totalTeachers = this.totalTeachers.bind(this)
@@ -25,8 +26,15 @@ class Index extends Component {
 				}
 			)
 		}
+
+		getPeriodAccess() {
+			this.setState({
+				period: false,
+			})
+		}
 		componentWillMount () {
 			// loading teachers lists
+			this.getPeriodAccess()
 			this.getTeachersData()
 		}
 		totalTeachers() {
@@ -39,20 +47,38 @@ class Index extends Component {
             <br/>
             <hr/>
             	<p>Total de integrantes de la academia: { this.totalTeachers() }</p>
-         			<div className="row">
-         				<div className="col-md-6">
-         						<CreateNewAssignment />
+         			{ this.state.period ? 
+         				<div>
+         						<div className="row">
+	         				<div className="col-md-6">
+	         						<CreateNewAssignment />
+	         				</div>
+	         				<div className="col-md-6">
+	         					<AllTeachersListing />
+	         				</div>
+	         			</div>
+	         			<br/>
+	         			<div className="row">
+	         				<div className="col-md-12">
+	         					<SinodaliasTable />
+	         				</div>
+	         			</div>
          				</div>
-         				<div className="col-md-6">
-         					<AllTeachersListing />
-         				</div>
-         			</div>
-         			<br/>
-         			<div className="row">
-         				<div className="col-md-12">
-         					<SinodaliasTable />
-         				</div>
-         			</div>
+	         			:
+	         			<div>
+					        <br/><br/>
+					        <div>
+					        <div style={{width:800, fontSize:40, marginLeft:300}} className="alert alert-success" role="alert">
+					            Aún no has agregado ningún periodo
+					            </div>
+					        </div>
+					        <p className="text-center">
+					        Agregar un nuevo periodo en el botón 
+					        <span style={{color:'blue'}}> Periodos</span></p>
+								</div>
+
+         			}
+
             </div>
         );
     }

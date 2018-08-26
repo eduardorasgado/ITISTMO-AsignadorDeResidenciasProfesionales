@@ -28,4 +28,5 @@ Route::group(['middleware' => ['auth']], function() {
 	Route::get('/sinodalias', 'SinodaliaController@index');
 
 	Route::get('/periodo', 'periodoController@index')->name('nuevoPeriodo');
+	Route::get('/periodoConfirm', 'periodoController@confirm');
 });

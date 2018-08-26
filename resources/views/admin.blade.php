@@ -37,22 +37,6 @@
         </div>
     </div>
     <!--React component-->
-    <div style="display: none" id="Index"></div>
-    <div id="noPeriod">
-        <br><br>
-        <div style="width:800px; font-size:40px; margin-left:300px">
-        <div class="alert alert-success" role="alert">
-            Aún no has agregado ningún periodo
-            </div>
-    </div>
-</div>
-
-<script type="text/javascript">
-    let dash = document.getElementById("Index")
-    // axios.get('/perio')
-    let correct = 0
-    if (correct > 0) {
-        dash.style.display = 'inline'
-    }
-</script>
+    <div id="Index"></div>
+  
 @endsection
