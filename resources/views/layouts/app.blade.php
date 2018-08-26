@@ -26,15 +26,37 @@
         .navbar-light {
             background: orange;
         }
+
+        .logo {
+                height: 50px;
+            }
+
+            .nameApp2 {
+                display: none;
+            }
+
+        @media (max-width: 700px){
+            .logo {
+                display: none;
+            }
+            .nameApp {
+                display: none; 
+            }
+            .nameApp2 {
+                display: inline;
+                font-size: 2em;
+            }
+        }
     </style>
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <img class="logo" src="{{asset('images/portada.png')}}" alt="Portada" height="100">
+                <img class="logo" src="{{asset('images/logo.png')}}" alt="Portada">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    <span class="nameApp">{{ config('app.name', 'Laravel') }}</span>
+                    <span class="nameApp2">Sinodalías Eléctrica ITI</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
