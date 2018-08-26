@@ -16,6 +16,7 @@ class CreateSinodaliasTable extends Migration
         Schema::create('sinodalias', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
+            $table->integer('periodo_id')->unsigned();
             $table->string('residente');
             $table->string('carrera');
             $table->double('num_control');
@@ -33,22 +34,14 @@ class CreateSinodaliasTable extends Migration
                     ->references('id')
                     ->on('users')
                     ->onDelete('cascade');
-            // secretario
-            // $table->foreign('id_secretario')
-            //         ->references('id')
-            //         ->on('users')
-            //         ->onDelete('cascade');
-            // // vocal
-            // $table->foreign('id_vocal')
-            //         ->references('id')
-            //         ->on('users')
-            //         ->onDelete('cascade');
-            // // vocal suplente
-            // $table->foreign('id_vocal_sup')
-            //         ->references('id')
-            //         ->on('users')
-            //         ->onDelete('cascade');
+
+            $table->foreign('periodo_id')
+                    ->references('id')
+                    ->on('periodos')
+                    ->onDelete('cascade');
+
         });
+    
     }
 
     /**

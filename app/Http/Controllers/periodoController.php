@@ -16,3 +16,4 @@ class periodoController extends Controller
 			return view('periodo');
 		}
 }
+
