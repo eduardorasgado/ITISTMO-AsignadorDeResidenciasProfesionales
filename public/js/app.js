@@ -55834,12 +55834,12 @@ var Index = function (_Component) {
 			this.setState({
 				periodLoaded: false
 			});
-			__WEBPACK_IMPORTED_MODULE_4_axios___default.a.get('/periodoConfirm').then(function (response) {
-				console.log("la respuesta de periodos", response.data.periodos);
-				if (response.data.periodos.length > 0) {
+			__WEBPACK_IMPORTED_MODULE_4_axios___default.a.get('/periodosDisponibles').then(function (response) {
+				console.log("la respuesta de periodos", response.data.periodosActivos);
+				if (response.data.periodosActivos.length > 0) {
 					_this3.setState({
 						periodAvailable: true,
-						periodsList: [].concat(_toConsumableArray(response.data.periodos)),
+						periodsList: [].concat(_toConsumableArray(response.data.periodosActivos)),
 						periodLoaded: true
 					});
 				}
@@ -55864,12 +55864,12 @@ var Index = function (_Component) {
 	}, {
 		key: 'lastPeriod',
 		value: function lastPeriod() {
-			if (this.state.periodLoaded) {
+			if (this.state.periodLoaded && this.state.periodsList > 0) {
 				var name = this.state.periodsList[0].name;
 				console.log("ultimo periodo", name);
 				return name;
 			}
-			return 'Cargando...';
+			return 'Cargando o no hay periodos Abiertos';
 		}
 	}, {
 		key: 'render',
@@ -56079,7 +56079,7 @@ var CreateNewAssigment = function (_Component) {
 		key: 'getPeriodosAbiertos',
 		value: function getPeriodosAbiertos() {
 			__WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/periodosDisponibles').then(function (response) {
-				console.log(response.data);
+				console.log(response.data.periodosActivos);
 			});
 		}
 	}, {

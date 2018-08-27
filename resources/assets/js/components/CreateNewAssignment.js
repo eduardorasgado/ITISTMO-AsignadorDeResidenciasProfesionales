@@ -87,7 +87,7 @@ class CreateNewAssigment extends Component {
 	getPeriodosAbiertos() {
 		axios.get('/periodosDisponibles')
 		.then((response) => {
-			console.log(response.data)
+			console.log(response.data.periodosActivos)
 		})
 	}
 

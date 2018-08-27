@@ -54,6 +54,11 @@ class periodoController extends Controller
 			if (Auth::user()->cargo != 0){
 				return view('home');
 			}
+			$periodos = Periodo::where('estado','=',1)->get();
+
+			return response()->json([
+				'periodosActivos' => $periodos,
+			]);
 			return 'hola';
 		}
 }

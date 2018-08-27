@@ -34,13 +34,13 @@ class Index extends Component {
 			this.setState({
 				periodLoaded: false,
 			})
-			axios.get('/periodoConfirm')
+			axios.get('/periodosDisponibles')
 			.then((response) => {
-				console.log("la respuesta de periodos", response.data.periodos)
-				if(response.data.periodos.length > 0){
+				console.log("la respuesta de periodos", response.data.periodosActivos)
+				if(response.data.periodosActivos.length > 0){
 					this.setState({
 						periodAvailable: true,
-						periodsList: [...response.data.periodos],
+						periodsList: [...response.data.periodosActivos],
 						periodLoaded: true,
 					})
 				}
@@ -61,12 +61,12 @@ class Index extends Component {
 		}
 
 		lastPeriod() {
-			if (this.state.periodLoaded) {
+			if (this.state.periodLoaded && this.state.periodsList > 0) {
 				let name = this.state.periodsList[0].name
 				console.log("ultimo periodo", name)
 				return name
 			}
-			return 'Cargando...'
+			return 'Cargando o no hay periodos Abiertos'
 		}
     render() {
         return (
