@@ -22,9 +22,9 @@ class SinodaliaController extends Controller
     public function create(Request $request, Sinodalia $sinodalia, Periodo $periodo)
     {
         // evitar acceso de maestros y secretaria
-            if (Auth::user()->cargo != 0){
-                return view('home');
-            }
+        if (Auth::user()->cargo != 0){
+            return view('home');
+        }
         /*
             DB::updated in
             https://www.tutorialspoint.com/laravel/update_records.htm
@@ -77,6 +77,11 @@ class SinodaliaController extends Controller
 
     public function showSinodal(Request $request, Sinodalia $sinodalia)
     {
+        // evitar acceso de maestros y secretaria
+        if (Auth::user()->cargo != 0){
+            return view('home');
+        }
+        
         $mySinodalia = Sinodalia::find($request->id);
         return view('sinodal', compact('mySinodalia'));
         
