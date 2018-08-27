@@ -18,6 +18,10 @@
                     </div>
                 </form>
             </div>
+            <div class="col-md-6">
+                hola
+                <div id="PeriodosIndex"></div>
+            </div>
         </div>
     </div>
 @endsection

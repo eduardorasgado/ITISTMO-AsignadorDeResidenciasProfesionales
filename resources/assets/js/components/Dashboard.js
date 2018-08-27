@@ -10,7 +10,8 @@ class Index extends Component {
 			super(props)
 			this.state = {
 				teachers: [],
-				period: false,
+				periodos: [],
+				periodAvailable: false,
 			}
 			// bindings
 			this.totalTeachers = this.totalTeachers.bind(this)
@@ -28,9 +29,20 @@ class Index extends Component {
 		}
 
 		getPeriodAccess() {
-			this.setState({
-				period: false,
+			axios.get('/periodoConfirm')
+			.then((response) => {
+				console.log(response.data)
+				if(response.data.periodos.length >0){
+					this.setState({
+						periodAvailable: true,
+						periodos: [...response.data.periodos]
+					})
+				}
+				this.setState({
+					periodAvailable: false,
+				})
 			})
+			
 		}
 		componentWillMount () {
 			// loading teachers lists
