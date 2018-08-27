@@ -50,6 +50,7 @@ class PeriodosDashboard extends Component {
 	}
 
 	closePeriod(id) {
+		console.log(id)
 		var closeConfirm = confirm("Estás a punto de cerrar un periodo, estás seguro/a?")
 		if (closeConfirm) {
 			// return alert("CERRADO")
@@ -57,13 +58,16 @@ class PeriodosDashboard extends Component {
 				id: id,
 			})
 			.then((response) => {
-				console.log(response.data)
+				if (response.data == "OK") {
+					alert("Has cerrado un periodo")
+				}
+				console.log("RESPONSE TO CLOSE", response.data)
 			})
 		}
 	}
 
-	actuallity(periodID) {
-		if (this.state.periods[0].id == periodID) {
+	actuallity(periodState) {
+		if (periodState) {
 			return '(Actual)'
 		}
 		return
@@ -84,7 +88,7 @@ class PeriodosDashboard extends Component {
 					  <tbody>
 					  	{ this.state.periods.map(period => (
 					  			<tr key={period.id}>
-							      <th scope="row">{period.name}{this.actuallity(period.id)}</th>
+							      <th scope="row">{period.name}{this.actuallity(period.estado)}</th>
 							      <td>{this.getPeriodState(period.estado)}</td>
 							      <td><button className="btn btn-danger" 
 							      			onClick={() => this.closePeriod(period.id)}>

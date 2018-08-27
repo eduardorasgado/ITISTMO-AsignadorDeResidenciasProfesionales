@@ -56850,20 +56850,24 @@ var PeriodosDashboard = function (_Component) {
 	}, {
 		key: 'closePeriod',
 		value: function closePeriod(id) {
+			console.log(id);
 			var closeConfirm = confirm("Estás a punto de cerrar un periodo, estás seguro/a?");
 			if (closeConfirm) {
 				// return alert("CERRADO")
 				__WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/closePeriodo', {
 					id: id
 				}).then(function (response) {
-					console.log(response.data);
+					if (response.data == "OK") {
+						alert("Has cerrado un periodo");
+					}
+					console.log("RESPONSE TO CLOSE", response.data);
 				});
 			}
 		}
 	}, {
 		key: 'actuallity',
-		value: function actuallity(periodID) {
-			if (this.state.periods[0].id == periodID) {
+		value: function actuallity(periodState) {
+			if (periodState) {
 				return '(Actual)';
 			}
 			return;
@@ -56913,7 +56917,7 @@ var PeriodosDashboard = function (_Component) {
 									'th',
 									{ scope: 'row' },
 									period.name,
-									_this4.actuallity(period.id)
+									_this4.actuallity(period.estado)
 								),
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'td',

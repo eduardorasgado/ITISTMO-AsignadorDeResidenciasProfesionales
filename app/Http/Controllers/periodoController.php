@@ -64,14 +64,14 @@ class periodoController extends Controller
 			]);
 		}
 
-		public function close(Request $request, Periodo $periodo)
+		public function close(Request $request)
 		{
 			// evitar acceso de maestros y secretaria
 			if (Auth::user()->cargo != 0){
 				return view('home');
 			}
 			//cerciorarse de que existe
-			$periodoToClose = $periodo->where('id','=',$request->id)->get();
+			$periodoToClose = Periodo::find($request->id);
 			if (!isset($periodoToClose)) {
 				return false;
 			}
@@ -80,7 +80,7 @@ class periodoController extends Controller
 			// ]);
 			DB::update('update periodos set estado = ? where id = ?',[0, $periodoToClose->id]);
 
-			return response(true);
+			return "OK";
 		}
 }
 
