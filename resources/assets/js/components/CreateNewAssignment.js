@@ -83,6 +83,12 @@ class CreateNewAssigment extends Component {
 		axios.get('/teachers')
 		.then((response) => {
 					let availableTeachers = response.data.teachers
+					/* 
+
+					logica para el FILTRO INTELIGENTE
+								AQUI
+
+					*/ 
 					console.log("done")
 					// para que no sea 0 el id en stados
 					this.setState({

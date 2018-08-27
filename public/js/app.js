@@ -56080,6 +56080,10 @@ var CreateNewAssigment = function (_Component) {
 
 			__WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/teachers').then(function (response) {
 				var availableTeachers = response.data.teachers;
+				/* 
+    	logica para el FILTRO INTELIGENTE
+    			AQUI
+    	*/
 				console.log("done");
 				// para que no sea 0 el id en stados
 				_this2.setState({
