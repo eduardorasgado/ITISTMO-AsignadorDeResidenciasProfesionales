@@ -13,7 +13,7 @@ class AllTeachersListing extends Component {
 	}
 	componentDidMount() {
 		// actualizar cada 10 segundos
-			this.interval = setInterval(() => this.getTeachersData(), 10000)
+		this.interval = setInterval(() => this.getTeachersData(), 10000)
 	}
 
 	componentWillUnmount() {

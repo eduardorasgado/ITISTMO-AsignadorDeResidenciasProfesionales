@@ -90,9 +90,15 @@ class PeriodosDashboard extends Component {
 					  			<tr key={period.id}>
 							      <th scope="row">{period.name}{this.actuallity(period.estado)}</th>
 							      <td>{this.getPeriodState(period.estado)}</td>
-							      <td><button className="btn btn-danger" 
+							      <td>
+							      	{
+							      		period.estado ? 
+							      			<button className="btn btn-danger" 
 							      			onClick={() => this.closePeriod(period.id)}>
 							      			Terminar</button>
+							      		:
+							      			<p>No disponible</p>
+							      	}
 							      </td>
 							    </tr>
 					  		)) 

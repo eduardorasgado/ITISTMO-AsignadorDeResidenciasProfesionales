@@ -34,6 +34,11 @@ class CreateSinodaliasTable extends Migration
                     ->references('id')
                     ->on('users')
                     ->onDelete('cascade');
+            // para asignar periodo
+            $table->foreign('periodo_id')
+                    ->references('id')
+                    ->on('periodos')
+                    ->onDelete('cascade');
 
         });
     

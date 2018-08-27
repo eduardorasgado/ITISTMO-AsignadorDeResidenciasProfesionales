@@ -11,6 +11,7 @@ class SinodaliasTable extends Component {
 
 		// bindings
 		this.compareTeaching = this.compareTeaching.bind(this)
+		this.getSinodaliasData = this.getSinodaliasData.bind(this)
 	}
 
 	// traer las sinodalias
@@ -36,6 +37,9 @@ class SinodaliasTable extends Component {
 				this.setState({
 					sinodalias: [...response.data.sinodalias],
 				})
+			})
+			.catch(error => {
+  			console.log(error.message);
 			})
 		}
 
