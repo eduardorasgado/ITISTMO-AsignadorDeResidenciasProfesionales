@@ -11,9 +11,12 @@ class Index extends Component {
 			this.state = {
 				teachers: [],
 				periodAvailable: false,
+				periodsList: [],
+				periodLoad: false, 
 			}
 			// bindings
 			this.totalTeachers = this.totalTeachers.bind(this)
+			this.lastPeriod = this.lastPeriod.bind(this)
 		}
 
 		getTeachersData() {
@@ -28,17 +31,19 @@ class Index extends Component {
 		}
 
 		getPeriodAccess() {
+			this.setState({
+				periodLoad: false,
+			})
 			axios.get('/periodoConfirm')
 			.then((response) => {
-				console.log(response.data)
-				if(response.data.periodos > 0){
+				console.log("la respuesta de periodos", response.data.periodos)
+				if(response.data.periodos.length > 0){
 					this.setState({
 						periodAvailable: true,
+						periodsList: [...response.data.periodos],
+						periodLoad: true,
 					})
 				}
-				this.setState({
-					periodAvailable: false,
-				})
 			})
 			
 		}
@@ -48,16 +53,41 @@ class Index extends Component {
 			this.getTeachersData()
 		}
 		totalTeachers() {
-			let total = this.state.teachers.length
-			return total
+			if (this.state.teachers.length > 0) {
+				let total = this.state.teachers.length
+				return total
+			}
+			return 'No disponible'
+		}
+
+		lastPeriod() {
+			if (this.state.periodLoad) {
+				let name = this.state.periodsList[0].name
+				console.log("ultimo periodo", name)
+				return name
+			}
+			return 'Cargando...'
 		}
     render() {
         return (
             <div className="container-fluid">
             <br/>
             <hr/>
-            	<p>Total de integrantes de la academia: { this.totalTeachers() }</p>
-         			{ this.state.period ? 
+            	<div className="jumbotron" style={{ padding:10, backgroundColor:'#F1F8FF' }}>
+            		<div>
+            			<p className="font-weight-bold">
+	            			Total de integrantes de la academia: { this.totalTeachers() }
+	            		</p>
+	            	</div>
+	            	<div>
+	            		<p className="font-weight-bold">
+	            			Periodo Actual: {this.lastPeriod()}
+	            		</p>
+	            	</div>
+            	</div>
+            	
+
+         			{ this.state.periodAvailable ? 
          				<div>
          						<div className="row">
 	         				<div className="col-md-6">

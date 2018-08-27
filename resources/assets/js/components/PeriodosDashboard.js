@@ -8,9 +8,6 @@ class PeriodosDashboard extends Component {
 		}
 	}
 
-	componentWillMount() {
-
-	}
 	render(){
 		return(
 				<div>

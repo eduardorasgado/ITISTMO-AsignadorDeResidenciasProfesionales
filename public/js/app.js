@@ -55805,9 +55805,12 @@ var Index = function (_Component) {
 
 		_this.state = {
 			teachers: [],
-			periodAvailable: false
+			periodAvailable: false,
+			periodsList: [],
+			periodLoad: false
 			// bindings
 		};_this.totalTeachers = _this.totalTeachers.bind(_this);
+		_this.lastPeriod = _this.lastPeriod.bind(_this);
 		return _this;
 	}
 
@@ -55828,16 +55831,18 @@ var Index = function (_Component) {
 		value: function getPeriodAccess() {
 			var _this3 = this;
 
+			this.setState({
+				periodLoad: false
+			});
 			__WEBPACK_IMPORTED_MODULE_4_axios___default.a.get('/periodoConfirm').then(function (response) {
-				console.log(response.data);
-				if (response.data.periodos > 0) {
+				console.log("la respuesta de periodos", response.data.periodos);
+				if (response.data.periodos.length > 0) {
 					_this3.setState({
-						periodAvailable: true
+						periodAvailable: true,
+						periodsList: [].concat(_toConsumableArray(response.data.periodos)),
+						periodLoad: true
 					});
 				}
-				_this3.setState({
-					periodAvailable: false
-				});
 			});
 		}
 	}, {
@@ -55850,8 +55855,21 @@ var Index = function (_Component) {
 	}, {
 		key: 'totalTeachers',
 		value: function totalTeachers() {
-			var total = this.state.teachers.length;
-			return total;
+			if (this.state.teachers.length > 0) {
+				var total = this.state.teachers.length;
+				return total;
+			}
+			return 'No disponible';
+		}
+	}, {
+		key: 'lastPeriod',
+		value: function lastPeriod() {
+			if (this.state.periodLoad) {
+				var name = this.state.periodsList[0].name;
+				console.log("ultimo periodo", name);
+				return name;
+			}
+			return 'Cargando...';
 		}
 	}, {
 		key: 'render',
@@ -55862,12 +55880,30 @@ var Index = function (_Component) {
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null),
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-					'p',
-					null,
-					'Total de integrantes de la academia: ',
-					this.totalTeachers()
+					'div',
+					{ className: 'jumbotron', style: { padding: 10, backgroundColor: '#F1F8FF' } },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'div',
+						null,
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'p',
+							{ className: 'font-weight-bold' },
+							'Total de integrantes de la academia: ',
+							this.totalTeachers()
+						)
+					),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'div',
+						null,
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'p',
+							{ className: 'font-weight-bold' },
+							'Periodo Actual: ',
+							this.lastPeriod()
+						)
+					)
 				),
-				this.state.period ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+				this.state.periodAvailable ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
 					null,
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -56744,9 +56780,6 @@ var PeriodosDashboard = function (_Component) {
 	}
 
 	_createClass(PeriodosDashboard, [{
-		key: "componentWillMount",
-		value: function componentWillMount() {}
-	}, {
 		key: "render",
 		value: function render() {
 			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
