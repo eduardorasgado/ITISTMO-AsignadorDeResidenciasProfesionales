@@ -199,7 +199,7 @@ class CreateNewAssigment extends Component {
 									)) }
 							</select>
 						</div>
-						<input type="submit" value="Crear sinodalía" className="form-control" />
+						<input type="submit" value="Crear sinodalía" className="btn btn-success form-control" />
 					</form>
 					</div>
 				</div>
