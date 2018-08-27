@@ -27,6 +27,13 @@
                             </div>
                         
                         @endif
+                        @if($errors->has('name'))
+                            {{-- NOs dará todos los errores relacionados al message --}}
+                            @foreach($errors->get('name') as $error)
+                              <!-- invalid-feedback tambien es de bootstrap-->
+                              <div class="alert alert-warning">{{ $error }}</div>
+                            @endforeach
+                        @endif
                     </div>
                     
                 </form>

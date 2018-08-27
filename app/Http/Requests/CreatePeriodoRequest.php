@@ -13,6 +13,8 @@ class CreatePeriodoRequest extends FormRequest
      */
     public function authorize()
     {
+        //Dejar pasar todas las peticiones
+        //sin un filtro antes, por ahora
         return true;
     }
 
@@ -24,7 +26,16 @@ class CreatePeriodoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => ['required', 'min:5','max:120']
+        ];
+    }
+
+        public function messages(){
+        return [
+            //aqui estan los mensajes customizables
+            'name.required' => "Por favor intenta con un nombre de más de 5 caracteres",
+            'name.max' => 'El nombre del periodo es muy largo',
+            'name.min' => 'El nombre del periodo es muy corto.'
         ];
     }
 }
