@@ -62,9 +62,13 @@ class Index extends Component {
 
 		lastPeriod() {
 			if (this.state.periodLoaded && this.state.periodsList.length > 0) {
-				let name = this.state.periodsList[0].name
-				console.log("ultimo periodo", name)
-				return name
+				let names = []
+				this.state.periodsList.map((period) => {
+					names.push(period.name)
+				})
+				names = names.join(', ')
+				console.log("ultimos periodos", names)
+				return names
 			}
 			return 'Cargando o no hay periodos Abiertos'
 		}
@@ -81,7 +85,7 @@ class Index extends Component {
 	            	</div>
 	            	<div>
 	            		<p className="font-weight-bold">
-	            			Periodo Actual: {this.lastPeriod()}
+	            			Periodo(s) Actual(es): {this.lastPeriod()}
 	            		</p>
 	            	</div>
             	</div>

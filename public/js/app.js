@@ -55865,9 +55865,13 @@ var Index = function (_Component) {
 		key: 'lastPeriod',
 		value: function lastPeriod() {
 			if (this.state.periodLoaded && this.state.periodsList.length > 0) {
-				var name = this.state.periodsList[0].name;
-				console.log("ultimo periodo", name);
-				return name;
+				var names = [];
+				this.state.periodsList.map(function (period) {
+					names.push(period.name);
+				});
+				names = names.join(', ');
+				console.log("ultimos periodos", names);
+				return names;
 			}
 			return 'Cargando o no hay periodos Abiertos';
 		}
@@ -55898,7 +55902,7 @@ var Index = function (_Component) {
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 							'p',
 							{ className: 'font-weight-bold' },
-							'Periodo Actual: ',
+							'Periodo(s) Actual(es): ',
 							this.lastPeriod()
 						)
 					)
