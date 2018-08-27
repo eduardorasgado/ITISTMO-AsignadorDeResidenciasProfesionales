@@ -18,6 +18,7 @@ class periodoController extends Controller
 			return view('periodo');
 		}
 
+		// confirmar existencia de periodos
 		public function confirm()
 		{
 			// evitar acceso de maestros y secretaria
@@ -29,6 +30,14 @@ class periodoController extends Controller
 			return response()->json([
 				'periodos' => $numPeriodos,
 			]);
+		}
+
+		// crear un nuevo periodo
+		public function create(Request $request) {
+			if ($request->cargo != 0) {
+				return view('home');
+			}
+			return redirect('/periodo')->withSuccess("El periodo se ha creado con éxito");
 		}
 }
 
