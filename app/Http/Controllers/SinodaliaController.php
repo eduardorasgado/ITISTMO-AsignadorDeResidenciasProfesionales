@@ -74,4 +74,9 @@ class SinodaliaController extends Controller
         // regresar una respuesta
         return response()->json($sinodalia->with('user')->find($createdSinodalia));
     }
+
+    public function showSinodal(Sinodalia $sinodalia)
+    {
+        return view('sinodal', compact('sinodalia'));
+    }
 }

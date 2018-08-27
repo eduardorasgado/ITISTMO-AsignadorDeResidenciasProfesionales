@@ -12,6 +12,7 @@ class SinodaliasTable extends Component {
 		// bindings
 		this.compareTeaching = this.compareTeaching.bind(this)
 		this.getSinodaliasData = this.getSinodaliasData.bind(this)
+		this.linked = this.linked.bind(this)
 	}
 
 	// traer las sinodalias
@@ -65,18 +66,8 @@ class SinodaliasTable extends Component {
 			return teacher
 		}
 
-		changeAprobacion(sinodal_id) {
-			let changeSino = confirm("Esta seguro de aprobar esta sinodalía?")
-			if (changeSino){
-				alert(":)")
-			}
-		}
-
-		changeNoAprobacion(sinodal_id) {
-			let changeSino = confirm("Esta seguro pasar esta sinodalía como no aprobada?")
-			if (changeSino){
-				alert(":(")
-			}
+		linked(id){
+			return '/sinodalias/'+id
 		}
 
 	render() {
@@ -111,12 +102,8 @@ class SinodaliasTable extends Component {
 							      <td>{this.compareTeaching(sinodalia.id_secretario)}</td>
 							      <td>{this.compareTeaching(sinodalia.id_vocal)}</td>
 							      <td>{this.compareTeaching(sinodalia.id_vocal_sup)}</td>
-							      <td><button className="btn btn-success" 
-							      			onClick={() => this.changeAprobacion(sinodalia.id)}>
-							      			Aprobar</button>
-							      		<button style={{marginTop:5}}className="btn btn-danger" 
-							      			onClick={() => this.changeAprobacion(sinodalia.id)}>
-							      			No aprobar</button>
+							      <td><a href={this.linked(sinodalia.id)} className="btn btn-success">
+							      			Editar</a>
 							      </td>
 							    </tr>
 					  		)) 

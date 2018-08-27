@@ -56415,6 +56415,7 @@ var SinodaliasTable = function (_Component) {
 			// bindings
 		};_this.compareTeaching = _this.compareTeaching.bind(_this);
 		_this.getSinodaliasData = _this.getSinodaliasData.bind(_this);
+		_this.linked = _this.linked.bind(_this);
 		return _this;
 	}
 
@@ -56482,20 +56483,9 @@ var SinodaliasTable = function (_Component) {
 			return teacher;
 		}
 	}, {
-		key: 'changeAprobacion',
-		value: function changeAprobacion(sinodal_id) {
-			var changeSino = confirm("Esta seguro de aprobar esta sinodalía?");
-			if (changeSino) {
-				alert(":)");
-			}
-		}
-	}, {
-		key: 'changeNoAprobacion',
-		value: function changeNoAprobacion(sinodal_id) {
-			var changeSino = confirm("Esta seguro pasar esta sinodalía como no aprobada?");
-			if (changeSino) {
-				alert(":(");
-			}
+		key: 'linked',
+		value: function linked(id) {
+			return '/sinodalias/' + id;
 		}
 	}, {
 		key: 'render',
@@ -56622,20 +56612,9 @@ var SinodaliasTable = function (_Component) {
 									'td',
 									null,
 									__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-										'button',
-										{ className: 'btn btn-success',
-											onClick: function onClick() {
-												return _this5.changeAprobacion(sinodalia.id);
-											} },
-										'Aprobar'
-									),
-									__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-										'button',
-										{ style: { marginTop: 5 }, className: 'btn btn-danger',
-											onClick: function onClick() {
-												return _this5.changeAprobacion(sinodalia.id);
-											} },
-										'No aprobar'
+										'a',
+										{ href: _this5.linked(sinodalia.id), className: 'btn btn-success' },
+										'Editar'
 									)
 								)
 							);

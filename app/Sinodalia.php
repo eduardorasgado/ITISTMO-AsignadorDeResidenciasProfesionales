@@ -28,4 +28,9 @@ class Sinodalia extends Model
     {
     	return $this->belongsTo('App\Periodo', 'id', 'periodo_id');
     }
+
+    public function getRouteKeyName()
+    {
+    	return 'id';
+    }
 }
