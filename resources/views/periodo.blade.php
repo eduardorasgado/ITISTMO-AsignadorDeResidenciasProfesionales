@@ -7,10 +7,10 @@
         <br>
         <h2 class="text-center">Periodos de Residencias Profesionales</h2>
         <hr>
-        <h3>Agregar un nuevo Periodo</h3>
         <br>
         <div class="row">
             <div class="col-md-6">
+                <h3>Agregar un nuevo Periodo</h3>
                 <form>
                     <div class="form-group">
                         <label for="name">Nombre del nuevo Periodo</label>
@@ -19,7 +19,7 @@
                 </form>
             </div>
             <div class="col-md-6">
-                hola
+                <h3 className="text-center">Historial de Periodos</h3>
                 <div id="PeriodosIndex"></div>
             </div>
         </div>

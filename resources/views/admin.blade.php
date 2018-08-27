@@ -27,7 +27,7 @@
             <a class="btn btn-primary" href="{{ route('nuevoPeriodo') }}">Periodos</a>
         </div>
         <div class="col-md-1">
-            <a class="btn btn-primary" href="{{ route('nuevoPeriodo') }}">Maestros</a>
+            <a class="btn btn-primary" href="{{ route('teachersPanel') }}">Maestros</a>
         </div>
         <div class="col-md-1">
             <a class="btn btn-primary" href="">Historial</a>

@@ -25,8 +25,11 @@ Route::group(['middleware' => ['auth']], function() {
 
 	Route::get('/teachers', 'admintableController@teachers');
 
+	Route::get('/teachersPanel', 'admintableController@teachersPanel')->name('teachersPanel');
+
 	Route::get('/sinodalias', 'SinodaliaController@index');
 
 	Route::get('/periodo', 'periodoController@index')->name('nuevoPeriodo');
+
 	Route::get('/periodoConfirm', 'periodoController@confirm');
 });

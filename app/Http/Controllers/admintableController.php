@@ -24,4 +24,9 @@ class admintableController extends Controller
     		'teachers' => $teachers,
     	]);
     }
+
+    public function teachersPanel()
+    {
+        return 'Aqui hay una lista de maestros';
+    }
 }
