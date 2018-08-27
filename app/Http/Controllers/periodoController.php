@@ -33,11 +33,17 @@ class periodoController extends Controller
 		}
 
 		// crear un nuevo periodo
-		public function create(Request $request) {
-			if ($request->cargo != 0) {
+		public function create() {
+			if (Auth::user()->cargo != 0) {
 				return view('home');
 			}
-			return redirect('/periodo')->withSuccess("El periodo se ha creado con éxito");
+			// estado 1 = activo
+			// estado 0 = cerrado
+			$newPeriodo = Periodo::create([
+				'name' => $data['name'],
+				'estado' => 1,
+			]);
+			return redirect('/periodo')->withSuccess("El periodo ".$newPeriodo->name." se ha creado con éxito");
 		}
 }
 

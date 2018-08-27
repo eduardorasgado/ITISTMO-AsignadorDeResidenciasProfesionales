@@ -75,13 +75,14 @@ class RegisterController extends Controller
         $cargos = ['boss' => 0,
                 'admon' =>1,
                 'profesor' =>2];
-
+        // buscando la conversion del cargo
         foreach ($cargos as $key => $value) {
             if($key == $data['cargo']){
                 $cargoNum = $value;
             }
         }
         $num_phone = 0;
+        // en caso de no haber telefono
         if (isset($data['telefono'])) {
             $num_phone = $data['telefono']; 
         }

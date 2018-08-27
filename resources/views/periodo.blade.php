@@ -17,7 +17,7 @@
                           {{-- Sin ello, el form no es reconocido por laravel --}}
                           {{ csrf_field() }}
                         <label for="name">Nombre del nuevo Periodo</label>
-                        <input type="text" name="" class="form-control" required="">
+                        <input id="name" type="text" name="name" class="form-control" required>
                     </div>
                     <input class="btn btn-primary" type="submit" name="" value="Crear">
                     @if(session('success'))
