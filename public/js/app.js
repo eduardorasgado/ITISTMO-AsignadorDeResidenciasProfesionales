@@ -56644,7 +56644,7 @@ var SinodaliasTable = function (_Component) {
 				),
 				this.state.sinodalias.length == 0 && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
-					{ style: { width: 800, fontSize: 40, marginLeft: 300 } },
+					{ style: { width: 800, fontSize: 35, marginLeft: 300 } },
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 						'div',
 						{ className: 'alert alert-danger', role: 'alert', style: { marginRight: 15 } },

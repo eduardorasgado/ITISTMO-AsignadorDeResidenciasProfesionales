@@ -12,6 +12,7 @@ class Sinodalia extends Model
 												'carrera',
 												'num_control',
 												'proyecto',
+												'proyecto_aprobacion',
 												// 'id_presidente',
 												'id_secretario',
 												'id_vocal',

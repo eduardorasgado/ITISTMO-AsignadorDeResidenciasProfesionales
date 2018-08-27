@@ -21,6 +21,7 @@ class CreateSinodaliasTable extends Migration
             $table->string('carrera');
             $table->double('num_control');
             $table->string('proyecto');
+            $table->boolean('proyecto_aprobacion');
             // $table->integer('id_presidente')->unsigned();
             $table->integer('id_secretario')->unsigned();
             $table->integer('id_vocal')->unsigned();

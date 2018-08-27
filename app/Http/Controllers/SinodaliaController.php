@@ -65,6 +65,7 @@ class SinodaliaController extends Controller
                 'carrera' => $request->carrera,
                 'num_control' => $request->num_control,
                 'proyecto' => $request->proyecto,
+                'proyecto_aprobacion' => 0,
                 'id_secretario' => $request->secretario,
                 'id_vocal' => $request->vocal,
                 'id_vocal_sup' => $request->vocalSuplente,
