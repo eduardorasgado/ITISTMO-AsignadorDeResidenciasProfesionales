@@ -61,7 +61,7 @@ class Index extends Component {
 		}
 
 		lastPeriod() {
-			if (this.state.periodLoaded && this.state.periodsList > 0) {
+			if (this.state.periodLoaded && this.state.periodsList.length > 0) {
 				let name = this.state.periodsList[0].name
 				console.log("ultimo periodo", name)
 				return name
@@ -108,8 +108,8 @@ class Index extends Component {
 	         			<div>
 					        <br/><br/>
 					        <div>
-					        <div style={{width:800, fontSize:40, marginLeft:300}} className="alert alert-success" role="alert">
-					            Aún no has agregado ningún periodo
+					        <div style={{width:800, fontSize:25, marginLeft:300}} className="alert alert-success" role="alert">
+					            Aún no has agregado ningún periodo o no hay periodos abiertos
 					            </div>
 					        </div>
 					        <p className="text-center">

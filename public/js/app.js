@@ -55864,7 +55864,7 @@ var Index = function (_Component) {
 	}, {
 		key: 'lastPeriod',
 		value: function lastPeriod() {
-			if (this.state.periodLoaded && this.state.periodsList > 0) {
+			if (this.state.periodLoaded && this.state.periodsList.length > 0) {
 				var name = this.state.periodsList[0].name;
 				console.log("ultimo periodo", name);
 				return name;
@@ -55940,8 +55940,8 @@ var Index = function (_Component) {
 						null,
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 							'div',
-							{ style: { width: 800, fontSize: 40, marginLeft: 300 }, className: 'alert alert-success', role: 'alert' },
-							'A\xFAn no has agregado ning\xFAn periodo'
+							{ style: { width: 800, fontSize: 25, marginLeft: 300 }, className: 'alert alert-success', role: 'alert' },
+							'A\xFAn no has agregado ning\xFAn periodo o no hay periodos abiertos'
 						)
 					),
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -56811,7 +56811,7 @@ var PeriodosDashboard = function (_Component) {
 				console.log("la respuesta de periodos", response.data.periodos);
 				if (response.data.periodos.length > 0) {
 					_this2.setState({
-						periods: [].concat(_toConsumableArray(response.data.periodos)),
+						periods: [].concat(_toConsumableArray(response.data.periodos.reverse())),
 						periodLoaded: true
 					});
 				}

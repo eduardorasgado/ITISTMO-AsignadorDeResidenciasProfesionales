@@ -25,7 +25,7 @@ class PeriodosDashboard extends Component {
 				console.log("la respuesta de periodos", response.data.periodos)
 				if(response.data.periodos.length > 0){
 					this.setState({
-						periods: [...response.data.periodos],
+						periods: [...response.data.periodos.reverse()],
 						periodLoaded: true,
 					})
 				}

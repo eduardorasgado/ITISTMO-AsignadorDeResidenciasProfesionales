@@ -59,7 +59,6 @@ class periodoController extends Controller
 			return response()->json([
 				'periodosActivos' => $periodos,
 			]);
-			return 'hola';
 		}
 }
 
