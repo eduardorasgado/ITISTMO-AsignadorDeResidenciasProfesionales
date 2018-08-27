@@ -56008,7 +56008,8 @@ var CreateNewAssigment = function (_Component) {
 			vocal: 0,
 			vocalSuplente: 0,
 			teachers: [],
-			periodoActual: null
+			periodosAct: [],
+			periodoSeleccionado: null
 			//bindings
 		};_this.handleSubmit = _this.handleSubmit.bind(_this);
 		// this.postSinodaliaData = this.postSinodaliaData.bind(this)
@@ -56018,6 +56019,7 @@ var CreateNewAssigment = function (_Component) {
 		_this.handleChangeCarrera = _this.handleChangeCarrera.bind(_this);
 		_this.handleChangeControl = _this.handleChangeControl.bind(_this);
 		_this.handleChangeProyecto = _this.handleChangeProyecto.bind(_this);
+		_this.handleChangePeriodo = _this.handleChangePeriodo.bind(_this);
 		_this.handleChangePresidente = _this.handleChangePresidente.bind(_this);
 		_this.handleChangeSecretario = _this.handleChangeSecretario.bind(_this);
 		_this.handleChangeVocal = _this.handleChangeVocal.bind(_this);
@@ -56052,7 +56054,9 @@ var CreateNewAssigment = function (_Component) {
 				secretario: 0,
 				vocal: 0,
 				vocalSuplente: 0,
-				teachers: []
+				teachers: [],
+				periodosAct: [],
+				periodoSeleccionado: null
 			});
 		}
 	}, {
@@ -56066,6 +56070,7 @@ var CreateNewAssigment = function (_Component) {
 			// })
 			console.log(this.state);
 			this.getTeachersData();
+			this.getPeriodosAbiertos();
 		}
 	}, {
 		key: 'getTeachersData',
@@ -56082,8 +56087,12 @@ var CreateNewAssigment = function (_Component) {
 	}, {
 		key: 'getPeriodosAbiertos',
 		value: function getPeriodosAbiertos() {
+			var _this3 = this;
+
 			__WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/periodosDisponibles').then(function (response) {
-				console.log(response.data.periodosActivos);
+				_this3.setState({
+					periodosAct: [].concat(_toConsumableArray(response.data.periodosActivos))
+				});
 			});
 		}
 	}, {
@@ -56119,6 +56128,13 @@ var CreateNewAssigment = function (_Component) {
 		value: function handleChangeProyecto(event) {
 			this.setState({
 				proyecto: event.target.value
+			});
+		}
+	}, {
+		key: 'handleChangePeriodo',
+		value: function handleChangePeriodo(event) {
+			this.setState({
+				periodoSeleccionado: event.target.value
 			});
 		}
 	}, {
@@ -56234,6 +56250,27 @@ var CreateNewAssigment = function (_Component) {
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { id: 'proyecto', type: 'text', className: 'form-control',
 								onChange: this.handleChangeProyecto, value: this.state.proyecto,
 								required: true })
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'div',
+							{ className: 'form-group' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'label',
+								{ htmlFor: 'periodo1' },
+								'Periodo disponible(Activo)'
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'select',
+								{ className: 'form-control', id: 'periodo1',
+									onChange: this.handleChangePeriodo, value: this.state.periodoSeleccionado },
+								this.state.periodosAct.map(function (periodo) {
+									return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+										'option',
+										{ key: periodo.id, value: periodo.id },
+										periodo.name
+									);
+								})
+							)
 						),
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 							'div',

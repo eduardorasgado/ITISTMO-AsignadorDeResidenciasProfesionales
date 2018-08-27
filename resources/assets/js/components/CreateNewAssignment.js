@@ -14,7 +14,8 @@ class CreateNewAssigment extends Component {
 			vocal: 0,
 			vocalSuplente: 0,
 			teachers: [],
-			periodoActual: null,
+			periodosAct: [],
+			periodoSeleccionado: null,
 		}
 		//bindings
 		this.handleSubmit = this.handleSubmit.bind(this)
@@ -25,6 +26,7 @@ class CreateNewAssigment extends Component {
 		this.handleChangeCarrera = this.handleChangeCarrera.bind(this)
 		this.handleChangeControl = this.handleChangeControl.bind(this)
 		this.handleChangeProyecto = this.handleChangeProyecto.bind(this)
+		this.handleChangePeriodo = this.handleChangePeriodo.bind(this)
 		this.handleChangePresidente = this.handleChangePresidente.bind(this)
 		this.handleChangeSecretario = this.handleChangeSecretario.bind(this)
 		this.handleChangeVocal = this.handleChangeVocal.bind(this)
@@ -59,6 +61,8 @@ class CreateNewAssigment extends Component {
 					vocal: 0,
 					vocalSuplente: 0,
 					teachers: [],
+					periodosAct: [],
+					periodoSeleccionado: null,
 		})
 	}
 
@@ -71,6 +75,7 @@ class CreateNewAssigment extends Component {
 		// })
 		console.log(this.state)
 		this.getTeachersData()
+		this.getPeriodosAbiertos()
 	}
 
 	getTeachersData() {
@@ -87,7 +92,9 @@ class CreateNewAssigment extends Component {
 	getPeriodosAbiertos() {
 		axios.get('/periodosDisponibles')
 		.then((response) => {
-			console.log(response.data.periodosActivos)
+			this.setState({
+				periodosAct: [...response.data.periodosActivos],
+			})
 		})
 	}
 
@@ -115,6 +122,11 @@ class CreateNewAssigment extends Component {
 	handleChangeProyecto(event) {
 		this.setState({
 			proyecto: event.target.value,
+		})
+	}
+	handleChangePeriodo(event) {
+		this.setState({
+			periodoSeleccionado: event.target.value,
 		})
 	}
 	handleChangePresidente(event) {
@@ -171,6 +183,15 @@ class CreateNewAssigment extends Component {
 							<input id="proyecto" type="text" className="form-control" 
 								onChange={this.handleChangeProyecto} value={this.state.proyecto}
 							required/>
+						</div>
+						<div className="form-group">
+							<label htmlFor="periodo1">Periodo disponible(Activo)</label>
+							<select className="form-control" id="periodo1" 
+											onChange={this.handleChangePeriodo} value={this.state.periodoSeleccionado}>
+								{ this.state.periodosAct.map( periodo => (
+										<option key={ periodo.id } value={ periodo.id }>{ periodo.name }</option>
+									)) }
+							</select>
 						</div>
 						<div className="form-group">
 							<label htmlFor="presidente">Asignado Presidente(disponibles)</label>
