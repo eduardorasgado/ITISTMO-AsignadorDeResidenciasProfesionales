@@ -12,7 +12,7 @@ class Index extends Component {
 				teachers: [],
 				periodAvailable: false,
 				periodsList: [],
-				periodLoad: false, 
+				periodLoaded: false, 
 			}
 			// bindings
 			this.totalTeachers = this.totalTeachers.bind(this)
@@ -32,7 +32,7 @@ class Index extends Component {
 
 		getPeriodAccess() {
 			this.setState({
-				periodLoad: false,
+				periodLoaded: false,
 			})
 			axios.get('/periodoConfirm')
 			.then((response) => {
@@ -41,7 +41,7 @@ class Index extends Component {
 					this.setState({
 						periodAvailable: true,
 						periodsList: [...response.data.periodos],
-						periodLoad: true,
+						periodLoaded: true,
 					})
 				}
 			})
@@ -61,7 +61,7 @@ class Index extends Component {
 		}
 
 		lastPeriod() {
-			if (this.state.periodLoad) {
+			if (this.state.periodLoaded) {
 				let name = this.state.periodsList[0].name
 				console.log("ultimo periodo", name)
 				return name

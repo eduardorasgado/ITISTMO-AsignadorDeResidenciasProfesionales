@@ -5,7 +5,49 @@ class PeriodosDashboard extends Component {
 		super(props)
 		this.state = {
 			periods: [],
+			periodLoaded: false,
 		}
+
+		this.getPeriodState = this.getPeriodState.bind(this)
+		this.closePeriod = this.closePeriod.bind(this)
+	}
+
+	componentWillMount() {
+		this.getPeriodos()
+	}
+
+	getPeriodos() {
+		this.setState({
+				periodLoaded: false,
+			})
+			axios.get('/periodoConfirm')
+			.then((response) => {
+				console.log("la respuesta de periodos", response.data.periodos)
+				if(response.data.periodos.length > 0){
+					this.setState({
+						periods: [...response.data.periodos],
+						periodLoaded: true,
+					})
+				}
+			})
+	}
+
+	getPeriodState() {
+		return 'Activo'
+	}
+
+	closePeriod() {
+		var closeConfirm = confirm("Estás a punto de cerrar un periodo, estás seguro/a?")
+		if (closeConfirm) {
+			return alert("CERRADO")
+		}
+	}
+
+	actuallity(periodID) {
+		if (this.state.periods[0].id == periodID) {
+			return '(Actual)'
+		}
+		return
 	}
 
 	render(){
@@ -15,23 +57,18 @@ class PeriodosDashboard extends Component {
 						<table className="table">
 						<thead className="thead-dark">
 					    <tr>
-					      <th scope="col">Residente</th>
-					      <th scope="col">Proyecto</th>
-					      <th scope="col">Carrera</th>
-					      <th scope="col">N.de Control</th>
-					      <th scope="col">Presidente</th>
-					      <th scope="col">Secretario</th>
-					      <th scope="col">Vocal</th>
-					      <th scope="col">Vocal Suplente</th>
-					      <th scope="col">Aprobación Final</th>
-					    </tr>
+					      <th scope="col">Periodo</th>
+					      <th scope="col">estado</th>
+					      <th scope="col">Cerrar Periodo</th>
+					     </tr>
 					  </thead>
 					  <tbody>
 					  	{ this.state.periods.map(period => (
 					  			<tr key={period.id}>
-							      <th scope="row">{period.name}</th>
+							      <th scope="row">{period.name}{this.actuallity(period.id)}</th>
+							      <td>{this.getPeriodState()}</td>
 							      <td><button className="btn btn-danger" 
-							      			onClick="">
+							      			onClick={() => this.closePeriod()}>
 							      			Terminar</button>
 							      </td>
 							    </tr>

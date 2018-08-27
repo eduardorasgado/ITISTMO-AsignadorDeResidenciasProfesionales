@@ -55807,7 +55807,7 @@ var Index = function (_Component) {
 			teachers: [],
 			periodAvailable: false,
 			periodsList: [],
-			periodLoad: false
+			periodLoaded: false
 			// bindings
 		};_this.totalTeachers = _this.totalTeachers.bind(_this);
 		_this.lastPeriod = _this.lastPeriod.bind(_this);
@@ -55832,7 +55832,7 @@ var Index = function (_Component) {
 			var _this3 = this;
 
 			this.setState({
-				periodLoad: false
+				periodLoaded: false
 			});
 			__WEBPACK_IMPORTED_MODULE_4_axios___default.a.get('/periodoConfirm').then(function (response) {
 				console.log("la respuesta de periodos", response.data.periodos);
@@ -55840,7 +55840,7 @@ var Index = function (_Component) {
 					_this3.setState({
 						periodAvailable: true,
 						periodsList: [].concat(_toConsumableArray(response.data.periodos)),
-						periodLoad: true
+						periodLoaded: true
 					});
 				}
 			});
@@ -55864,7 +55864,7 @@ var Index = function (_Component) {
 	}, {
 		key: 'lastPeriod',
 		value: function lastPeriod() {
-			if (this.state.periodLoad) {
+			if (this.state.periodLoaded) {
 				var name = this.state.periodsList[0].name;
 				console.log("ultimo periodo", name);
 				return name;
@@ -56757,6 +56757,8 @@ if (document.getElementById('PeriodosIndex')) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -56774,102 +56776,130 @@ var PeriodosDashboard = function (_Component) {
 		var _this = _possibleConstructorReturn(this, (PeriodosDashboard.__proto__ || Object.getPrototypeOf(PeriodosDashboard)).call(this, props));
 
 		_this.state = {
-			periods: []
+			periods: [],
+			periodLoaded: false
 		};
+
+		_this.getPeriodState = _this.getPeriodState.bind(_this);
+		_this.closePeriod = _this.closePeriod.bind(_this);
 		return _this;
 	}
 
 	_createClass(PeriodosDashboard, [{
-		key: "render",
+		key: 'componentWillMount',
+		value: function componentWillMount() {
+			this.getPeriodos();
+		}
+	}, {
+		key: 'getPeriodos',
+		value: function getPeriodos() {
+			var _this2 = this;
+
+			this.setState({
+				periodLoaded: false
+			});
+			axios.get('/periodoConfirm').then(function (response) {
+				console.log("la respuesta de periodos", response.data.periodos);
+				if (response.data.periodos.length > 0) {
+					_this2.setState({
+						periods: [].concat(_toConsumableArray(response.data.periodos)),
+						periodLoaded: true
+					});
+				}
+			});
+		}
+	}, {
+		key: 'getPeriodState',
+		value: function getPeriodState() {
+			return 'Activo';
+		}
+	}, {
+		key: 'closePeriod',
+		value: function closePeriod() {
+			var closeConfirm = confirm("Estás a punto de cerrar un periodo, estás seguro/a?");
+			if (closeConfirm) {
+				return alert("CERRADO");
+			}
+		}
+	}, {
+		key: 'actuallity',
+		value: function actuallity(periodID) {
+			if (this.state.periods[0].id == periodID) {
+				return '(Actual)';
+			}
+			return;
+		}
+	}, {
+		key: 'render',
 		value: function render() {
+			var _this3 = this;
+
 			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-				"div",
+				'div',
 				null,
 				this.state.periods.length > 0 ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-					"table",
-					{ className: "table" },
+					'table',
+					{ className: 'table' },
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						"thead",
-						{ className: "thead-dark" },
+						'thead',
+						{ className: 'thead-dark' },
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							"tr",
+							'tr',
 							null,
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"th",
-								{ scope: "col" },
-								"Residente"
+								'th',
+								{ scope: 'col' },
+								'Periodo'
 							),
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"th",
-								{ scope: "col" },
-								"Proyecto"
+								'th',
+								{ scope: 'col' },
+								'estado'
 							),
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"th",
-								{ scope: "col" },
-								"Carrera"
-							),
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"th",
-								{ scope: "col" },
-								"N.de Control"
-							),
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"th",
-								{ scope: "col" },
-								"Presidente"
-							),
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"th",
-								{ scope: "col" },
-								"Secretario"
-							),
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"th",
-								{ scope: "col" },
-								"Vocal"
-							),
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"th",
-								{ scope: "col" },
-								"Vocal Suplente"
-							),
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"th",
-								{ scope: "col" },
-								"Aprobaci\xF3n Final"
+								'th',
+								{ scope: 'col' },
+								'Cerrar Periodo'
 							)
 						)
 					),
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						"tbody",
+						'tbody',
 						null,
 						this.state.periods.map(function (period) {
 							return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								"tr",
+								'tr',
 								{ key: period.id },
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									"th",
-									{ scope: "row" },
-									period.name
+									'th',
+									{ scope: 'row' },
+									period.name,
+									_this3.actuallity(period.id)
 								),
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									"td",
+									'td',
+									null,
+									_this3.getPeriodState()
+								),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'td',
 									null,
 									__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-										"button",
-										{ className: "btn btn-danger",
-											onClick: "" },
-										"Terminar"
+										'button',
+										{ className: 'btn btn-danger',
+											onClick: function onClick() {
+												return _this3.closePeriod();
+											} },
+										'Terminar'
 									)
 								)
 							);
 						})
 					)
 				) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-					"div",
-					{ className: "alert alert-danger", role: "alert", style: { marginRight: 15 } },
-					"A\xFAn no has agregado ning\xFAn periodo."
+					'div',
+					{ className: 'alert alert-danger', role: 'alert', style: { marginRight: 15 } },
+					'A\xFAn no has agregado ning\xFAn periodo.'
 				)
 			);
 		}
