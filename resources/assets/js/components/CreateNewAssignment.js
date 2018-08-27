@@ -15,7 +15,7 @@ class CreateNewAssigment extends Component {
 			vocalSuplente: 0,
 			teachers: [],
 			periodosAct: [],
-			periodoSeleccionado: null,
+			periodoSeleccionado: 0,
 		}
 		//bindings
 		this.handleSubmit = this.handleSubmit.bind(this)
@@ -39,6 +39,7 @@ class CreateNewAssigment extends Component {
 			carrera: this.state.carrera,
 			num_control: this.state.num_control,
 			proyecto: this.state.proyecto,
+			periodo: this.state.periodoSeleccionado,
 			presidente: this.state.presidente,
 			secretario: this.state.secretario,
 			vocal: this.state.vocal,
@@ -62,7 +63,7 @@ class CreateNewAssigment extends Component {
 					vocalSuplente: 0,
 					teachers: [],
 					periodosAct: [],
-					periodoSeleccionado: null,
+					periodoSeleccionado: 0,
 		})
 	}
 
@@ -81,9 +82,15 @@ class CreateNewAssigment extends Component {
 	getTeachersData() {
 		axios.get('/teachers')
 		.then((response) => {
+					let availableTeachers = response.data.teachers
 					console.log("done")
+					// para que no sea 0 el id en stados
 					this.setState({
-						teachers: [...response.data.teachers],
+						teachers: [...availableTeachers],
+						presidente: availableTeachers[0].id,
+						secretario: availableTeachers[0].id,
+						vocal: availableTeachers[0].id,
+						vocalSuplente: availableTeachers[0].id
 					})
 				}
 			)
@@ -94,6 +101,7 @@ class CreateNewAssigment extends Component {
 		.then((response) => {
 			this.setState({
 				periodosAct: [...response.data.periodosActivos],
+				periodoSeleccionado: response.data.periodosActivos[0].id,
 			})
 		})
 	}

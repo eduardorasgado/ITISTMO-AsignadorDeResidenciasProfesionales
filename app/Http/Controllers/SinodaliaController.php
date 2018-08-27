@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Sinodalia;
 use App\User;
+use App\Periodo;
 use DB;
 use Auth;
 
@@ -23,7 +24,7 @@ class SinodaliaController extends Controller
 		}
 
 
-    public function create(Request $request, Sinodalia $sinodalia)
+    public function create(Request $request, Sinodalia $sinodalia, Periodo $periodo)
     {
     	// evitar acceso de maestros y secretaria
 			if (Auth::user()->cargo != 0){
@@ -33,7 +34,7 @@ class SinodaliaController extends Controller
 			DB::updated in
 			https://www.tutorialspoint.com/laravel/update_records.htm
     	*/
-    	
+
     	// presidente
     	$theUser = User::find($request->presidente);
     	$asignaciones = $theUser->num_asignaciones + 1;
@@ -63,9 +64,12 @@ class SinodaliaController extends Controller
     	DB::update('update users set num_asignaciones = ? where id = ?',[$asignaciones3, $theUserSuplente->id]);
     	$theUserSuplente = User::find($request->vocalSuplente);
     	
+        // periodo
+        $thePeriodo = Periodo::find($request->periodo);
     	// creando la sinodalia
     	$createdSinodalia = $theUser->sinodalia()->create([
     			'residente' => $request->residente,
+                'periodo_id' => $thePeriodo->id,
     			'carrera' => $request->carrera,
     			'num_control' => $request->num_control,
     			'proyecto' => $request->proyecto,

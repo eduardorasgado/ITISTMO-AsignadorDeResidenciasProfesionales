@@ -13,6 +13,6 @@ class Periodo extends Model
 		]; 
     public function sinodalia()
     {
-    	$this->hasMany(Sinodalia::class);
+    	return $this->hasMany('App\Sinodalia', 'periodo_id', 'id');
     }
 }

@@ -8,6 +8,7 @@ class Sinodalia extends Model
 {
 	// protected $primaryKey = 'id_presidente';
 	protected $fillable = ['residente',
+												'periodo_id',
 												'carrera',
 												'num_control',
 												'proyecto',
@@ -24,6 +25,6 @@ class Sinodalia extends Model
 
     public function periodo()
     {
-    	return $this->belongsTo(Periodo::class);
+    	return $this->belongsTo('App\Periodo', 'id', 'periodo_id');
     }
 }

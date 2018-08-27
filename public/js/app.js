@@ -56009,7 +56009,7 @@ var CreateNewAssigment = function (_Component) {
 			vocalSuplente: 0,
 			teachers: [],
 			periodosAct: [],
-			periodoSeleccionado: null
+			periodoSeleccionado: 0
 			//bindings
 		};_this.handleSubmit = _this.handleSubmit.bind(_this);
 		// this.postSinodaliaData = this.postSinodaliaData.bind(this)
@@ -56035,6 +56035,7 @@ var CreateNewAssigment = function (_Component) {
 				carrera: this.state.carrera,
 				num_control: this.state.num_control,
 				proyecto: this.state.proyecto,
+				periodo: this.state.periodoSeleccionado,
 				presidente: this.state.presidente,
 				secretario: this.state.secretario,
 				vocal: this.state.vocal,
@@ -56056,7 +56057,7 @@ var CreateNewAssigment = function (_Component) {
 				vocalSuplente: 0,
 				teachers: [],
 				periodosAct: [],
-				periodoSeleccionado: null
+				periodoSeleccionado: 0
 			});
 		}
 	}, {
@@ -56078,9 +56079,15 @@ var CreateNewAssigment = function (_Component) {
 			var _this2 = this;
 
 			__WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/teachers').then(function (response) {
+				var availableTeachers = response.data.teachers;
 				console.log("done");
+				// para que no sea 0 el id en stados
 				_this2.setState({
-					teachers: [].concat(_toConsumableArray(response.data.teachers))
+					teachers: [].concat(_toConsumableArray(availableTeachers)),
+					presidente: availableTeachers[0].id,
+					secretario: availableTeachers[0].id,
+					vocal: availableTeachers[0].id,
+					vocalSuplente: availableTeachers[0].id
 				});
 			});
 		}
@@ -56091,7 +56098,8 @@ var CreateNewAssigment = function (_Component) {
 
 			__WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/periodosDisponibles').then(function (response) {
 				_this3.setState({
-					periodosAct: [].concat(_toConsumableArray(response.data.periodosActivos))
+					periodosAct: [].concat(_toConsumableArray(response.data.periodosActivos)),
+					periodoSeleccionado: response.data.periodosActivos[0].id
 				});
 			});
 		}
