@@ -56819,8 +56819,12 @@ var PeriodosDashboard = function (_Component) {
 		}
 	}, {
 		key: 'getPeriodState',
-		value: function getPeriodState() {
-			return 'Activo';
+		value: function getPeriodState(estado) {
+			if (estado) {
+				return 'Activo';
+			}
+			// estado 0 ->cerrado
+			return 'Cerrado';
 		}
 	}, {
 		key: 'closePeriod',
@@ -56888,7 +56892,7 @@ var PeriodosDashboard = function (_Component) {
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'td',
 									null,
-									_this3.getPeriodState()
+									_this3.getPeriodState(period.estado)
 								),
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'td',

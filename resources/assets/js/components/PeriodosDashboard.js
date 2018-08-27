@@ -32,8 +32,12 @@ class PeriodosDashboard extends Component {
 			})
 	}
 
-	getPeriodState() {
-		return 'Activo'
+	getPeriodState(estado) {
+		if (estado) {
+			return 'Activo'
+		}
+		// estado 0 ->cerrado
+		return 'Cerrado'
 	}
 
 	closePeriod() {
@@ -66,7 +70,7 @@ class PeriodosDashboard extends Component {
 					  	{ this.state.periods.map(period => (
 					  			<tr key={period.id}>
 							      <th scope="row">{period.name}{this.actuallity(period.id)}</th>
-							      <td>{this.getPeriodState()}</td>
+							      <td>{this.getPeriodState(period.estado)}</td>
 							      <td><button className="btn btn-danger" 
 							      			onClick={() => this.closePeriod()}>
 							      			Terminar</button>

@@ -26,7 +26,8 @@ class periodoController extends Controller
 			if (Auth::user()->cargo != 0){
 				return view('home');
 			}
-			$periodos = Periodo::where('estado','=',1)->get();
+			// todos los periodos, activos e inactivos
+			$periodos = Periodo::all();
 
 			return response()->json([
 				'periodos' => $periodos,
