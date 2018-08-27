@@ -14,8 +14,9 @@
                 <form>
                     <div class="form-group">
                         <label for="name">Nombre del nuevo Periodo</label>
-                        <input type="text" name="" class="form-control">
+                        <input type="text" name="" class="form-control" required="">
                     </div>
+                    <input class="btn btn-primary" type="submit" name="" value="Crear">
                 </form>
             </div>
             <div class="col-md-6">

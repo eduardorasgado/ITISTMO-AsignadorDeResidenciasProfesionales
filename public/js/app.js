@@ -56834,9 +56834,9 @@ var PeriodosDashboard = function (_Component) {
 						})
 					)
 				) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-					"p",
-					null,
-					"A\xFAn no hay periodos"
+					"div",
+					{ className: "alert alert-danger", role: "alert", style: { marginRight: 15 } },
+					"A\xFAn no has agregado ning\xFAn periodo."
 				)
 			);
 		}

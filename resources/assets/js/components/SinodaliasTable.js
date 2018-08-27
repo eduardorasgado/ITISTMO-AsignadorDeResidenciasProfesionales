@@ -121,10 +121,10 @@ class SinodaliasTable extends Component {
 					</table>
 					{ this.state.sinodalias.length == 0 &&
 						<div style={{ width:800, fontSize:40, marginLeft:300 }}>
-					  			<div className="alert alert-danger" role="alert" style={{ marginRight:15 }}>
-							  		Aún no has agregado ninguna sinodalía
-									</div>
-					  		</div>
+			  			<div className="alert alert-danger" role="alert" style={{ marginRight:15 }}>
+					  		Aún no has agregado ninguna sinodalía
+							</div>
+			  		</div>
 					}
 				</div>
 			)

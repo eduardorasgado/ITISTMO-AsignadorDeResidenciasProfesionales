@@ -43,7 +43,9 @@ class PeriodosDashboard extends Component {
 					  </tbody>
 					</table>
 					 :
-					 <p>Aún no hay periodos</p>
+		  			<div className="alert alert-danger" role="alert" style={{ marginRight:15 }}>
+				  		Aún no has agregado ningún periodo.
+						</div>			  	
 					}
 				</div>
 			)
