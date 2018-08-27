@@ -25,8 +25,9 @@ class periodoController extends Controller
 				return view('home');
 			}
 			$periodos = Periodo::where('estado','=',1)->get();
+			$numPeriodos = count($periodos);
 			return response()->json([
-				'periodos' => $periodos,
+				'periodos' => $numPeriodos,
 			]);
 		}
 }

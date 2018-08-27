@@ -55805,7 +55805,6 @@ var Index = function (_Component) {
 
 		_this.state = {
 			teachers: [],
-			periodos: [],
 			periodAvailable: false
 			// bindings
 		};_this.totalTeachers = _this.totalTeachers.bind(_this);
@@ -55831,10 +55830,9 @@ var Index = function (_Component) {
 
 			__WEBPACK_IMPORTED_MODULE_4_axios___default.a.get('/periodoConfirm').then(function (response) {
 				console.log(response.data);
-				if (response.data.periodos.length > 0) {
+				if (response.data.periodos > 0) {
 					_this3.setState({
-						periodAvailable: true,
-						periodos: [].concat(_toConsumableArray(response.data.periodos))
+						periodAvailable: true
 					});
 				}
 				_this3.setState({
@@ -56734,19 +56732,112 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var PeriodosDashboard = function (_Component) {
 	_inherits(PeriodosDashboard, _Component);
 
-	function PeriodosDashboard() {
+	function PeriodosDashboard(props) {
 		_classCallCheck(this, PeriodosDashboard);
 
-		return _possibleConstructorReturn(this, (PeriodosDashboard.__proto__ || Object.getPrototypeOf(PeriodosDashboard)).apply(this, arguments));
+		var _this = _possibleConstructorReturn(this, (PeriodosDashboard.__proto__ || Object.getPrototypeOf(PeriodosDashboard)).call(this, props));
+
+		_this.state = {
+			periods: []
+		};
+		return _this;
 	}
 
 	_createClass(PeriodosDashboard, [{
-		key: 'render',
+		key: "componentWillMount",
+		value: function componentWillMount() {}
+	}, {
+		key: "render",
 		value: function render() {
 			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-				'div',
+				"div",
 				null,
-				'hola'
+				this.state.periods.length > 0 ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					"table",
+					{ className: "table" },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						"thead",
+						{ className: "thead-dark" },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							"tr",
+							null,
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"th",
+								{ scope: "col" },
+								"Residente"
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"th",
+								{ scope: "col" },
+								"Proyecto"
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"th",
+								{ scope: "col" },
+								"Carrera"
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"th",
+								{ scope: "col" },
+								"N.de Control"
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"th",
+								{ scope: "col" },
+								"Presidente"
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"th",
+								{ scope: "col" },
+								"Secretario"
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"th",
+								{ scope: "col" },
+								"Vocal"
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"th",
+								{ scope: "col" },
+								"Vocal Suplente"
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"th",
+								{ scope: "col" },
+								"Aprobaci\xF3n Final"
+							)
+						)
+					),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						"tbody",
+						null,
+						this.state.periods.map(function (period) {
+							return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"tr",
+								{ key: period.id },
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									"th",
+									{ scope: "row" },
+									period.name
+								),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									"td",
+									null,
+									__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+										"button",
+										{ className: "btn btn-danger",
+											onClick: "" },
+										"Terminar"
+									)
+								)
+							);
+						})
+					)
+				) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					"p",
+					null,
+					"A\xFAn no hay periodos"
+				)
 			);
 		}
 	}]);

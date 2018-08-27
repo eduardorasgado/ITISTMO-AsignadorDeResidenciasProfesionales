@@ -14,4 +14,4 @@ require('./bootstrap');
  */
 
 require('./components/Index');
-require('./components/PeriodosIndex')
+require('./components/PeriodosIndex');

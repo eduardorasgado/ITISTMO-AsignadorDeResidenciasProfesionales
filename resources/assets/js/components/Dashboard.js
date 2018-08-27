@@ -10,7 +10,6 @@ class Index extends Component {
 			super(props)
 			this.state = {
 				teachers: [],
-				periodos: [],
 				periodAvailable: false,
 			}
 			// bindings
@@ -32,10 +31,9 @@ class Index extends Component {
 			axios.get('/periodoConfirm')
 			.then((response) => {
 				console.log(response.data)
-				if(response.data.periodos.length >0){
+				if(response.data.periodos > 0){
 					this.setState({
 						periodAvailable: true,
-						periodos: [...response.data.periodos]
 					})
 				}
 				this.setState({
