@@ -35,6 +35,7 @@ class periodoController extends Controller
 
 		// crear un nuevo periodo
 		public function create(CreatePeriodoRequest $request) {
+			// solo si es el usuario con cargo de asignador
 			if ($request->user()->cargo != 0) {
 				return view('home');
 			}
@@ -45,6 +46,14 @@ class periodoController extends Controller
 				'estado' => 1,
 			]);
 			return redirect('/periodo')->withSuccess("El periodo ".$newPeriodo->name." se ha creado con éxito");
+		}
+
+		public function availables() {
+			// evitar acceso de maestros y secretaria
+			if (Auth::user()->cargo != 0){
+				return view('home');
+			}
+			return 'hola';
 		}
 }
 

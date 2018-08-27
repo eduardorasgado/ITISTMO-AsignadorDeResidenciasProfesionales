@@ -14,6 +14,7 @@ class CreateNewAssigment extends Component {
 			vocal: 0,
 			vocalSuplente: 0,
 			teachers: [],
+			periodoActual: null,
 		}
 		//bindings
 		this.handleSubmit = this.handleSubmit.bind(this)
@@ -83,9 +84,17 @@ class CreateNewAssigment extends Component {
 			)
 		}
 
+	getPeriodosAbiertos() {
+		axios.get('/periodosDisponibles')
+		.then((response) => {
+			console.log(response.data)
+		})
+	}
+
 	componentWillMount () {
 		// loading teachers lists
 		this.getTeachersData()
+		this.getPeriodosAbiertos()
 	}
 
 	handleChangeResidente(event) {

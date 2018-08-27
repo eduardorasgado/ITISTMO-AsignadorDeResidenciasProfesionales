@@ -56003,7 +56003,8 @@ var CreateNewAssigment = function (_Component) {
 			secretario: 0,
 			vocal: 0,
 			vocalSuplente: 0,
-			teachers: []
+			teachers: [],
+			periodoActual: null
 			//bindings
 		};_this.handleSubmit = _this.handleSubmit.bind(_this);
 		// this.postSinodaliaData = this.postSinodaliaData.bind(this)
@@ -56075,10 +56076,18 @@ var CreateNewAssigment = function (_Component) {
 			});
 		}
 	}, {
+		key: 'getPeriodosAbiertos',
+		value: function getPeriodosAbiertos() {
+			__WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/periodosDisponibles').then(function (response) {
+				console.log(response.data);
+			});
+		}
+	}, {
 		key: 'componentWillMount',
 		value: function componentWillMount() {
 			// loading teachers lists
 			this.getTeachersData();
+			this.getPeriodosAbiertos();
 		}
 	}, {
 		key: 'handleChangeResidente',

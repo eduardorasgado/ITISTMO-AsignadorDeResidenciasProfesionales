@@ -29,7 +29,10 @@ Route::group(['middleware' => ['auth']], function() {
 
 	Route::get('/sinodalias', 'SinodaliaController@index');
 
-	Route::get('/periodo', 'periodoController@index')->name('nuevoPeriodo');
+	Route::get('/periodo', 'periodoController@index')->name('periodoMenu');
+
+	// para createNewAssignment component
+	Route::get('/periodosDisponibles', 'periodoController@availables');
 
 	Route::get('/periodoConfirm', 'periodoController@confirm');
 

@@ -19,7 +19,9 @@ class admintableController extends Controller
 			if (Auth::user()->cargo != 0){
 				return view('home');
 			}
-    	$teachers = User::where('cargo', '!=', 1)->get();
+    	$teachers = User::where('cargo', '!=', 1)
+                    ->orderBy('num_asignaciones', 'desc')
+                    ->get();
     	return response()->json([
     		'teachers' => $teachers,
     	]);

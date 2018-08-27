@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-md-6"></div>
         <div class="col-md-1">
-            <a class="btn btn-primary" href="{{ route('nuevoPeriodo') }}">Periodos</a>
+            <a class="btn btn-primary" href="{{ route('periodoMenu') }}">Periodos</a>
         </div>
         <div class="col-md-1">
             <a class="btn btn-primary" href="{{ route('teachersPanel') }}">Maestros</a>
