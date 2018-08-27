@@ -56768,6 +56768,8 @@ if (document.getElementById('PeriodosIndex')) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -56777,6 +56779,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -56804,17 +56807,31 @@ var PeriodosDashboard = function (_Component) {
 			this.getPeriodos();
 		}
 	}, {
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			var _this2 = this;
+
+			this.tableUpdate = setInterval(function () {
+				return _this2.getPeriodos();
+			}, 5000);
+		}
+	}, {
+		key: 'componentWillUnmount',
+		value: function componentWillUnmount() {
+			clearInterval(this.tableUpdate);
+		}
+	}, {
 		key: 'getPeriodos',
 		value: function getPeriodos() {
-			var _this2 = this;
+			var _this3 = this;
 
 			this.setState({
 				periodLoaded: false
 			});
-			axios.get('/periodoConfirm').then(function (response) {
+			__WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/periodoConfirm').then(function (response) {
 				console.log("la respuesta de periodos", response.data.periodos);
 				if (response.data.periodos.length > 0) {
-					_this2.setState({
+					_this3.setState({
 						periods: [].concat(_toConsumableArray(response.data.periodos.reverse())),
 						periodLoaded: true
 					});
@@ -56832,10 +56849,15 @@ var PeriodosDashboard = function (_Component) {
 		}
 	}, {
 		key: 'closePeriod',
-		value: function closePeriod() {
+		value: function closePeriod(id) {
 			var closeConfirm = confirm("Estás a punto de cerrar un periodo, estás seguro/a?");
 			if (closeConfirm) {
-				return alert("CERRADO");
+				// return alert("CERRADO")
+				__WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/closePeriodo', {
+					id: id
+				}).then(function (response) {
+					console.log(response.data);
+				});
 			}
 		}
 	}, {
@@ -56849,7 +56871,7 @@ var PeriodosDashboard = function (_Component) {
 	}, {
 		key: 'render',
 		value: function render() {
-			var _this3 = this;
+			var _this4 = this;
 
 			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 				'div',
@@ -56891,12 +56913,12 @@ var PeriodosDashboard = function (_Component) {
 									'th',
 									{ scope: 'row' },
 									period.name,
-									_this3.actuallity(period.id)
+									_this4.actuallity(period.id)
 								),
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'td',
 									null,
-									_this3.getPeriodState(period.estado)
+									_this4.getPeriodState(period.estado)
 								),
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'td',
@@ -56905,7 +56927,7 @@ var PeriodosDashboard = function (_Component) {
 										'button',
 										{ className: 'btn btn-danger',
 											onClick: function onClick() {
-												return _this3.closePeriod();
+												return _this4.closePeriod(period.id);
 											} },
 										'Terminar'
 									)

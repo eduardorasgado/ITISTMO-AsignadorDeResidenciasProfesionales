@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 class PeriodosDashboard extends Component {
 	constructor(props){
@@ -14,6 +15,14 @@ class PeriodosDashboard extends Component {
 
 	componentWillMount() {
 		this.getPeriodos()
+	}
+
+	componentDidMount() {
+		this.tableUpdate = setInterval(() => this.getPeriodos(), 5000)
+	}
+
+	componentWillUnmount() {
+		clearInterval(this.tableUpdate)
 	}
 
 	getPeriodos() {
@@ -40,10 +49,16 @@ class PeriodosDashboard extends Component {
 		return 'Cerrado'
 	}
 
-	closePeriod() {
+	closePeriod(id) {
 		var closeConfirm = confirm("Estás a punto de cerrar un periodo, estás seguro/a?")
 		if (closeConfirm) {
-			return alert("CERRADO")
+			// return alert("CERRADO")
+			axios.post('/closePeriodo',{
+				id: id,
+			})
+			.then((response) => {
+				console.log(response.data)
+			})
 		}
 	}
 
@@ -72,7 +87,7 @@ class PeriodosDashboard extends Component {
 							      <th scope="row">{period.name}{this.actuallity(period.id)}</th>
 							      <td>{this.getPeriodState(period.estado)}</td>
 							      <td><button className="btn btn-danger" 
-							      			onClick={() => this.closePeriod()}>
+							      			onClick={() => this.closePeriod(period.id)}>
 							      			Terminar</button>
 							      </td>
 							    </tr>

@@ -7,6 +7,7 @@ use App\Http\Requests\CreatePeriodoRequest;
 use Auth;
 use App\Sinodalia;
 use App\Periodo;
+use DB;
 
 class periodoController extends Controller
 {
@@ -35,7 +36,8 @@ class periodoController extends Controller
 		}
 
 		// crear un nuevo periodo
-		public function create(CreatePeriodoRequest $request) {
+		public function create(CreatePeriodoRequest $request)
+		{
 			// solo si es el usuario con cargo de asignador
 			if ($request->user()->cargo != 0) {
 				return view('home');
@@ -49,7 +51,8 @@ class periodoController extends Controller
 			return redirect('/periodo')->withSuccess("El periodo ".$newPeriodo->name." se ha creado con éxito");
 		}
 
-		public function availables() {
+		public function availables()
+		{
 			// evitar acceso de maestros y secretaria
 			if (Auth::user()->cargo != 0){
 				return view('home');
@@ -59,6 +62,25 @@ class periodoController extends Controller
 			return response()->json([
 				'periodosActivos' => $periodos,
 			]);
+		}
+
+		public function close(Request $request, Periodo $periodo)
+		{
+			// evitar acceso de maestros y secretaria
+			if (Auth::user()->cargo != 0){
+				return view('home');
+			}
+			//cerciorarse de que existe
+			$periodoToClose = $periodo->where('id','=',$request->id)->get();
+			if (!isset($periodoToClose)) {
+				return false;
+			}
+			// return response()->json([
+			// 	'periodoACerrar' => $periodoToClose	
+			// ]);
+			DB::update('update periodos set estado = ? where id = ?',[0, $periodoToClose->id]);
+
+			return response(true);
 		}
 }
 

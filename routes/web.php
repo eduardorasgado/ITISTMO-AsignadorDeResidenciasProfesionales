@@ -37,4 +37,6 @@ Route::group(['middleware' => ['auth']], function() {
 	Route::get('/periodoConfirm', 'periodoController@confirm');
 
 	Route::post('/periodo/create', 'periodoController@create');
+
+	Route::post('/closePeriodo','periodoController@close');
 });
