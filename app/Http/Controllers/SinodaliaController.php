@@ -75,8 +75,10 @@ class SinodaliaController extends Controller
         return response()->json($sinodalia->with('user')->find($createdSinodalia));
     }
 
-    public function showSinodal(Sinodalia $sinodalia)
+    public function showSinodal(Request $request, Sinodalia $sinodalia)
     {
-        return view('sinodal', compact('sinodalia'));
+        $mySinodalia = Sinodalia::find($request->id);
+        return view('sinodal', compact('mySinodalia'));
+        
     }
 }
