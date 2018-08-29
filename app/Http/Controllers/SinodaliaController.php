@@ -76,12 +76,99 @@ class SinodaliaController extends Controller
         return response()->json($sinodalia->with('user')->find($createdSinodalia));
     }
 
+    // muestra el sinodal en la tarjeta
     public function showSinodal(Request $request, Sinodalia $sinodalia)
     {
         // evitar acceso de maestros y secretaria
         if (Auth::user()->cargo != 0){
             return view('home');
         }
+        
+        // funcion de a misma clase en utitities
+        $data = $this->sinodalCard($request);
+
+        // extrayendo del array que retorna la
+        // funcion que procesa
+        $mySinodalia = $data[0]['mySinodalia'];
+
+        return view('sinodal', 
+            compact('mySinodalia'), [
+                'presidente' => $data[1]['presidente'],
+                'secretario' => $data[1]['secretario'],
+                'vocal' => $data[1]['vocal'],
+                'vocalsuplente' => $data[1]['vocalsuplente'],
+            ]);
+        
+    }
+
+    public function permisoParaEditar(Request $request)
+    {
+        // evitar acceso de maestros y secretaria
+        if (Auth::user()->cargo != 0){
+            return view('home');
+        }
+        // obtener el id de la sinodalia
+        $id = $request->id;
+
+        return view('sinodalias.permisoSino',[
+                            'id' => $id
+                        ]);
+    }
+
+    // se llama por post despues de solicitar el permiso
+    public function verifyAdmin(Request $request)
+    {
+        try {
+            // evitar acceso de maestros y secretaria
+            if (Auth::user()->cargo != 0){
+                return view('home');
+            }
+            // verificar si los pass son correctos
+            $passView = $request->pass;
+            $hashedPassword = Auth::user()->password;
+            if (Hash::check($passView, $hashedPassword))
+            {
+                // The passwords match...
+                // funcion de a misma clase en utitities
+                $data = $this->sinodalCard($request);
+                
+                // extrayendo del array que retorna la
+                // funcion que procesa
+                $mySinodalia = $data[0]['mySinodalia'];
+
+                return view('sinodalias.editarSino', 
+                    compact('mySinodalia'), [
+                        'presidente' => $data[1]['presidente'],
+                        'secretario' => $data[1]['secretario'],
+                        'vocal' => $data[1]['vocal'],
+                        'vocalsuplente' => $data[1]['vocalsuplente'],
+                    ]);
+            }
+            // en otro caso mandar ahi mismo con un
+            // mensaje
+            return redirect()->back()->withSuccess("Contraseña incorrecta");
+
+        } catch(Exception $error){
+            return view('home');
+        }
+    }
+
+    public function updateSinodalia()
+    {
+        return '';
+    }
+    public function updateAprobacionProyecto()
+    {
+        return '';
+    }
+    public function updateAprobacionFinal()
+    {
+        return '';
+    }
+
+    // utilidades
+    public function sinodalCard($request)
+    {
         // buscar la sinodalia con el id
         $mySinodalia = Sinodalia::find($request->id);
 
@@ -104,59 +191,14 @@ class SinodaliaController extends Controller
         $vocal = $vocal->name;
         $vocalsuplente = $vocalsuplente->name;
 
-        return view('sinodal', 
-            compact('mySinodalia'),[
+        return [
+            compact('mySinodalia'),
+            [
                 'presidente' => $presidente,
                 'secretario' => $secretario,
                 'vocal' => $vocal,
                 'vocalsuplente' => $vocalsuplente
-            ]);
-        
-    }
-
-    public function permisoParaEditar(Request $request)
-    {
-        // evitar acceso de maestros y secretaria
-        if (Auth::user()->cargo != 0){
-            return view('home');
-        }
-        // obtener el id de la sinodalia
-        $id = $request->id;
-
-        return view('sinodalias.permisoSino',[
-                            'id' => $id
-                        ]);
-    }
-
-    public function verifyAdmin(Request $request)
-    {
-        // evitar acceso de maestros y secretaria
-        if (Auth::user()->cargo != 0){
-            return view('home');
-        }
-        // verificar si los pass son correctos
-        $passView = $request->pass;
-        $hashedPassword = Auth::user()->password;
-        if (Hash::check($passView, $hashedPassword))
-        {
-            // The passwords match...
-            return 'coincide';
-        }
-        // en otro caso mandar ahi mismo con un
-        // mensaje
-        return redirect()->back()->withSuccess("Contraseña incorrecta");
-    }
-
-    public function updateSinodalia()
-    {
-        return '';
-    }
-    public function updateAprobacionProyecto()
-    {
-        return '';
-    }
-    public function updateAprobacionFinal()
-    {
-        return '';
+            ],
+        ];
     }
 }

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-    		<a class="btn btn-primary" href="{{ URL::previous() != url()->current() ? URL::previous() : "/home" }}">Atrás</a>
+    		<a class="btn btn-primary" href="{{'/sinodalias/'.$id}}">Atrás</a>
     		<br><br>
         <div class="jumbotron" style="background: red; color: white;">
         	<h1 class="text-center">Solicitud de edición de sinodalía</h1>
