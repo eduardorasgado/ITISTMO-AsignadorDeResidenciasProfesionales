@@ -81,9 +81,35 @@ class SinodaliaController extends Controller
         if (Auth::user()->cargo != 0){
             return view('home');
         }
-        
+        // buscar la sinodalia con el id
         $mySinodalia = Sinodalia::find($request->id);
-        return view('sinodal', compact('mySinodalia'));
+
+        // buscar el id de los representantes de
+        // esa sinodalia
+        $idPresidente = $mySinodalia->user_id;
+        $idSecretario = $mySinodalia->id_secretario;
+        $idVocal = $mySinodalia->id_vocal;
+        $idSup = $mySinodalia->id_vocal_sup;
+
+        //traer los objetos de esos represnetantes
+        $presidente = User::find($idPresidente);
+        $secretario = User::find($idSecretario);
+        $vocal = User::find($idVocal);
+        $vocalsuplente = User::find($idSup);
+
+        // traer los nombres de esos maestros
+        $presidente = $presidente->name;
+        $secretario = $secretario->name;
+        $vocal = $vocal->name;
+        $vocalsuplente = $vocalsuplente->name;
+
+        return view('sinodal', 
+            compact('mySinodalia'),[
+                'presidente' => $presidente,
+                'secretario' => $secretario,
+                'vocal' => $vocal,
+                'vocalsuplente' => $vocalsuplente
+            ]);
         
     }
 }
