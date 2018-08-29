@@ -6,7 +6,32 @@
         <a class="btn btn-primary" href="{{ URL::previous() != url()->current() ? URL::previous() : "/home" }}">Atrás</a>
         <br><hr>
         <h2>Residencia profesional: Vista unitaria sinodal #{{$mySinodalia->id}}</h2>
-        {{ $mySinodalia }}
+        <br><br>
+        <div class="card">
+            <div class="card-header">
+                <h3>Residente: {{ $mySinodalia->residente }}</h3>
+            </div>
+            <div class="card-body">
+                <b>Nombre del residente</b><p>{{$mySinodalia->residente}}</p>
+                <b>Número de control</b><p>{{ $mySinodalia->num_control }}</p>
+                <b>Nombre de proyecto</b><p>{{$mySinodalia->proyecto}}</p>
+                <b>Aprobación Anteproyecto: </b><p>{{ $mySinodalia->proyecto_aprobacion == 1 ? "APROBADO" : "Aún sin Aprobar"  }}</p>
+                <b>Carrera: </b><p>{{$mySinodalia->carrera}}</p>
+                @if($mySinodalia->proyecto_aprobacion == 1)
+                    <b>Aprobacion final: </b>
+
+                @endif
+                @if($mySinodalia->proyecto_aprobacion == 1)
+                    @if($mySinodalia->aprobacion == 1)
+                        <p>APROBADO</p>
+                    @else
+                        <p>Aún sin Aprobar</p>
+                    @endif   
+                @endif
+                <br><br>
+                {{ $mySinodalia}}
+            </div>
+        </div>
     </div>
 @endsection
     
