@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <br>
-        <a class="btn btn-primary" href="{{ URL::previous() != url()->current() ? URL::previous() : "/home" }}">Atrás</a>
+        <a class="btn btn-primary" href="{{ '/home' }}">Atrás</a>
         <br><hr>
         <h2>Residencia profesional: Vista unitaria sinodal #{{$mySinodalia->id}}</h2>
         <br><br>
