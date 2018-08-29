@@ -158,6 +158,18 @@ class SinodaliaController extends Controller
 
     public function updateSinodalia(Request $request)
     {
+        // evitar acceso de maestros y secretaria
+        if (Auth::user()->cargo != 0){
+            return view('home');
+        }
+        /*
+        En editarSino:
+            Crear options para seleccionar de todos los presidentes
+        En verifyAdmin:
+             mandar la lista completa de profesores para mandarla a editarSino
+        */
+        $presidente->presidente;
+        DB::update('update sinodalias set user_id = ? where id = ?',[$presidente, $theUserSecretario->id]);
         return $request->id;
     }
     public function updateAprobacionProyecto()
