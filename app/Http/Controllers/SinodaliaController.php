@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Sinodalia;
 use App\User;
 use App\Periodo;
@@ -111,5 +112,49 @@ class SinodaliaController extends Controller
                 'vocalsuplente' => $vocalsuplente
             ]);
         
+    }
+
+    public function permisoParaEditar(Request $request)
+    {
+        // evitar acceso de maestros y secretaria
+        if (Auth::user()->cargo != 0){
+            return view('home');
+        }
+        // obtener el id de la sinodalia
+        $id = $request->id;
+
+        return view('sinodalias.permisoSino',[
+                            'id' => $id
+                        ]);
+    }
+
+    public function verifyAdmin(Request $request)
+    {
+        // evitar acceso de maestros y secretaria
+        if (Auth::user()->cargo != 0){
+            return view('home');
+        }
+        // verificar si los pass son correctos
+        $passView = $request->pass;
+        $hashedPassword = Auth::user()->password;
+        if (Hash::check($passView, $hashedPassword))
+        {
+            // The passwords match...
+            return 'coincide';
+        }
+        return redirect()->back()->withSuccess("Contraseña incorrecta");
+    }
+
+    public function updateSinodalia()
+    {
+        return '';
+    }
+    public function updateAprobacionProyecto()
+    {
+        return '';
+    }
+    public function updateAprobacionFinal()
+    {
+        return '';
     }
 }

@@ -31,6 +31,14 @@ Route::group(['middleware' => ['auth']], function() {
 
 	Route::get('/sinodalias/{id}', 'SinodaliaController@showSinodal');
 
+	// en permisoSino.blade
+	Route::get('/sinodalias/{id}/permiso', 'SinodaliaController@permisoParaEditar')->name('permisoEditar');
+
+	//en permisoSino.blade, comprobar password
+	Route::post('/sinoPermisoComp/{id}','SinodaliaController@verifyAdmin')->name('sinoPermisoComp');
+
+	Route::get('sinodalias/{id}/editar', 'SinodaliaController@updateSinodalia')->name('sinoEdicion');
+
 	Route::get('/periodo', 'periodoController@index')->name('periodoMenu');
 
 	// para createNewAssignment component

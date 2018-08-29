@@ -9,7 +9,8 @@
         <br><br>
         <div class="card">
             <div class="card-header">
-                <h3>Residente: {{ $mySinodalia->residente }}</h3>
+                <h3 style="display: inline; margin-right:20px;">Residente: {{ $mySinodalia->residente }}</h3> 
+                <a class="btn btn-danger" href="{{route("permisoEditar", $mySinodalia->id)}}">Editar</a>
             </div>
             <div class="card-body" style="font-size: 20px">
                 <b>Nombre del residente</b><p>{{$mySinodalia->residente}}</p>
