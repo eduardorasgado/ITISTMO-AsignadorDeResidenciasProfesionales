@@ -21,6 +21,20 @@
                 margin: 0;
             }
 
+            #buttonStart {
+                color: white;
+                background: orange;
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                transition: all 0.3s ease 0s;
+            }
+            #buttonStart:hover {
+                background: white;
+                color: gray;
+
+            }
+
             .full-height {
                 height: 100vh;
             }
@@ -84,7 +98,9 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Comencemos Aquí</a>
+                        <a href="{{ url('/home') }}" >
+                            <button id="buttonStart">Comencemos Aquí</button>
+                        </a>
                     @else
                         <a href="{{ route('login') }}">Entrar</a>
                         <a href="{{ route('register') }}">Registro</a>

@@ -38,6 +38,7 @@
         }
         .nameApp2 {
             display: none;
+            color: #FFF;
         }
 
         @media (max-width: 700px){
