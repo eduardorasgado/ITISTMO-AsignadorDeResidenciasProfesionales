@@ -14,7 +14,10 @@
             <div class="card-body" style="font-size: 20px">
                 <div class="row">
                     <div class="col-md-6">
-                        <form>
+                        <form action="{{ route("updateSino", $mySinodalia->id) }}" method="POST">
+                            {{-- funcion que provee laravel para generar un token --}}
+                            {{-- Sin ello, el form no es reconocido por laravel --}}
+                            {{ csrf_field() }}
                             <div class="form-group">
                                 <label>Nombre del residente</label>
                                 <input class="form-control" type="text" name="" value="{{$mySinodalia->residente}}">
