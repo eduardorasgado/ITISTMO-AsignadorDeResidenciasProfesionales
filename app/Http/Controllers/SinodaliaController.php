@@ -142,6 +142,8 @@ class SinodaliaController extends Controller
             // The passwords match...
             return 'coincide';
         }
+        // en otro caso mandar ahi mismo con un
+        // mensaje
         return redirect()->back()->withSuccess("Contraseña incorrecta");
     }
 
