@@ -36,6 +36,10 @@ Route::group(['middleware' => ['auth']], function() {
 
 	//en permisoSino.blade, comprobar password
 	Route::post('/sinoPermisoComp/{id}','SinodaliaController@verifyAdmin')->name('sinoPermisoComp');
+	Route::get('/sinoPermisoComp/{id}', function()
+	{
+	    return Redirect::to('/');
+	});
 
 	Route::get('sinodalias/{id}/editar', 'SinodaliaController@updateSinodalia')->name('sinoEdicion');
 

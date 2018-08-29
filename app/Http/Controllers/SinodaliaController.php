@@ -123,6 +123,9 @@ class SinodaliaController extends Controller
             if (Auth::user()->cargo != 0){
                 return view('home');
             }
+            if (!isset($request->pass)) {
+                return view('home');
+            }
             // verificar si los pass son correctos
             $passView = $request->pass;
             $hashedPassword = Auth::user()->password;
@@ -166,7 +169,7 @@ class SinodaliaController extends Controller
         return '';
     }
 
-    // utilidades
+    // UTILIDADES ---------------
     public function sinodalCard($request)
     {
         // buscar la sinodalia con el id
