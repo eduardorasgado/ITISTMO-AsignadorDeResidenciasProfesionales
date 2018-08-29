@@ -156,9 +156,9 @@ class SinodaliaController extends Controller
         }
     }
 
-    public function updateSinodalia()
+    public function updateSinodalia(Request $request)
     {
-        return '';
+        return $request->id;
     }
     public function updateAprobacionProyecto()
     {

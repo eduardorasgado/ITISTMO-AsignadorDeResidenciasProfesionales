@@ -42,6 +42,13 @@ Route::group(['middleware' => ['auth']], function() {
 	    return Redirect::to('/');
 	});
 
+	// realizar la actualizacion de la sinodalia
+	Route::post('/updateSino/{id}', 'SinodaliaController@updateSinodalia')->name('updateSino');
+	Route::get('/updateSino/{id}', function()
+	{
+	    return Redirect::to('/');
+	});
+
 	Route::get('sinodalias/{id}/editar', 'SinodaliaController@updateSinodalia')->name('sinoEdicion');
 
 	Route::get('/periodo', 'periodoController@index')->name('periodoMenu');
