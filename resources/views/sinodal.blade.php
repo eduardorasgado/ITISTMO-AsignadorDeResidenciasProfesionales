@@ -28,6 +28,11 @@
                     <div class="row">
                         <div class="col-md-3">
                             <p>{{ $mySinodalia->proyecto_aprobacion == 1 ? "APROBADO" : "Aún sin Aprobar"  }}</p>
+                            @if(session('success'))
+                              <div class="alert alert-success" role="alert" style="margin-top: 5px">
+                                  <span class="text-success">{{ session('success') }}</span>
+                              </div>
+                            @endif
                         </div>
                         <div class="col-md-3">
                              @if($mySinodalia->proyecto_aprobacion != 1)
@@ -40,11 +45,6 @@
                                         <input type="password" name="pass" id="pass" class="form-control">
                                     </div>
                                     <input class="form-control btn btn-success" type="submit" name="" value="Aprobar anteproyecto">
-                                    @if(session('success'))
-                                      <div class="alert alert-success" role="alert" style="margin-top: 5px">
-                                          <span class="text-success">{{ session('success') }}</span>
-                                      </div>
-                                    @endif
                                 </form>
                             @endif
                         </div>

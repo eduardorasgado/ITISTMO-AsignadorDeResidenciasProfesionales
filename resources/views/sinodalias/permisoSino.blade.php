@@ -25,11 +25,10 @@
         					<br>
         					<input class="form-control" type="submit" name="" value="Comprobar">
         					@if(session('success'))
-                      <div class="alert alert-success" role="alert" style="margin-top: 5px">
-                          <span class="text-success">{{ session('success') }}</span>
-                      </div>
-                  
-                  @endif
+                              <div class="alert alert-success" role="alert" style="margin-top: 5px">
+                                  <span class="text-success">{{ session('success') }}</span>
+                              </div>
+                            @endif
         				</div>
         			</form>
         		</div>

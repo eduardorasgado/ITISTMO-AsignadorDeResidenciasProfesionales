@@ -232,6 +232,9 @@ class SinodaliaController extends Controller
             if (Hash::check($passView, $hashedPassword))
             {
                 // si las passwords coinciden
+                $idSinodal = $request->id;
+                // $theUpdate = Sinodal::find($idSinodal);
+                DB::update('update sinodalias set proyecto_aprobacion = ? where id = ?',[1, $idSinodal]);
                 return redirect()->back()->withSuccess('Aprobaste el anteproyecto');
             }
             else {
