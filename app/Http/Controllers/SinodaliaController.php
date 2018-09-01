@@ -188,10 +188,14 @@ class SinodaliaController extends Controller
 
         // return dd([$residente, $num_control, $proyecto, $carrera, $presidente, $secretario, $vocal, $vocalsuplente]);
 
+        // cambiar el numero de asignaciones, +o-
+        $this->teacherAsignacionesChange($idSino, $presidente, $secretario, $vocal, $vocalsuplente);
+
+        // actualizar con nuevos datos
         DB::update('update sinodalias set user_id = ?, residente = ?, carrera = ?, num_control = ?, proyecto = ?, id_secretario = ?, id_vocal = ?, id_vocal_sup = ? where id = ?',[$presidente, $residente, $carrera, $num_control, $proyecto, $secretario, $vocal, $vocalsuplente, $idSino]);
 
-        return "cambios guardados";
-
+        // regresar a la tarjeta del sinodal
+        // return "cambios guardados";
         $data = $this->sinodalCard($request);
 
         // extrayendo del array que retorna la
@@ -200,10 +204,10 @@ class SinodaliaController extends Controller
 
         return view('sinodal', 
             compact('mySinodalia'), [
-                'presidente' => $data[1]['presidente'],
-                'secretario' => $data[1]['secretario'],
-                'vocal' => $data[1]['vocal'],
-                'vocalsuplente' => $data[1]['vocalsuplente'],
+                'presidente' => $data[1]['presidente']->name,
+                'secretario' => $data[1]['secretario']->name,
+                'vocal' => $data[1]['vocal']->name,
+                'vocalsuplente' => $data[1]['vocalsuplente']->name,
             ]);
     }
     public function updateAprobacionProyecto()
@@ -216,7 +220,7 @@ class SinodaliaController extends Controller
     }
 
     // UTILIDADES ---------------
-    public function sinodalCard($request)
+    private function sinodalCard($request)
     {
         // buscar la sinodalia con el id
         $mySinodalia = Sinodalia::find($request->id);
@@ -242,5 +246,10 @@ class SinodaliaController extends Controller
                 'vocalsuplente' => $vocalsuplente
             ],
         ];
+    }
+
+    private function teacherAsignacionesChange($id, $p, $s, $v, $vs)
+    {
+        return true;
     }
 }
