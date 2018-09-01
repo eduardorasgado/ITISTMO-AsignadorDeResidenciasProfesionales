@@ -24,7 +24,21 @@
                 <br>
                 <div class="jumbotron" style="background: orange; color: white">
                     <h3 class="text-center">Aprobaciones Oficiales del Sinodal</h3>
-                    <b>Aprobación Anteproyecto: </b><p>{{ $mySinodalia->proyecto_aprobacion == 1 ? "APROBADO" : "Aún sin Aprobar"  }}</p>
+                    <b>Aprobación Anteproyecto: </b>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <p>{{ $mySinodalia->proyecto_aprobacion == 1 ? "APROBADO" : "Aún sin Aprobar"  }}</p>
+                        </div>
+                        <div class="col-md-2">
+                             @if($mySinodalia->proyecto_aprobacion != 1)
+                                <a href="" class="btn btn-success">Aprobar anteproyecto</a>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        
+                    </div>
                     @if($mySinodalia->proyecto_aprobacion == 1)
                         <b>Aprobacion final: </b>
 
