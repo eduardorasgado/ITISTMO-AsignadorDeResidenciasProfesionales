@@ -53,9 +53,9 @@ class SinodaliaController extends Controller
         // $theUserVocal = User::find($request->vocal);
         //vocal suplente
         $theUserSuplente = User::find($request->vocalSuplente);
-        $asignaciones3 = $theUserSuplente->num_asignaciones + 1;
+        $asignaciones4 = $theUserSuplente->num_asignaciones + 1;
         // nuevo numero de asignaciones a presidente
-        DB::update('update users set num_asignaciones = ? where id = ?',[$asignaciones3, $theUserSuplente->id]);
+        DB::update('update users set num_asignaciones = ? where id = ?',[$asignaciones4, $theUserSuplente->id]);
         $theUserSuplente = User::find($request->vocalSuplente);
         
         // periodo
@@ -191,8 +191,13 @@ class SinodaliaController extends Controller
         // cambiar el numero de asignaciones, +o-
         $this->teacherAsignacionesChange($idSino, $presidente, $secretario, $vocal, $vocalsuplente);
 
-        // actualizar con nuevos datos
-        DB::update('update sinodalias set user_id = ?, residente = ?, carrera = ?, num_control = ?, proyecto = ?, id_secretario = ?, id_vocal = ?, id_vocal_sup = ? where id = ?',[$presidente, $residente, $carrera, $num_control, $proyecto, $secretario, $vocal, $vocalsuplente, $idSino]);
+        try{
+            // actualizar con nuevos datos
+            DB::update('update sinodalias set user_id = ?, residente = ?, carrera = ?, num_control = ?, proyecto = ?, id_secretario = ?, id_vocal = ?, id_vocal_sup = ? where id = ?',[$presidente, $residente, $carrera, $num_control, $proyecto, $secretario, $vocal, $vocalsuplente, $idSino]);
+        } catch(Exception $error) 
+        {
+            return view("errors.errorCustom");
+        }
 
         // regresar a la tarjeta del sinodal
         // return "cambios guardados";
@@ -250,6 +255,40 @@ class SinodaliaController extends Controller
 
     private function teacherAsignacionesChange($id, $p, $s, $v, $vs)
     {
+        // metodo para cambiar el numero de asignacions
+        // de los profesores involucrados
+        //encontrar la sinodalia con el id
+        $OldSinodalia = Sinodalia::find($id);
+        
+        $oldPresident = $OldSinodalia->user_id;
+        $oldSecretario = $OldSinodalia->id_secretario;
+        $oldVocal = $OldSinodalia->id_vocal;
+        $oldVS = $OldSinodalia->id_vocal_sup;
+        
+        //lista de los pasados 
+        $oldGuys = [$oldPresident, $oldSecretario, $oldVocal, $oldVS];
+
+        // meter a todos en un arreglo
+        // presidente, seecretario, vocal, vocalsuplente
+        $guys = [User::find($p), User::find($s), User::find($v), User::find($vs)];
+
+        // iterar para checkear cambios
+        for ($i = 0; $i < count($guys); $i++)
+        { 
+            if($guys[$i]->id != $oldGuys[$i])
+            {
+                // quitandole asignaciones a old
+                $theUser= User::find($oldGuys[$i]);
+                $asignaciones = $theUser->num_asignaciones - 1;
+                // nuevo numero de asignaciones a presidente
+                DB::update('update users set num_asignaciones = ? where id = ?',[$asignaciones, $oldGuys[$i]]);
+
+                //agregando asignaciones a new
+                $asignaciones = $guys[$i]->num_asignaciones + 1;
+                // nuevo numero de asignaciones a presidente
+                DB::update('update users set num_asignaciones = ? where id = ?',[$asignaciones, $guys[$i]->id]);
+            }
+        }
         return true;
     }
 }
