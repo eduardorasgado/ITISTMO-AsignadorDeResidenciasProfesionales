@@ -16,6 +16,7 @@ class SinodaliaController extends Controller
                 return view('home');
             }
             $allSinodalias = Sinodalia::where('aprobacion', '!=', 1)->get();
+
             return response()->json([
                 'sinodalias' => $allSinodalias,
             ]);
@@ -93,10 +94,10 @@ class SinodaliaController extends Controller
 
         return view('sinodal', 
             compact('mySinodalia'), [
-                'presidente' => $data[1]['presidente'],
-                'secretario' => $data[1]['secretario'],
-                'vocal' => $data[1]['vocal'],
-                'vocalsuplente' => $data[1]['vocalsuplente'],
+                'presidente' => $data[1]['presidente']->name,
+                'secretario' => $data[1]['secretario']->name,
+                'vocal' => $data[1]['vocal']->name,
+                'vocalsuplente' => $data[1]['vocalsuplente']->name,
             ]);
         
     }
@@ -184,10 +185,24 @@ class SinodaliaController extends Controller
         $secretario = $request->secretario;
         $vocal = $request->vocal;
         $vocalsuplente = $request->vocalsuplente;
-        return "Cambios guardados";
 
-        DB::update('update sinodalias set user_id = ? where id = ?',[$presidente, $idSino]);
-        return $request->id;
+        DB::update('update sinodalias set user_id = ?, residente = ?, carrera = ?, num_control = ?, proyecto = ?, id_secretario = ?, id_vocal = ?, id_vocal_sup = ? where id = ?',[$presidente, $residente, $carrera, $num_control, $proyecto, $secretario, $vocal, $vocalsuplente, $idSino]);
+
+        return "cambios giardados";
+
+        $data = $this->sinodalCard($request);
+
+        // extrayendo del array que retorna la
+        // funcion que procesa
+        $mySinodalia = $data[0]['mySinodalia'];
+
+        return view('sinodal', 
+            compact('mySinodalia'), [
+                'presidente' => $data[1]['presidente'],
+                'secretario' => $data[1]['secretario'],
+                'vocal' => $data[1]['vocal'],
+                'vocalsuplente' => $data[1]['vocalsuplente'],
+            ]);
     }
     public function updateAprobacionProyecto()
     {
