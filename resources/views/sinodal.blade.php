@@ -36,19 +36,25 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        
-                    </div>
                     @if($mySinodalia->proyecto_aprobacion == 1)
                         <b>Aprobacion final: </b>
 
                     @endif
                     @if($mySinodalia->proyecto_aprobacion == 1)
-                        @if($mySinodalia->aprobacion == 1)
+                    <div class="row">
+                        <div class="col-md-3">
+                            @if($mySinodalia->aprobacion == 1)
                             <p>APROBADO</p>
-                        @else
-                            <p>Aún sin Aprobar</p>
-                        @endif   
+                            @else
+                                <p>Aún sin Aprobar</p>
+                            @endif  
+                        </div>
+                        <div class="col-md-2">
+                            @if($mySinodalia->aprobacion != 1)
+                                <a class="btn btn-success" href="">Aprobar Proyecto</a>
+                            @endif
+                        </div>
+                    </div>
                     @endif
                 </div>
             </div>
