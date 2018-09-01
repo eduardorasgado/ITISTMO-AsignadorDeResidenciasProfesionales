@@ -36,19 +36,28 @@
                             </div>
                             <div class="form-group">
                                 <label for="presidente">Presidente:</label>
-                                <input class="form-control" type="" id="presidente" name="presidente" value="{{ $presidente }}">
+                                <select class="form-control" id="presidente">
+                                   
+                                        <option value="{{ $presidente->id }}">{{ $presidente->name }}</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="secretario">Secretario:</label>
-                                <input class="form-control" type="" id="secretario" name="secretario" value="{{ $secretario }}">
+                                <select class="form-control" id="secretario">
+                                        <option value="{{ $secretario->id }}">{{ $secretario->name }}</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="vocal">Vocal: </label>
-                                <input class="form-control" type="" id="vocal" name="vocal" value="{{ $vocal }}">
+                                <select class="form-control" id="vocal">
+                                        <option value="{{ $vocal->id }}">{{ $vocal->name }}</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="vocalSuplente">Vocal Suplente</label>
-                                <input class="form-control" type="" id="vocalSuplente" name="vocalSuplente" value="{{ $vocalsuplente }}">
+                                <select class="form-control" id="vocalsuplente">
+                                        <option value="{{ $vocalsuplente->id }}">{{ $vocalsuplente->name }}</option>
+                                </select>
                             </div>
                             <input class="form-control btn-danger" type="submit" name="" value="Guardar cambios">
                         </form>

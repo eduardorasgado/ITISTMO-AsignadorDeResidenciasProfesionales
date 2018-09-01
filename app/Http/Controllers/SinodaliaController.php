@@ -138,6 +138,7 @@ class SinodaliaController extends Controller
                 // extrayendo del array que retorna la
                 // funcion que procesa
                 $mySinodalia = $data[0]['mySinodalia'];
+                $allTeachers = User::all();
 
                 return view('sinodalias.editarSino', 
                     compact('mySinodalia'), [
@@ -145,6 +146,7 @@ class SinodaliaController extends Controller
                         'secretario' => $data[1]['secretario'],
                         'vocal' => $data[1]['vocal'],
                         'vocalsuplente' => $data[1]['vocalsuplente'],
+                        'allTeachers' => $allTeachers,
                     ]);
             }
             // en otro caso mandar ahi mismo con un
@@ -201,10 +203,10 @@ class SinodaliaController extends Controller
         $vocalsuplente = User::find($idSup);
 
         // traer los nombres de esos maestros
-        $presidente = $presidente->name;
-        $secretario = $secretario->name;
-        $vocal = $vocal->name;
-        $vocalsuplente = $vocalsuplente->name;
+        // $presidente = $presidente->name;
+        // $secretario = $secretario->name;
+        // $vocal = $vocal->name;
+        // $vocalsuplente = $vocalsuplente->name;
 
         return [
             compact('mySinodalia'),
