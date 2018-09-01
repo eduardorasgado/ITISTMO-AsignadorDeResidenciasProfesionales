@@ -24,13 +24,19 @@
                 <br>
                 <div class="jumbotron" style="background: orange; color: white">
                     <h3 class="text-center">Aprobaciones Oficiales del Sinodal</h3>
+                    @if(Session::has('password'))
+                      <div class="alert alert-success" role="alert" style="margin-top: 5px">
+                          <span class="text-success">{{ Session::get('password') }}</span>
+                      </div>
+                    @endif
+
                     <b>Aprobación Anteproyecto: </b>
                     <div class="row">
                         <div class="col-md-3">
                             <p>{{ $mySinodalia->proyecto_aprobacion == 1 ? "APROBADO" : "Aún sin Aprobar"  }}</p>
-                            @if(session('success'))
+                            @if(Session::has('anteproyecto'))
                               <div class="alert alert-success" role="alert" style="margin-top: 5px">
-                                  <span class="text-success">{{ session('success') }}</span>
+                                  <span class="text-success">{{ Session::get('anteproyecto') }}</span>
                               </div>
                             @endif
                         </div>
@@ -52,6 +58,7 @@
 
                     @if($mySinodalia->proyecto_aprobacion == 1)
                         <b>Aprobación Final: </b>
+                        
 
                     @endif
                     @if($mySinodalia->proyecto_aprobacion == 1)
@@ -61,7 +68,12 @@
                             <p>APROBADO</p>
                             @else
                                 <p>Aún sin Aprobar</p>
-                            @endif  
+                            @endif 
+                            @if(Session::has('proyecto'))
+                              <div class="alert alert-success" role="alert" style="margin-top: 5px">
+                                  <span class="text-success">{{ Session::get('proyecto') }}</span>
+                              </div>
+                            @endif 
                         </div>
                         <div class="col-md-4">
                             @if($mySinodalia->aprobacion != 1)

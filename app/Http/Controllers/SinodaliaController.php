@@ -125,7 +125,7 @@ class SinodaliaController extends Controller
                 return view('home');
             }
             if (!isset($request->pass)) {
-                return view('home');
+                return view('admin');
             }
             // verificar si los pass son correctos
             $passView = $request->pass;
@@ -157,7 +157,7 @@ class SinodaliaController extends Controller
             return redirect()->back()->withSuccess("Contraseña incorrecta");
 
         } catch(Exception $error){
-            return view('home');
+            return view('admin');
         }
     }
 
@@ -217,40 +217,13 @@ class SinodaliaController extends Controller
     }
     public function updateAprobacionProyecto(Request $request)
     {
-        try 
-        {
-            // evitar acceso de maestros y secretaria
-            if (Auth::user()->cargo != 0){
-                return view('home');
-            }
-            if (!isset($request->pass)) {
-                return view('home');
-            }
-            // verificar si los pass son correctos
-            $passView = $request->pass;
-            $hashedPassword = Auth::user()->password;
-            if (Hash::check($passView, $hashedPassword))
-            {
-                // si las passwords coinciden
-                $idSinodal = $request->id;
-                // $theUpdate = Sinodal::find($idSinodal);
-                DB::update('update sinodalias set proyecto_aprobacion = ? where id = ?',[1, $idSinodal]);
-                return redirect()->back()->withSuccess('Aprobaste el anteproyecto');
-            }
-            else {
-                return redirect()->back()->withSuccess('Contraseña incorrecta');
-            }
-        } catch (Exception $error)
-        {
-            // en caso de no haber conexion
-            return redirect()->back()->withSuccess('Un error ha ocurrido, intentalo mas tarde');
-        }
-        // ningun caso
-        return view('admin');
+        // 0 para anteproyecto
+        return $this->aprovingSinos($request, 0);
     }
-    public function updateAprobacionFinal()
+    public function updateAprobacionFinal(Request $request)
     {
-        return 'Aprobado';
+        // 1 para proyecto
+        return $this->aprovingSinos($request, 1);
     }
 
     // UTILIDADES ---------------
@@ -319,5 +292,48 @@ class SinodaliaController extends Controller
             }
         }
         return true;
+    }
+
+    private function aprovingSinos($request, $operation)
+    {
+        try 
+        {
+            // evitar acceso de maestros y secretaria
+            if (Auth::user()->cargo != 0){
+                return view('home');
+            }
+            if (!isset($request->pass)) {
+                return view('admin');
+            }
+            // verificar si los pass son correctos
+            $passView = $request->pass;
+            $hashedPassword = Auth::user()->password;
+            if (Hash::check($passView, $hashedPassword))
+            {
+                // si las passwords coinciden
+                $idSinodal = $request->id;
+                // $theUpdate = Sinodal::find($idSinodal);
+                if ($operation == 1) {
+                    # code...
+                    //aprobacion final
+                    DB::update('update sinodalias set aprobacion = ? where id = ?',[1, $idSinodal]);
+                    return redirect()->back()->with('proyecto','Aprobaste el Proyecto');
+                } else {
+                    # code...
+                    //aprobacion final
+                    DB::update('update sinodalias set proyecto_aprobacion = ? where id = ?',[1, $idSinodal]);
+                    return redirect()->back()->with('anteproyecto','Aprobaste el Anteproyecto');
+                }
+            }
+            else {
+                return redirect()->back()->with('password','Contraseña incorrecta');
+            }
+        } catch (Exception $error)
+        {
+            // en caso de no haber conexion
+            return redirect()->back()->withSuccess('Un error ha ocurrido, intentalo mas tarde');
+        }
+        // ningun caso
+        return view('admin');
     }
 }
