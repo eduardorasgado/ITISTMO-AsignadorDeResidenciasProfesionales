@@ -316,11 +316,16 @@ class SinodaliaController extends Controller
                 if ($operation == 1) {
                     # code...
                     //aprobacion final
+                    /*
+                    ACTUALIZACION DEL NUMERO
+                    DE ASIGNACIONES DE LOS
+                    PROFESORES AQUI
+                    */
                     DB::update('update sinodalias set aprobacion = ? where id = ?',[1, $idSinodal]);
                     return redirect()->back()->with('proyecto','Aprobaste el Proyecto');
                 } else {
                     # code...
-                    //aprobacion final
+                    //aprobacion anteproyecto
                     DB::update('update sinodalias set proyecto_aprobacion = ? where id = ?',[1, $idSinodal]);
                     return redirect()->back()->with('anteproyecto','Aprobaste el Anteproyecto');
                 }
