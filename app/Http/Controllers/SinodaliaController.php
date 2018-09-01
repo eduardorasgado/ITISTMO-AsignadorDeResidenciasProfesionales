@@ -215,9 +215,35 @@ class SinodaliaController extends Controller
                 'vocalsuplente' => $data[1]['vocalsuplente']->name,
             ]);
     }
-    public function updateAprobacionProyecto()
+    public function updateAprobacionProyecto(Request $request)
     {
-        return '';
+        try 
+        {
+            // evitar acceso de maestros y secretaria
+            if (Auth::user()->cargo != 0){
+                return view('home');
+            }
+            if (!isset($request->pass)) {
+                return view('home');
+            }
+            // verificar si los pass son correctos
+            $passView = $request->pass;
+            $hashedPassword = Auth::user()->password;
+            if (Hash::check($passView, $hashedPassword))
+            {
+                // si las passwords coinciden
+                return redirect()->back()->withSuccess('Aprobaste el anteproyecto');
+            }
+            else {
+                return redirect()->back()->withSuccess('Contraseña incorrecta');
+            }
+        } catch (Exception $error)
+        {
+            // en caso de no haber conexion
+            return redirect()->back()->withSuccess('Un error ha ocurrido, intentalo mas tarde');
+        }
+        // ningun caso
+        return view('admin');
     }
     public function updateAprobacionFinal()
     {

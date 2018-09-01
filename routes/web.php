@@ -49,6 +49,14 @@ Route::group(['middleware' => ['auth']], function() {
 	    return Redirect::to('/');
 	});
 
+	//en sinodal.blade, aprobacion de anteproyecto
+	Route::post('/sinoPermisoComp2/{id}','SinodaliaController@updateAprobacionProyecto')->name('sinoPermisoComp2');
+	// proteccion en caso de get
+	Route::get('/sinoPermisoComp2/{id}', function()
+	{
+	    return Redirect::to('/');
+	});
+
 	Route::get('/periodo', 'periodoController@index')->name('periodoMenu');
 
 	// para createNewAssignment component

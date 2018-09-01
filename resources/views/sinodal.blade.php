@@ -29,15 +29,29 @@
                         <div class="col-md-3">
                             <p>{{ $mySinodalia->proyecto_aprobacion == 1 ? "APROBADO" : "Aún sin Aprobar"  }}</p>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                              @if($mySinodalia->proyecto_aprobacion != 1)
-                                <a href="" class="btn btn-success">Aprobar anteproyecto</a>
+                                <form action="{{ route("sinoPermisoComp2", $mySinodalia->id) }}" method="POST">
+                                    {{-- funcion que provee laravel para generar un token --}}
+                                    {{-- Sin ello, el form no es reconocido por laravel --}}
+                                    {{ csrf_field() }}
+                                    <div class="form-group">
+                                        <label for="pass">Contraseña:</label>
+                                        <input type="password" name="pass" id="pass" class="form-control">
+                                    </div>
+                                    <input class="form-control btn btn-success" type="submit" name="" value="Aprobar anteproyecto">
+                                    @if(session('success'))
+                                      <div class="alert alert-success" role="alert" style="margin-top: 5px">
+                                          <span class="text-success">{{ session('success') }}</span>
+                                      </div>
+                                    @endif
+                                </form>
                             @endif
                         </div>
                     </div>
 
                     @if($mySinodalia->proyecto_aprobacion == 1)
-                        <b>Aprobacion final: </b>
+                        <b>Aprobación Final: </b>
 
                     @endif
                     @if($mySinodalia->proyecto_aprobacion == 1)
@@ -51,7 +65,7 @@
                         </div>
                         <div class="col-md-2">
                             @if($mySinodalia->aprobacion != 1)
-                                <a class="btn btn-success" href="">Aprobar Proyecto</a>
+                                <a href="{{route("permisoEditar", $mySinodalia->id)}}" class="btn btn-success">Aprobar Proyecto</a>
                             @endif
                         </div>
                     </div>

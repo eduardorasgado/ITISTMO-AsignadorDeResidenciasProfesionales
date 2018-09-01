@@ -17,8 +17,8 @@
         			<div class="col-md-6">
         			<form action="{{ route("sinoPermisoComp", $id) }}" method="POST">
         				{{-- funcion que provee laravel para generar un token --}}
-                {{-- Sin ello, el form no es reconocido por laravel --}}
-                {{ csrf_field() }}
+                        {{-- Sin ello, el form no es reconocido por laravel --}}
+                        {{ csrf_field() }}
         				<div class="form-group">
         					<label for="pass">Contraseña:</label>
         					<input type="password" name="pass" id="pass" class="form-control">
