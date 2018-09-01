@@ -186,6 +186,8 @@ class SinodaliaController extends Controller
         $vocal = $request->vocal;
         $vocalsuplente = $request->vocalsuplente;
 
+        return dd([$residente, $num_control, $proyecto, $carrera, $presidente, $secretario, $vocal, $vocalsuplente]);
+
         DB::update('update sinodalias set user_id = ?, residente = ?, carrera = ?, num_control = ?, proyecto = ?, id_secretario = ?, id_vocal = ?, id_vocal_sup = ? where id = ?',[$presidente, $residente, $carrera, $num_control, $proyecto, $secretario, $vocal, $vocalsuplente, $idSino]);
 
         return "cambios giardados";

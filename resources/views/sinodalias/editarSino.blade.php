@@ -37,7 +37,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="presidente">Presidente:</label>
-                                <select class="form-control" id="presidente">
+                                <select class="form-control" id="presidente" name="presidente">
                                         <option value="{{ $presidente->id }}">{{ $presidente->name }}</option>
                                         @foreach ($allTeachers as $teacher)
                                             @if($teacher->id != $presidente->id)
@@ -48,7 +48,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="secretario">Secretario:</label>
-                                <select class="form-control" id="secretario">
+                                <select class="form-control" id="secretario" name="secretario">
                                         <option value="{{ $secretario->id }}">{{ $secretario->name }}</option>
                                         @foreach ($allTeachers as $teacher)
                                             @if($teacher->id != $secretario->id)
@@ -59,7 +59,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="vocal">Vocal: </label>
-                                <select class="form-control" id="vocal">
+                                <select class="form-control" id="vocal" name="vocal">
                                         <option value="{{ $vocal->id }}">{{ $vocal->name }}</option>
                                         @foreach ($allTeachers as $teacher)
                                             @if($teacher->id != $vocal->id)
@@ -70,7 +70,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="vocalSuplente">Vocal Suplente</label>
-                                <select class="form-control" id="vocalsuplente">
+                                <select class="form-control" id="vocalsuplente" name="vocalsuplente">
                                         <option value="{{ $vocalsuplente->id }}">{{ $vocalsuplente->name }}</option>
                                         @foreach ($allTeachers as $teacher)
                                             @if($teacher->id != $vocalsuplente->id)
