@@ -140,7 +140,7 @@ class SinodaliaController extends Controller
                 $mySinodalia = $data[0]['mySinodalia'];
 
                 // todos los maestros
-                $allTeachers = User::all();
+                $allTeachers = User::where('cargo', '!=', 1)->get();
 
                 return view('sinodalias.editarSino', 
                     compact('mySinodalia'), [
@@ -175,10 +175,18 @@ class SinodaliaController extends Controller
             return redirect()->back()->withSuccess("Algo salió mal, regresa al incio y vuelve a intentarlo, por favor.");
         }
         // todo sale bien se procede a hacer el cambio
+        
+        $residente = $request->residente;
+        $num_control = $request->num_control;
+        $proyecto = $request->proyecto;
+        $carrera = $request->carrera;
+        $presidente = $request->presidente;
+        $secretario = $request->secretario;
+        $vocal = $request->vocal;
+        $vocalsuplente = $request->vocalsuplente;
         return "Cambios guardados";
 
-        $presidente->presidente;
-        DB::update('update sinodalias set user_id = ? where id = ?',[$presidente, $presidente]);
+        DB::update('update sinodalias set user_id = ? where id = ?',[$presidente, $idSino]);
         return $request->id;
     }
     public function updateAprobacionProyecto()
