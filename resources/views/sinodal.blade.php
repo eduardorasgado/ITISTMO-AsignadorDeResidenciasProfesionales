@@ -34,14 +34,14 @@
                               </div>
                             @endif
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                              @if($mySinodalia->proyecto_aprobacion != 1)
                                 <form action="{{ route("sinoPermisoComp2", $mySinodalia->id) }}" method="POST">
                                     {{-- funcion que provee laravel para generar un token --}}
                                     {{-- Sin ello, el form no es reconocido por laravel --}}
                                     {{ csrf_field() }}
                                     <div class="form-group">
-                                        <label for="pass">Contraseña:</label>
+                                        <label for="pass">Contraseña de asignador:</label>
                                         <input type="password" name="pass" id="pass" class="form-control">
                                     </div>
                                     <input class="form-control btn btn-success" type="submit" name="" value="Aprobar anteproyecto">
@@ -63,9 +63,18 @@
                                 <p>Aún sin Aprobar</p>
                             @endif  
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-4">
                             @if($mySinodalia->aprobacion != 1)
-                                <a href="{{route("permisoEditar", $mySinodalia->id)}}" class="btn btn-success">Aprobar Proyecto</a>
+                                <form action="{{ route("sinoPermisoComp3", $mySinodalia->id) }}" method="POST">
+                                    {{-- funcion que provee laravel para generar un token --}}
+                                    {{-- Sin ello, el form no es reconocido por laravel --}}
+                                    {{ csrf_field() }}
+                                    <div class="form-group">
+                                        <label for="pass">Contraseña de asignador:</label>
+                                        <input type="password" name="pass" id="pass" class="form-control">
+                                    </div>
+                                    <input class="form-control btn btn-success" type="submit" name="" value="Aprobar Proyecto">
+                                </form>
                             @endif
                         </div>
                     </div>

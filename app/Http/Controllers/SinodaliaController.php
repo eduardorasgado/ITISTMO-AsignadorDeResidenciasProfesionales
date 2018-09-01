@@ -250,7 +250,7 @@ class SinodaliaController extends Controller
     }
     public function updateAprobacionFinal()
     {
-        return '';
+        return 'Aprobado';
     }
 
     // UTILIDADES ---------------
