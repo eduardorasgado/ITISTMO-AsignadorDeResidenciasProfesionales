@@ -18,6 +18,7 @@
                             {{-- funcion que provee laravel para generar un token --}}
                             {{-- Sin ello, el form no es reconocido por laravel --}}
                             {{ csrf_field() }}
+                            <input type="hidden" name="id2" id="id2" value="{{ $mySinodalia->id }}">
                             <div class="form-group">
                                 <label for="residente">Nombre del residente</label>
                                 <input class="form-control" type="text" id="residente" name="residente" value="{{$mySinodalia->residente}}">

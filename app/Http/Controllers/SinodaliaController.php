@@ -166,14 +166,19 @@ class SinodaliaController extends Controller
         if (Auth::user()->cargo != 0){
             return view('home');
         }
-        /*
-        En editarSino:
-            Crear options para seleccionar de todos los presidentes
-        En verifyAdmin:
-             mandar la lista completa de profesores para mandarla a editarSino
-        */
+        // comparando el hidden id de editarSino blade
+        // con el que viene en el url
+        $idSino = $request->id;
+        $idSinoComp = $request->id2;
+        if ($idSino != $idSinoComp) {
+            // testear esta posibilidad
+            return redirect()->back()->withSuccess("Algo salió mal, regresa al incio y vuelve a intentarlo, por favor.");
+        }
+        // todo sale bien se procede a hacer el cambio
+        return "Cambios guardados";
+
         $presidente->presidente;
-        DB::update('update sinodalias set user_id = ? where id = ?',[$presidente, $theUserSecretario->id]);
+        DB::update('update sinodalias set user_id = ? where id = ?',[$presidente, $presidente]);
         return $request->id;
     }
     public function updateAprobacionProyecto()

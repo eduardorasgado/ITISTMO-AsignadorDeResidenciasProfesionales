@@ -49,8 +49,6 @@ Route::group(['middleware' => ['auth']], function() {
 	    return Redirect::to('/');
 	});
 
-	Route::get('sinodalias/{id}/editar', 'SinodaliaController@updateSinodalia')->name('sinoEdicion');
-
 	Route::get('/periodo', 'periodoController@index')->name('periodoMenu');
 
 	// para createNewAssignment component
