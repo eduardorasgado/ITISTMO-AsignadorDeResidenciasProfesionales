@@ -19,36 +19,36 @@
                             {{-- Sin ello, el form no es reconocido por laravel --}}
                             {{ csrf_field() }}
                             <div class="form-group">
-                                <label>Nombre del residente</label>
-                                <input class="form-control" type="text" name="" value="{{$mySinodalia->residente}}">
+                                <label for="residente">Nombre del residente</label>
+                                <input class="form-control" type="text" id="residente" name="residente" value="{{$mySinodalia->residente}}">
                             </div>
                             <div class="form-group">
-                                <label>Número de control</label>
-                                <input class="form-control" type="text" name="" value="{{ $mySinodalia->num_control }}">                       
+                                <label for="num_control">Número de control</label>
+                                <input class="form-control" type="text" id="num_control" name="num_control" value="{{ $mySinodalia->num_control }}">                       
                             </div>
                             <div class="form-group">
-                                <label>Nombre del Proyecto</label>
-                                <input class="form-control" type="text" name="" value="{{ $mySinodalia->proyecto }}">                       
+                                <label for="proyecto">Nombre del Proyecto</label>
+                                <input class="form-control" type="text" id="proyecto" name="proyecto" value="{{ $mySinodalia->proyecto }}">                       
                             </div>
                             <div class="form-group">
-                                <label>Carrera: </label>
-                                <input class="form-control" type="text" name="" value="{{$mySinodalia->carrera}}">
+                                <label for="carrera">Carrera: </label>
+                                <input class="form-control" type="text" id="carrera" name="carrera" value="{{$mySinodalia->carrera}}">
                             </div>
                             <div class="form-group">
-                                <label>Presidente:</label>
-                                <input class="form-control" type="" name="" value="{{ $presidente }}">
+                                <label for="presidente">Presidente:</label>
+                                <input class="form-control" type="" id="presidente" name="presidente" value="{{ $presidente }}">
                             </div>
                             <div class="form-group">
-                                <label>Secretario:</label>
-                                <input class="form-control" type="" name="" value="{{ $secretario }}">
+                                <label for="secretario">Secretario:</label>
+                                <input class="form-control" type="" id="secretario" name="secretario" value="{{ $secretario }}">
                             </div>
                             <div class="form-group">
-                                <label>Vocal: </label>
-                                <input class="form-control" type="" name="" value="{{ $vocal }}">
+                                <label for="vocal">Vocal: </label>
+                                <input class="form-control" type="" id="vocal" name="vocal" value="{{ $vocal }}">
                             </div>
                             <div class="form-group">
-                                <label>Vocal Suplente</label>
-                                <input class="form-control" type="" name="" value="{{ $vocalsuplente }}">
+                                <label for="vocalSuplente">Vocal Suplente</label>
+                                <input class="form-control" type="" id="vocalSuplente" name="vocalSuplente" value="{{ $vocalsuplente }}">
                             </div>
                             <input class="form-control btn-danger" type="submit" name="" value="Guardar cambios">
                         </form>
