@@ -7,6 +7,8 @@ class SinodaliasTable extends Component {
 		this.state = {
 			sinodalias: [],
 			teachers: [],
+			periodosAct: [],
+			periodoSeleccionado: 0,
 		}
 
 		// bindings
@@ -19,6 +21,7 @@ class SinodaliasTable extends Component {
 		componentWillMount () {
 			this.getSinodaliasData()
 			this.getTeachersData()
+			this.getPeriodosAbiertos()
 		}
 
 		componentDidMount() {
@@ -70,12 +73,38 @@ class SinodaliasTable extends Component {
 			return '/sinodalias/'+id
 		}
 
+		getPeriodosAbiertos() {
+			axios.get('/periodosDisponibles')
+			.then((response) => {
+				this.setState({
+					periodosAct: [...response.data.periodosActivos],
+					periodoSeleccionado: response.data.periodosActivos[0].id,
+				})
+			})
+		}
+
 	render() {
 		return (
 				<div>
 					<div>
 						<h2 className="text-center">Lista de Sinodalías creadas</h2>
 						<br/>
+					</div>
+					<div className="row">
+						<div className="col-md-6">
+							
+							<form>
+							<div className="form-group">
+							<label htmlFor="periodos-form">Selección de Periodo</label>
+							<select id="periodos-form" name="periodos-form" className="form-control">
+								{ this.state.periodosAct.map((periodo) => (
+										<option key={ periodo.id }>{ periodo.name }</option>
+									)) }
+							</select>
+							</div>
+						</form>
+
+						</div>
 					</div>
 					<table className="table">
 						<thead className="thead-dark">

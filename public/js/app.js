@@ -56414,7 +56414,9 @@ var SinodaliasTable = function (_Component) {
 
 		_this.state = {
 			sinodalias: [],
-			teachers: []
+			teachers: [],
+			periodosAct: [],
+			periodoSeleccionado: 0
 
 			// bindings
 		};_this.compareTeaching = _this.compareTeaching.bind(_this);
@@ -56431,6 +56433,7 @@ var SinodaliasTable = function (_Component) {
 		value: function componentWillMount() {
 			this.getSinodaliasData();
 			this.getTeachersData();
+			this.getPeriodosAbiertos();
 		}
 	}, {
 		key: 'componentDidMount',
@@ -56492,9 +56495,21 @@ var SinodaliasTable = function (_Component) {
 			return '/sinodalias/' + id;
 		}
 	}, {
+		key: 'getPeriodosAbiertos',
+		value: function getPeriodosAbiertos() {
+			var _this5 = this;
+
+			__WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/periodosDisponibles').then(function (response) {
+				_this5.setState({
+					periodosAct: [].concat(_toConsumableArray(response.data.periodosActivos)),
+					periodoSeleccionado: response.data.periodosActivos[0].id
+				});
+			});
+		}
+	}, {
 		key: 'render',
 		value: function render() {
-			var _this5 = this;
+			var _this6 = this;
 
 			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 				'div',
@@ -56508,6 +56523,38 @@ var SinodaliasTable = function (_Component) {
 						'Lista de Sinodal\xEDas creadas'
 					),
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null)
+				),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'div',
+					{ className: 'row' },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'div',
+						{ className: 'col-md-6' },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'form',
+							null,
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'div',
+								{ className: 'form-group' },
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'label',
+									{ htmlFor: 'periodos-form' },
+									'Selecci\xF3n de Periodo'
+								),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'select',
+									{ id: 'periodos-form', name: 'periodos-form', className: 'form-control' },
+									this.state.periodosAct.map(function (periodo) {
+										return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+											'option',
+											{ key: periodo.id },
+											periodo.name
+										);
+									})
+								)
+							)
+						)
+					)
 				),
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'table',
@@ -56595,29 +56642,29 @@ var SinodaliasTable = function (_Component) {
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'td',
 									null,
-									_this5.compareTeaching(sinodalia.user_id)
+									_this6.compareTeaching(sinodalia.user_id)
 								),
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'td',
 									null,
-									_this5.compareTeaching(sinodalia.id_secretario)
+									_this6.compareTeaching(sinodalia.id_secretario)
 								),
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'td',
 									null,
-									_this5.compareTeaching(sinodalia.id_vocal)
+									_this6.compareTeaching(sinodalia.id_vocal)
 								),
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'td',
 									null,
-									_this5.compareTeaching(sinodalia.id_vocal_sup)
+									_this6.compareTeaching(sinodalia.id_vocal_sup)
 								),
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'td',
 									null,
 									__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 										'a',
-										{ href: _this5.linked(sinodalia.id), className: 'btn btn-success' },
+										{ href: _this6.linked(sinodalia.id), className: 'btn btn-success' },
 										'Editar'
 									)
 								)
