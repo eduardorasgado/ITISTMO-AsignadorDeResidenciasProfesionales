@@ -15,6 +15,7 @@ class SinodaliasTable extends Component {
 		this.compareTeaching = this.compareTeaching.bind(this)
 		this.getSinodaliasData = this.getSinodaliasData.bind(this)
 		this.linked = this.linked.bind(this)
+		this.pullPeriodo = this.pullPeriodo.bind(this)
 	}
 
 	// traer las sinodalias
@@ -38,8 +39,14 @@ class SinodaliasTable extends Component {
 			axios.get('/sinodalias')
 			.then((response) => {
 				console.log(response)
+				let sinodaliasList = response.data.sinodalias
+				let validSinodalias = []
+				sinodaliasList.map((sinodal) => {
+					sinodal.periodo_id == this.state.periodoSeleccionado && validSinodalias.push(sinodal)
+
+				})
 				this.setState({
-					sinodalias: [...response.data.sinodalias],
+					sinodalias: [...validSinodalias],
 				})
 			})
 			.catch(error => {
@@ -83,6 +90,13 @@ class SinodaliasTable extends Component {
 			})
 		}
 
+		pullPeriodo() {
+			let id = document.getElementById("periodos-form")
+			this.setState({
+				periodoSeleccionado: id,
+			})
+		}
+
 	render() {
 		return (
 				<div>
@@ -93,16 +107,21 @@ class SinodaliasTable extends Component {
 					<div className="row">
 						<div className="col-md-6">
 							
-							<form>
+							<form action="">
 							<div className="form-group">
 							<label htmlFor="periodos-form">Selección de Periodo</label>
 							<select id="periodos-form" name="periodos-form" className="form-control">
 								{ this.state.periodosAct.map((periodo) => (
-										<option key={ periodo.id }>{ periodo.name }</option>
+										<option key={ periodo.id } value={ periodo.id }>{ periodo.name }</option>
 									)) }
 							</select>
 							</div>
 						</form>
+						<button className="btn btn-success"
+											onClick={() => this.pullPeriodo()}>
+											Mostrar</button>
+						<br/>
+						<br/>
 
 						</div>
 					</div>

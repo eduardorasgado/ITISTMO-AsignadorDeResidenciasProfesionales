@@ -56422,6 +56422,7 @@ var SinodaliasTable = function (_Component) {
 		};_this.compareTeaching = _this.compareTeaching.bind(_this);
 		_this.getSinodaliasData = _this.getSinodaliasData.bind(_this);
 		_this.linked = _this.linked.bind(_this);
+		_this.pullPeriodo = _this.pullPeriodo.bind(_this);
 		return _this;
 	}
 
@@ -56458,8 +56459,13 @@ var SinodaliasTable = function (_Component) {
 
 			__WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/sinodalias').then(function (response) {
 				console.log(response);
+				var sinodaliasList = response.data.sinodalias;
+				var validSinodalias = [];
+				sinodaliasList.map(function (sinodal) {
+					sinodal.periodo_id == _this3.state.periodoSeleccionado && validSinodalias.push(sinodal);
+				});
 				_this3.setState({
-					sinodalias: [].concat(_toConsumableArray(response.data.sinodalias))
+					sinodalias: [].concat(validSinodalias)
 				});
 			}).catch(function (error) {
 				console.log(error.message);
@@ -56507,6 +56513,14 @@ var SinodaliasTable = function (_Component) {
 			});
 		}
 	}, {
+		key: 'pullPeriodo',
+		value: function pullPeriodo() {
+			var id = document.getElementById("periodos-form");
+			this.setState({
+				periodoSeleccionado: id
+			});
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 			var _this6 = this;
@@ -56532,7 +56546,7 @@ var SinodaliasTable = function (_Component) {
 						{ className: 'col-md-6' },
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 							'form',
-							null,
+							{ action: '' },
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 								'div',
 								{ className: 'form-group' },
@@ -56547,13 +56561,23 @@ var SinodaliasTable = function (_Component) {
 									this.state.periodosAct.map(function (periodo) {
 										return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 											'option',
-											{ key: periodo.id },
+											{ key: periodo.id, value: periodo.id },
 											periodo.name
 										);
 									})
 								)
 							)
-						)
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'button',
+							{ className: 'btn btn-success',
+								onClick: function onClick() {
+									return _this6.pullPeriodo();
+								} },
+							'Mostrar'
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null)
 					)
 				),
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
