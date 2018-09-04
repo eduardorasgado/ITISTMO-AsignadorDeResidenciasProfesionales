@@ -9,6 +9,7 @@ class SinodaliasTable extends Component {
 			teachers: [],
 			periodosAct: [],
 			periodoSeleccionado: 0,
+			ready: false,
 		}
 
 		// bindings
@@ -20,9 +21,15 @@ class SinodaliasTable extends Component {
 
 	// traer las sinodalias
 		componentWillMount () {
-			this.getSinodaliasData()
+			let periodReady = this.getPeriodosAbiertos()
+			if (periodReady) {
+				this.getSinodaliasData()
+				this.setState({
+					ready: true,
+				})
+			}
+			// last
 			this.getTeachersData()
-			this.getPeriodosAbiertos()
 		}
 
 		componentDidMount() {

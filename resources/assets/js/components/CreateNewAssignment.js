@@ -92,7 +92,7 @@ class CreateNewAssigment extends Component {
 					console.log("done")
 					// para que no sea 0 el id en stados
 					this.setState({
-						teachers: [...availableTeachers],
+						teachers: [...availableTeachers.reverse()],
 						presidente: availableTeachers[0].id,
 						secretario: availableTeachers[0].id,
 						vocal: availableTeachers[0].id,

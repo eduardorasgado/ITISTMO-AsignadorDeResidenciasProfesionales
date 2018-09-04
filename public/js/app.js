@@ -56087,7 +56087,7 @@ var CreateNewAssigment = function (_Component) {
 				console.log("done");
 				// para que no sea 0 el id en stados
 				_this2.setState({
-					teachers: [].concat(_toConsumableArray(availableTeachers)),
+					teachers: [].concat(_toConsumableArray(availableTeachers.reverse())),
 					presidente: availableTeachers[0].id,
 					secretario: availableTeachers[0].id,
 					vocal: availableTeachers[0].id,
@@ -56416,7 +56416,8 @@ var SinodaliasTable = function (_Component) {
 			sinodalias: [],
 			teachers: [],
 			periodosAct: [],
-			periodoSeleccionado: 0
+			periodoSeleccionado: 0,
+			ready: false
 
 			// bindings
 		};_this.compareTeaching = _this.compareTeaching.bind(_this);
@@ -56432,9 +56433,15 @@ var SinodaliasTable = function (_Component) {
 	_createClass(SinodaliasTable, [{
 		key: 'componentWillMount',
 		value: function componentWillMount() {
-			this.getSinodaliasData();
+			var periodReady = this.getPeriodosAbiertos();
+			if (periodReady) {
+				this.getSinodaliasData();
+				this.setState({
+					ready: true
+				});
+			}
+			// last
 			this.getTeachersData();
-			this.getPeriodosAbiertos();
 		}
 	}, {
 		key: 'componentDidMount',
