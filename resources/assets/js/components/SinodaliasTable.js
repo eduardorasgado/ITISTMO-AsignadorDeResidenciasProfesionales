@@ -91,6 +91,25 @@ class SinodaliasTable extends Component {
 				})
 			})
 		}
+		showTableContent() {
+			return (
+					this.state.sinodalias.map(sinodalia => (
+					  			<tr key={sinodalia.id}>
+							      <th scope="row">{sinodalia.residente}</th>
+							      <td>{sinodalia.proyecto}</td>
+							      <td>{sinodalia.carrera}</td>
+							      <td>{sinodalia.num_control}</td>
+							      <td>{this.compareTeaching(sinodalia.user_id)}</td>
+							      <td>{this.compareTeaching(sinodalia.id_secretario)}</td>
+							      <td>{this.compareTeaching(sinodalia.id_vocal)}</td>
+							      <td>{this.compareTeaching(sinodalia.id_vocal_sup)}</td>
+							      <td><a href={this.linked(sinodalia.id)} className="btn btn-success">
+							      			Editar</a>
+							      </td>
+							    </tr>
+					  		))
+				)
+		}
 
 		pullPeriodo() {
 			let id = document.getElementById("periodos-form")
@@ -145,21 +164,7 @@ class SinodaliasTable extends Component {
 					    </tr>
 					  </thead>
 					  <tbody>
-					  	{ this.state.sinodalias.map(sinodalia => (
-					  			<tr key={sinodalia.id}>
-							      <th scope="row">{sinodalia.residente}</th>
-							      <td>{sinodalia.proyecto}</td>
-							      <td>{sinodalia.carrera}</td>
-							      <td>{sinodalia.num_control}</td>
-							      <td>{this.compareTeaching(sinodalia.user_id)}</td>
-							      <td>{this.compareTeaching(sinodalia.id_secretario)}</td>
-							      <td>{this.compareTeaching(sinodalia.id_vocal)}</td>
-							      <td>{this.compareTeaching(sinodalia.id_vocal_sup)}</td>
-							      <td><a href={this.linked(sinodalia.id)} className="btn btn-success">
-							      			Editar</a>
-							      </td>
-							    </tr>
-					  		)) 
+					  	{ this.showTableContent() 
 					  }
 					  </tbody>
 					</table>

@@ -56515,6 +56515,67 @@ var SinodaliasTable = function (_Component) {
 			});
 		}
 	}, {
+		key: 'showTableContent',
+		value: function showTableContent() {
+			var _this6 = this;
+
+			return this.state.sinodalias.map(function (sinodalia) {
+				return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'tr',
+					{ key: sinodalia.id },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'th',
+						{ scope: 'row' },
+						sinodalia.residente
+					),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'td',
+						null,
+						sinodalia.proyecto
+					),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'td',
+						null,
+						sinodalia.carrera
+					),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'td',
+						null,
+						sinodalia.num_control
+					),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'td',
+						null,
+						_this6.compareTeaching(sinodalia.user_id)
+					),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'td',
+						null,
+						_this6.compareTeaching(sinodalia.id_secretario)
+					),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'td',
+						null,
+						_this6.compareTeaching(sinodalia.id_vocal)
+					),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'td',
+						null,
+						_this6.compareTeaching(sinodalia.id_vocal_sup)
+					),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'td',
+						null,
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'a',
+							{ href: _this6.linked(sinodalia.id), className: 'btn btn-success' },
+							'Editar'
+						)
+					)
+				);
+			});
+		}
+	}, {
 		key: 'pullPeriodo',
 		value: function pullPeriodo() {
 			var id = document.getElementById("periodos-form");
@@ -56528,7 +56589,7 @@ var SinodaliasTable = function (_Component) {
 	}, {
 		key: 'render',
 		value: function render() {
-			var _this6 = this;
+			var _this7 = this;
 
 			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 				'div',
@@ -56577,7 +56638,7 @@ var SinodaliasTable = function (_Component) {
 							'button',
 							{ className: 'btn btn-success',
 								onClick: function onClick() {
-									return _this6.pullPeriodo();
+									return _this7.pullPeriodo();
 								} },
 							'Mostrar'
 						),
@@ -56644,61 +56705,7 @@ var SinodaliasTable = function (_Component) {
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 						'tbody',
 						null,
-						this.state.sinodalias.map(function (sinodalia) {
-							return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								'tr',
-								{ key: sinodalia.id },
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									'th',
-									{ scope: 'row' },
-									sinodalia.residente
-								),
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									'td',
-									null,
-									sinodalia.proyecto
-								),
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									'td',
-									null,
-									sinodalia.carrera
-								),
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									'td',
-									null,
-									sinodalia.num_control
-								),
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									'td',
-									null,
-									_this6.compareTeaching(sinodalia.user_id)
-								),
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									'td',
-									null,
-									_this6.compareTeaching(sinodalia.id_secretario)
-								),
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									'td',
-									null,
-									_this6.compareTeaching(sinodalia.id_vocal)
-								),
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									'td',
-									null,
-									_this6.compareTeaching(sinodalia.id_vocal_sup)
-								),
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									'td',
-									null,
-									__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-										'a',
-										{ href: _this6.linked(sinodalia.id), className: 'btn btn-success' },
-										'Editar'
-									)
-								)
-							);
-						})
+						this.showTableContent()
 					)
 				),
 				this.state.sinodalias.length == 0 && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
