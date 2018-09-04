@@ -56009,7 +56009,8 @@ var CreateNewAssigment = function (_Component) {
 			vocalSuplente: 0,
 			teachers: [],
 			periodosAct: [],
-			periodoSeleccionado: 0
+			periodoSeleccionado: 0,
+			freeTeachers: []
 			//bindings
 		};_this.handleSubmit = _this.handleSubmit.bind(_this);
 		// this.postSinodaliaData = this.postSinodaliaData.bind(this)
@@ -56057,7 +56058,8 @@ var CreateNewAssigment = function (_Component) {
 				vocalSuplente: 0,
 				teachers: [],
 				periodosAct: [],
-				periodoSeleccionado: 0
+				periodoSeleccionado: 0,
+				freeTeachers: []
 			});
 		}
 	}, {
@@ -56083,11 +56085,32 @@ var CreateNewAssigment = function (_Component) {
 				/* 
     	logica para el FILTRO INTELIGENTE
     			AQUI
-    	*/
+    
+    */
+				// para guardar a los disponibles
+				var freeTeachers = [];
+				// numero mas pequenio de asignaciones
+				var minor = 0;
+				availableTeachers.map(function (teacher, key) {
+					key == 0 && (minor = teacher.num_asignaciones);
+					// obtener si hay menores a el primero
+					if (teacher.num_asignaciones < minor) {
+						minor = teacher.num_asignaciones;
+					}
+				});
+
+				// metiendolos en una lista nueva los de minor
+				availableTeachers.map(function (teacher) {
+					if (teacher.num_asignaciones == minor) {
+						freeTeachers.push(teacher);
+					}
+				});
+				console.log(freeTeachers);
 				console.log("done");
 				// para que no sea 0 el id en stados
 				_this2.setState({
 					teachers: [].concat(_toConsumableArray(availableTeachers.reverse())),
+					teachersAvailable: freeTeachers,
 					presidente: availableTeachers[0].id,
 					secretario: availableTeachers[0].id,
 					vocal: availableTeachers[0].id,
@@ -56741,7 +56764,7 @@ var SinodaliasTable = function (_Component) {
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 								'th',
 								{ scope: 'col' },
-								'Aprobaci\xF3n Final'
+								'Aprobaciones'
 							)
 						)
 					),

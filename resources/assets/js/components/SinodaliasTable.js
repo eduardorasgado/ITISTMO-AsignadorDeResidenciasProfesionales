@@ -179,7 +179,7 @@ class SinodaliasTable extends Component {
 					      <th scope="col">Secretario</th>
 					      <th scope="col">Vocal</th>
 					      <th scope="col">Vocal Suplente</th>
-					      <th scope="col">Aprobación Final</th>
+					      <th scope="col">Aprobaciones</th>
 					    </tr>
 					  </thead>
 					  <tbody>

@@ -16,6 +16,7 @@ class CreateNewAssigment extends Component {
 			teachers: [],
 			periodosAct: [],
 			periodoSeleccionado: 0,
+			freeTeachers: [],
 		}
 		//bindings
 		this.handleSubmit = this.handleSubmit.bind(this)
@@ -64,6 +65,7 @@ class CreateNewAssigment extends Component {
 					teachers: [],
 					periodosAct: [],
 					periodoSeleccionado: 0,
+					freeTeachers: []
 		})
 	}
 
@@ -87,12 +89,32 @@ class CreateNewAssigment extends Component {
 
 					logica para el FILTRO INTELIGENTE
 								AQUI
-
+					
 					*/ 
+					// para guardar a los disponibles
+					let freeTeachers = []
+					// numero mas pequenio de asignaciones
+					let minor = 0;
+					availableTeachers.map((teacher, key ) => {
+						(key == 0) && (minor = teacher.num_asignaciones)
+						// obtener si hay menores a el primero
+						if (teacher.num_asignaciones < minor) {
+							minor = teacher.num_asignaciones
+						}
+					})
+
+					// metiendolos en una lista nueva los de minor
+					availableTeachers.map((teacher) => {
+						if (teacher.num_asignaciones == minor) {
+							freeTeachers.push(teacher)
+						}
+					})
+					console.log(freeTeachers)
 					console.log("done")
 					// para que no sea 0 el id en stados
 					this.setState({
 						teachers: [...availableTeachers.reverse()],
+						teachersAvailable: freeTeachers,
 						presidente: availableTeachers[0].id,
 						secretario: availableTeachers[0].id,
 						vocal: availableTeachers[0].id,
