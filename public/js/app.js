@@ -56592,7 +56592,9 @@ var SinodaliasTable = function (_Component) {
 							'a',
 							{ href: _this6.linked(sinodalia.id), className: 'btn btn-success' },
 							'Editar'
-						)
+						),
+						sinodalia.proyecto_aprobacion ? " ✔" : "",
+						sinodalia.aprobacion ? " ✔" : ""
 					)
 				);
 			});

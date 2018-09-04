@@ -15,8 +15,8 @@ class SinodaliaController extends Controller
             if (Auth::user()->cargo != 0){
                 return view('home');
             }
-            $allSinodalias = Sinodalia::where('aprobacion', '!=', 1)->get();
-
+            // $allSinodalias = Sinodalia::where('aprobacion', '!=', 1)->get();
+            $allSinodalias = Sinodalia::all();
             return response()->json([
                 'sinodalias' => $allSinodalias,
             ]);

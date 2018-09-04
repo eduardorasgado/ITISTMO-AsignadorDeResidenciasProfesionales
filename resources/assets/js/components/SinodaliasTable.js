@@ -108,8 +108,11 @@ class SinodaliasTable extends Component {
 							      <td>{this.compareTeaching(sinodalia.id_secretario)}</td>
 							      <td>{this.compareTeaching(sinodalia.id_vocal)}</td>
 							      <td>{this.compareTeaching(sinodalia.id_vocal_sup)}</td>
-							      <td><a href={this.linked(sinodalia.id)} className="btn btn-success">
+							      <td>
+							      <a href={this.linked(sinodalia.id)} className="btn btn-success">
 							      			Editar</a>
+							      { sinodalia.proyecto_aprobacion ? " ✔" : ""}
+							      { sinodalia.aprobacion ? " ✔" : ""}
 							      </td>
 							    </tr>
 					  		))
