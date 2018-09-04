@@ -56433,13 +56433,8 @@ var SinodaliasTable = function (_Component) {
 	_createClass(SinodaliasTable, [{
 		key: 'componentWillMount',
 		value: function componentWillMount() {
-			var periodReady = this.getPeriodosAbiertos();
-			if (periodReady) {
-				this.getSinodaliasData();
-				this.setState({
-					ready: true
-				});
-			}
+			this.getPeriodosAbiertos();
+			this.getSinodaliasData();
 			// last
 			this.getTeachersData();
 		}
@@ -56523,9 +56518,12 @@ var SinodaliasTable = function (_Component) {
 		key: 'pullPeriodo',
 		value: function pullPeriodo() {
 			var id = document.getElementById("periodos-form");
+
+			// cambiando il id del periodo para mostrarlos
 			this.setState({
-				periodoSeleccionado: id
+				periodoSeleccionado: id.value
 			});
+			console.log("pullPeriodo: " + id.value);
 		}
 	}, {
 		key: 'render',

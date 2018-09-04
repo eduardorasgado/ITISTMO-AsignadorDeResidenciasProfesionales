@@ -21,13 +21,8 @@ class SinodaliasTable extends Component {
 
 	// traer las sinodalias
 		componentWillMount () {
-			let periodReady = this.getPeriodosAbiertos()
-			if (periodReady) {
-				this.getSinodaliasData()
-				this.setState({
-					ready: true,
-				})
-			}
+			this.getPeriodosAbiertos()
+			this.getSinodaliasData()
 			// last
 			this.getTeachersData()
 		}
@@ -99,9 +94,12 @@ class SinodaliasTable extends Component {
 
 		pullPeriodo() {
 			let id = document.getElementById("periodos-form")
+
+			// cambiando il id del periodo para mostrarlos
 			this.setState({
-				periodoSeleccionado: id,
+				periodoSeleccionado: id.value,
 			})
+			console.log("pullPeriodo: "+id.value)
 		}
 
 	render() {
