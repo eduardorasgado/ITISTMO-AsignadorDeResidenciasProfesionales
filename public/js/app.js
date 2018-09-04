@@ -56300,7 +56300,10 @@ var CreateNewAssigment = function (_Component) {
 									return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 										'option',
 										{ key: teacher.id, value: teacher.id },
-										teacher.name
+										teacher.name,
+										': ',
+										teacher.num_asignaciones,
+										' asignaciones en curso'
 									);
 								})
 							)
@@ -56321,7 +56324,10 @@ var CreateNewAssigment = function (_Component) {
 									return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 										'option',
 										{ key: teacher.id, value: teacher.id },
-										teacher.name
+										teacher.name,
+										': ',
+										teacher.num_asignaciones,
+										' asignaciones en curso'
 									);
 								})
 							)
@@ -56343,7 +56349,10 @@ var CreateNewAssigment = function (_Component) {
 									return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 										'option',
 										{ key: teacher.id, value: teacher.id },
-										teacher.name
+										teacher.name,
+										': ',
+										teacher.num_asignaciones,
+										' asignaciones en curso'
 									);
 								})
 							)
@@ -56365,7 +56374,10 @@ var CreateNewAssigment = function (_Component) {
 									return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 										'option',
 										{ key: teacher.id, value: teacher.id },
-										teacher.name
+										teacher.name,
+										': ',
+										teacher.num_asignaciones,
+										' asignaciones en curso'
 									);
 								})
 							)
@@ -56635,7 +56647,7 @@ var SinodaliasTable = function (_Component) {
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'label',
 									{ htmlFor: 'periodos-form' },
-									'Selecci\xF3n de Periodo'
+									'Selecci\xF3n de Periodo(solo disponibles)'
 								),
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'select',

@@ -212,7 +212,8 @@ class CreateNewAssigment extends Component {
 							<select className="form-control" id="presidente" 
 											onChange={this.handleChangePresidente} value={this.state.presidente}>
 								{ this.state.teachers.map( teacher => (
-										<option key={ teacher.id } value={ teacher.id }>{ teacher.name }</option>
+										<option key={ teacher.id } value={ teacher.id }>
+										{ teacher.name }: {teacher.num_asignaciones} asignaciones en curso</option>
 									)) }
 							</select>
 						</div>
@@ -221,7 +222,8 @@ class CreateNewAssigment extends Component {
 							<select className="form-control" id="secretario"
 											onChange={this.handleChangeSecretario} value={this.state.secretario}>
 								{ this.state.teachers.map( teacher => (
-										<option key={ teacher.id } value={ teacher.id }>{ teacher.name }</option>
+										<option key={ teacher.id } value={ teacher.id }>
+										{ teacher.name }: {teacher.num_asignaciones} asignaciones en curso</option>
 									)) }
 							</select>
 						</div>
@@ -230,7 +232,8 @@ class CreateNewAssigment extends Component {
 							<select className="form-control" id="vocal" 
 												onChange={this.handleChangeVocal} value={this.state.vocal}>>
 								{ this.state.teachers.map( teacher => (
-										<option key={ teacher.id } value={ teacher.id }>{ teacher.name }</option>
+										<option key={ teacher.id } value={ teacher.id }>
+										{ teacher.name }: {teacher.num_asignaciones} asignaciones en curso</option>
 									)) }
 							</select>
 						</div>
@@ -239,7 +242,8 @@ class CreateNewAssigment extends Component {
 							<select className="form-control" id="vocalSuplente"
 												onChange={this.handleChangeVocalSuplente} value={this.state.vocalSuplente}>>
 								{ this.state.teachers.map( teacher => (
-										<option key={ teacher.id } value={ teacher.id }>{ teacher.name }</option>
+										<option key={ teacher.id } value={ teacher.id }>
+										{ teacher.name }: {teacher.num_asignaciones} asignaciones en curso</option>
 									)) }
 							</select>
 						</div>

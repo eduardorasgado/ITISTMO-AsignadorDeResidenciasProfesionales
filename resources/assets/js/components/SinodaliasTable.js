@@ -141,7 +141,7 @@ class SinodaliasTable extends Component {
 						<div className="col-md-5">
 							<form action="">
 							<div className="form-group">
-							<label htmlFor="periodos-form">Selección de Periodo</label>
+							<label htmlFor="periodos-form">Selección de Periodo(solo disponibles)</label>
 							<select id="periodos-form" name="periodos-form" className="form-control">
 								{ this.state.ready ? this.state.periodosAct.map((periodo) => (
 										<option key={ periodo.id } value={ periodo.id }>{ periodo.name }</option>
