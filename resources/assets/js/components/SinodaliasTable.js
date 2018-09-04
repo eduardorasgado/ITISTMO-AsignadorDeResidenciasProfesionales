@@ -78,19 +78,24 @@ class SinodaliasTable extends Component {
 			return teacher
 		}
 
+		// link manual
 		linked(id){
 			return '/sinodalias/'+id
 		}
 
+		// cargar los periodos para filtrar las sinodalias
 		getPeriodosAbiertos() {
 			axios.get('/periodosDisponibles')
 			.then((response) => {
 				this.setState({
 					periodosAct: [...response.data.periodosActivos],
 					periodoSeleccionado: response.data.periodosActivos[0].id,
+					ready: true,
 				})
 			})
 		}
+
+		// renderiza la tabla completa, puede llamarse
 		showTableContent() {
 			return (
 					this.state.sinodalias.map(sinodalia => (
@@ -111,6 +116,8 @@ class SinodaliasTable extends Component {
 				)
 		}
 
+		// se trae los datos del formulario para el filtro
+		// por periodo
 		pullPeriodo() {
 			let id = document.getElementById("periodos-form")
 
@@ -119,6 +126,8 @@ class SinodaliasTable extends Component {
 				periodoSeleccionado: id.value,
 			})
 			console.log("pullPeriodo: "+id.value)
+			// peticion axios para traerse todos los datos
+			this.getSinodaliasData()
 		}
 
 	render() {
@@ -135,9 +144,9 @@ class SinodaliasTable extends Component {
 							<div className="form-group">
 							<label htmlFor="periodos-form">Selección de Periodo</label>
 							<select id="periodos-form" name="periodos-form" className="form-control">
-								{ this.state.periodosAct.map((periodo) => (
+								{ this.state.ready ? this.state.periodosAct.map((periodo) => (
 										<option key={ periodo.id } value={ periodo.id }>{ periodo.name }</option>
-									)) }
+									)) : <option>No disponible</option> }
 							</select>
 							</div>
 						</form>
@@ -164,8 +173,7 @@ class SinodaliasTable extends Component {
 					    </tr>
 					  </thead>
 					  <tbody>
-					  	{ this.showTableContent() 
-					  }
+					  	{ this.showTableContent() }
 					  </tbody>
 					</table>
 					{ this.state.sinodalias.length == 0 &&

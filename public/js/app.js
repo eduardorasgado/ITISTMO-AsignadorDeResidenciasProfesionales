@@ -56497,11 +56497,17 @@ var SinodaliasTable = function (_Component) {
 			}
 			return teacher;
 		}
+
+		// link manual
+
 	}, {
 		key: 'linked',
 		value: function linked(id) {
 			return '/sinodalias/' + id;
 		}
+
+		// cargar los periodos para filtrar las sinodalias
+
 	}, {
 		key: 'getPeriodosAbiertos',
 		value: function getPeriodosAbiertos() {
@@ -56510,10 +56516,14 @@ var SinodaliasTable = function (_Component) {
 			__WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/periodosDisponibles').then(function (response) {
 				_this5.setState({
 					periodosAct: [].concat(_toConsumableArray(response.data.periodosActivos)),
-					periodoSeleccionado: response.data.periodosActivos[0].id
+					periodoSeleccionado: response.data.periodosActivos[0].id,
+					ready: true
 				});
 			});
 		}
+
+		// renderiza la tabla completa, puede llamarse
+
 	}, {
 		key: 'showTableContent',
 		value: function showTableContent() {
@@ -56575,6 +56585,10 @@ var SinodaliasTable = function (_Component) {
 				);
 			});
 		}
+
+		// se trae los datos del formulario para el filtro
+		// por periodo
+
 	}, {
 		key: 'pullPeriodo',
 		value: function pullPeriodo() {
@@ -56585,6 +56599,8 @@ var SinodaliasTable = function (_Component) {
 				periodoSeleccionado: id.value
 			});
 			console.log("pullPeriodo: " + id.value);
+			// peticion axios para traerse todos los datos
+			this.getSinodaliasData();
 		}
 	}, {
 		key: 'render',
@@ -56624,13 +56640,17 @@ var SinodaliasTable = function (_Component) {
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'select',
 									{ id: 'periodos-form', name: 'periodos-form', className: 'form-control' },
-									this.state.periodosAct.map(function (periodo) {
+									this.state.ready ? this.state.periodosAct.map(function (periodo) {
 										return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 											'option',
 											{ key: periodo.id, value: periodo.id },
 											periodo.name
 										);
-									})
+									}) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+										'option',
+										null,
+										'No disponible'
+									)
 								)
 							)
 						),
