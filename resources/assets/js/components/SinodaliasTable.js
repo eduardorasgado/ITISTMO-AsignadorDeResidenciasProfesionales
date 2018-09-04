@@ -138,8 +138,7 @@ class SinodaliasTable extends Component {
 						<br/>
 					</div>
 					<div className="row">
-						<div className="col-md-6">
-							
+						<div className="col-md-5">
 							<form action="">
 							<div className="form-group">
 							<label htmlFor="periodos-form">Selección de Periodo</label>
@@ -150,14 +149,22 @@ class SinodaliasTable extends Component {
 							</select>
 							</div>
 						</form>
-						<button className="btn btn-success"
+						
+							<div className="row">
+								<div className="col-md-8">
+								</div>
+								<div className="col-md-2">
+									<button className="btn btn-secondary "
 											onClick={() => this.pullPeriodo()}>
-											Mostrar</button>
-						<br/>
-						<br/>
-
+											Filtrar periodo</button>
+								</div>
+							</div>
+						</div>
+						<div className="col-md-3">
+							
 						</div>
 					</div>
+					<br/>
 					<table className="table">
 						<thead className="thead-dark">
 					    <tr>

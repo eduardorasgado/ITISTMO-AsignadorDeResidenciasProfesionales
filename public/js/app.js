@@ -56625,7 +56625,7 @@ var SinodaliasTable = function (_Component) {
 					{ className: 'row' },
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 						'div',
-						{ className: 'col-md-6' },
+						{ className: 'col-md-5' },
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 							'form',
 							{ action: '' },
@@ -56655,17 +56655,26 @@ var SinodaliasTable = function (_Component) {
 							)
 						),
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							'button',
-							{ className: 'btn btn-success',
-								onClick: function onClick() {
-									return _this7.pullPeriodo();
-								} },
-							'Mostrar'
-						),
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null)
-					)
+							'div',
+							{ className: 'row' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'col-md-8' }),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'div',
+								{ className: 'col-md-2' },
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'button',
+									{ className: 'btn btn-secondary ',
+										onClick: function onClick() {
+											return _this7.pullPeriodo();
+										} },
+									'Filtrar periodo'
+								)
+							)
+						)
+					),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'col-md-3' })
 				),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'table',
 					{ className: 'table' },
