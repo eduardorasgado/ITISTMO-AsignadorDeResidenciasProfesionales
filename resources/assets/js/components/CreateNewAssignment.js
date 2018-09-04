@@ -109,12 +109,16 @@ class CreateNewAssigment extends Component {
 							freeTeachers.push(teacher)
 						}
 					})
-					console.log(freeTeachers)
+
+					// los disponibles con menor cantidad de sinodalias
+					console.log("data: ",freeTeachers)
+
 					console.log("done")
+					
 					// para que no sea 0 el id en stados
 					this.setState({
 						teachers: [...availableTeachers.reverse()],
-						teachersAvailable: freeTeachers,
+						freeTeachers: [...freeTeachers],
 						presidente: availableTeachers[0].id,
 						secretario: availableTeachers[0].id,
 						vocal: availableTeachers[0].id,
@@ -233,7 +237,7 @@ class CreateNewAssigment extends Component {
 							<label htmlFor="presidente">Asignado Presidente(disponibles)</label>
 							<select className="form-control" id="presidente" 
 											onChange={this.handleChangePresidente} value={this.state.presidente}>
-								{ this.state.teachers.map( teacher => (
+								{ this.state.freeTeachers.map( teacher => (
 										<option key={ teacher.id } value={ teacher.id }>
 										{ teacher.name }: {teacher.num_asignaciones} asignaciones en curso</option>
 									)) }
@@ -243,7 +247,7 @@ class CreateNewAssigment extends Component {
 							<label htmlFor="secretario">Asignado Secretario(disponibles)</label>
 							<select className="form-control" id="secretario"
 											onChange={this.handleChangeSecretario} value={this.state.secretario}>
-								{ this.state.teachers.map( teacher => (
+								{ this.state.freeTeachers.map( teacher => (
 										<option key={ teacher.id } value={ teacher.id }>
 										{ teacher.name }: {teacher.num_asignaciones} asignaciones en curso</option>
 									)) }
@@ -253,7 +257,7 @@ class CreateNewAssigment extends Component {
 							<label htmlFor="vocal">Asignado Vocal(disponibles)</label>
 							<select className="form-control" id="vocal" 
 												onChange={this.handleChangeVocal} value={this.state.vocal}>>
-								{ this.state.teachers.map( teacher => (
+								{ this.state.freeTeachers.map( teacher => (
 										<option key={ teacher.id } value={ teacher.id }>
 										{ teacher.name }: {teacher.num_asignaciones} asignaciones en curso</option>
 									)) }
@@ -263,7 +267,7 @@ class CreateNewAssigment extends Component {
 							<label htmlFor="vocalSuplente">Asignado Vocal Suplente(disponibles)</label>
 							<select className="form-control" id="vocalSuplente"
 												onChange={this.handleChangeVocalSuplente} value={this.state.vocalSuplente}>>
-								{ this.state.teachers.map( teacher => (
+								{ this.state.freeTeachers.map( teacher => (
 										<option key={ teacher.id } value={ teacher.id }>
 										{ teacher.name }: {teacher.num_asignaciones} asignaciones en curso</option>
 									)) }

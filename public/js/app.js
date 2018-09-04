@@ -56105,12 +56105,16 @@ var CreateNewAssigment = function (_Component) {
 						freeTeachers.push(teacher);
 					}
 				});
-				console.log(freeTeachers);
+
+				// los disponibles con menor cantidad de sinodalias
+				console.log("data: ", freeTeachers);
+
 				console.log("done");
+
 				// para que no sea 0 el id en stados
 				_this2.setState({
 					teachers: [].concat(_toConsumableArray(availableTeachers.reverse())),
-					teachersAvailable: freeTeachers,
+					freeTeachers: [].concat(freeTeachers),
 					presidente: availableTeachers[0].id,
 					secretario: availableTeachers[0].id,
 					vocal: availableTeachers[0].id,
@@ -56319,7 +56323,7 @@ var CreateNewAssigment = function (_Component) {
 								'select',
 								{ className: 'form-control', id: 'presidente',
 									onChange: this.handleChangePresidente, value: this.state.presidente },
-								this.state.teachers.map(function (teacher) {
+								this.state.freeTeachers.map(function (teacher) {
 									return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 										'option',
 										{ key: teacher.id, value: teacher.id },
@@ -56343,7 +56347,7 @@ var CreateNewAssigment = function (_Component) {
 								'select',
 								{ className: 'form-control', id: 'secretario',
 									onChange: this.handleChangeSecretario, value: this.state.secretario },
-								this.state.teachers.map(function (teacher) {
+								this.state.freeTeachers.map(function (teacher) {
 									return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 										'option',
 										{ key: teacher.id, value: teacher.id },
@@ -56368,7 +56372,7 @@ var CreateNewAssigment = function (_Component) {
 								{ className: 'form-control', id: 'vocal',
 									onChange: this.handleChangeVocal, value: this.state.vocal },
 								'>',
-								this.state.teachers.map(function (teacher) {
+								this.state.freeTeachers.map(function (teacher) {
 									return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 										'option',
 										{ key: teacher.id, value: teacher.id },
@@ -56393,7 +56397,7 @@ var CreateNewAssigment = function (_Component) {
 								{ className: 'form-control', id: 'vocalSuplente',
 									onChange: this.handleChangeVocalSuplente, value: this.state.vocalSuplente },
 								'>',
-								this.state.teachers.map(function (teacher) {
+								this.state.freeTeachers.map(function (teacher) {
 									return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 										'option',
 										{ key: teacher.id, value: teacher.id },
