@@ -45,7 +45,6 @@ class SinodaliasTable extends Component {
 				let validSinodalias = []
 				sinodaliasList.map((sinodal) => {
 					(sinodal.periodo_id == this.state.periodoSeleccionado) && validSinodalias.push(sinodal)
-
 				})
 				this.setState({
 					sinodalias: [...validSinodalias],
