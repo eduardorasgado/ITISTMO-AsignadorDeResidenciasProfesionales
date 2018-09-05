@@ -18,6 +18,7 @@ class SinodaliasTable extends Component {
 			minSino:0,
 			maxSino: 4,
 			residuo: 0,
+			teacherFiltered: null,
 		}
 
 		// bindings
@@ -130,9 +131,15 @@ class SinodaliasTable extends Component {
 			console.log("maxSino: ", this.state.maxSino)
 			console.log("maxPage: ", this.state.maxPage)
 			console.log("residuo: ", this.state.residuo)
+			let min_sino = this.state.minSino
+			let max_sino = this.state.maxSino
+			// filtrado por maestro por aplicar
+			let teacherFiltered = this.state.teacherFiltered
+			let userFilter = teacherFiltered != null ? teacherFiltered : false
+			console.log("Filtrado en existencia: ", userFilter)
 			return (
-					this.state.sinodalias.map((sinodalia, key) => (
-					  			((key >= this.state.minSino && key <= this.state.maxSino) &&
+					this.state.sinodalias.map((sinodalia, key) => (						
+					  			(((key >= min_sino) && (key <= max_sino)) &&
 					  					<tr key={sinodalia.id}>
 					  				<td>{key+1}</td>
 							      <th scope="row">{sinodalia.residente}</th>
@@ -158,6 +165,9 @@ class SinodaliasTable extends Component {
 		// se trae los datos del formulario para el filtro
 		// por periodo
 		pullPeriodo() {
+			this.setState({
+				teacherFiltered: null,
+			})
 			let id = document.getElementById("periodos-form")
 
 			// cambiando il id del periodo para mostrarlos
@@ -169,9 +179,12 @@ class SinodaliasTable extends Component {
 			this.getSinodaliasData()
 		}
 		pullTeachers() {
+			// pasa el id del profesor desde el filtro
 			let id = document.getElementById("teachers-form")
-			alert(id.value)
-
+			this.setState({
+				teacherFiltered: id.value
+			})
+			console.log("teacher filtered: ", this.state.teacherFiltered)
 		}
 
 		previousPage(){

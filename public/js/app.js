@@ -56480,7 +56480,8 @@ var SinodaliasTable = function (_Component) {
 			actualPage: 1,
 			minSino: 0,
 			maxSino: 4,
-			residuo: 0
+			residuo: 0,
+			teacherFiltered: null
 
 			// bindings
 		};_this.compareTeaching = _this.compareTeaching.bind(_this);
@@ -56618,8 +56619,14 @@ var SinodaliasTable = function (_Component) {
 			console.log("maxSino: ", this.state.maxSino);
 			console.log("maxPage: ", this.state.maxPage);
 			console.log("residuo: ", this.state.residuo);
+			var min_sino = this.state.minSino;
+			var max_sino = this.state.maxSino;
+			// filtrado por maestro por aplicar
+			var teacherFiltered = this.state.teacherFiltered;
+			var userFilter = teacherFiltered != null ? teacherFiltered : false;
+			console.log("Filtrado en existencia: ", userFilter);
 			return this.state.sinodalias.map(function (sinodalia, key) {
-				return key >= _this6.state.minSino && key <= _this6.state.maxSino && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+				return key >= min_sino && key <= max_sino && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'tr',
 					{ key: sinodalia.id },
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -56688,6 +56695,9 @@ var SinodaliasTable = function (_Component) {
 	}, {
 		key: 'pullPeriodo',
 		value: function pullPeriodo() {
+			this.setState({
+				teacherFiltered: null
+			});
 			var id = document.getElementById("periodos-form");
 
 			// cambiando il id del periodo para mostrarlos
@@ -56701,8 +56711,12 @@ var SinodaliasTable = function (_Component) {
 	}, {
 		key: 'pullTeachers',
 		value: function pullTeachers() {
+			// pasa el id del profesor desde el filtro
 			var id = document.getElementById("teachers-form");
-			alert(id.value);
+			this.setState({
+				teacherFiltered: id.value
+			});
+			console.log("teacher filtered: ", this.state.teacherFiltered);
 		}
 	}, {
 		key: 'previousPage',
