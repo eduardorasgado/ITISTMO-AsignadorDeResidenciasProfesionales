@@ -88,13 +88,15 @@ class CreateNewAssigment extends Component {
 					/* 
 
 					logica para el FILTRO INTELIGENTE
-								AQUI
+					TESTEAR
 					
 					*/ 
 					// para guardar a los disponibles
 					let freeTeachers = []
 					// numero mas pequenio de asignaciones
 					let minor = 0;
+					// sacando el numero mas pequeio de asgnaciones
+					// ue tienen los maestros
 					availableTeachers.map((teacher, key ) => {
 						(key == 0) && (minor = teacher.num_asignaciones)
 						// obtener si hay menores a el primero
@@ -103,18 +105,32 @@ class CreateNewAssigment extends Component {
 						}
 					})
 
-					// metiendolos en una lista nueva los de minor
+					// poner en la lista esos maestros
 					availableTeachers.map((teacher) => {
 						if (teacher.num_asignaciones == minor) {
 							freeTeachers.push(teacher)
 						}
 					})
 
+					// en caso de no haber suficientes para la asignacion
+					// que normalmente son 4, se van agragando extras
+					if (freeTeachers.length <4) {
+						minor += 1
+							// metiendolos en una lista nueva los de minor
+							availableTeachers.map((teacher) => {
+								if(freeTeachers.length < 4){	
+									if (teacher.num_asignaciones == minor) {
+										freeTeachers.push(teacher)
+									}
+								}
+							})
+					}
+
 					// los disponibles con menor cantidad de sinodalias
-					console.log("data: ",freeTeachers)
+					// console.log("data: ",freeTeachers)
 
 					console.log("done")
-					
+
 					// para que no sea 0 el id en stados
 					this.setState({
 						teachers: [...availableTeachers.reverse()],

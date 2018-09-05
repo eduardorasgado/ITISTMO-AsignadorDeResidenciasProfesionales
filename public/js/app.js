@@ -56084,13 +56084,15 @@ var CreateNewAssigment = function (_Component) {
 				var availableTeachers = response.data.teachers;
 				/* 
     	logica para el FILTRO INTELIGENTE
-    			AQUI
+    TESTEAR
     
     */
 				// para guardar a los disponibles
 				var freeTeachers = [];
 				// numero mas pequenio de asignaciones
 				var minor = 0;
+				// sacando el numero mas pequeio de asgnaciones
+				// ue tienen los maestros
 				availableTeachers.map(function (teacher, key) {
 					key == 0 && (minor = teacher.num_asignaciones);
 					// obtener si hay menores a el primero
@@ -56099,15 +56101,29 @@ var CreateNewAssigment = function (_Component) {
 					}
 				});
 
-				// metiendolos en una lista nueva los de minor
+				// poner en la lista esos maestros
 				availableTeachers.map(function (teacher) {
 					if (teacher.num_asignaciones == minor) {
 						freeTeachers.push(teacher);
 					}
 				});
 
+				// en caso de no haber suficientes para la asignacion
+				// que normalmente son 4, se van agragando extras
+				if (freeTeachers.length < 4) {
+					minor += 1;
+					// metiendolos en una lista nueva los de minor
+					availableTeachers.map(function (teacher) {
+						if (freeTeachers.length < 4) {
+							if (teacher.num_asignaciones == minor) {
+								freeTeachers.push(teacher);
+							}
+						}
+					});
+				}
+
 				// los disponibles con menor cantidad de sinodalias
-				console.log("data: ", freeTeachers);
+				// console.log("data: ",freeTeachers)
 
 				console.log("done");
 
