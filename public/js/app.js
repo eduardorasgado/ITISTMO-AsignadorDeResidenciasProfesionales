@@ -56475,13 +56475,17 @@ var SinodaliasTable = function (_Component) {
 			ready: false,
 			sinodaliasListLength: 0,
 			minPage: 1,
-			maxPage: 1
+			maxPage: 1,
+			minSino: 0,
+			maxSino: 4
 
 			// bindings
 		};_this.compareTeaching = _this.compareTeaching.bind(_this);
 		_this.getSinodaliasData = _this.getSinodaliasData.bind(_this);
 		_this.linked = _this.linked.bind(_this);
 		_this.pullPeriodo = _this.pullPeriodo.bind(_this);
+		_this.previousPage = _this.previousPage.bind(_this);
+		_this.nextPage = _this.nextPage.bind(_this);
 		return _this;
 	}
 
@@ -56605,7 +56609,7 @@ var SinodaliasTable = function (_Component) {
 			var _this6 = this;
 
 			return this.state.sinodalias.map(function (sinodalia, key) {
-				return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+				return key >= _this6.state.minSino && key <= _this6.state.maxSino && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'tr',
 					{ key: sinodalia.id },
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -56683,6 +56687,16 @@ var SinodaliasTable = function (_Component) {
 			console.log("pullPeriodo: " + id.value);
 			// peticion axios para traerse todos los datos
 			this.getSinodaliasData();
+		}
+	}, {
+		key: 'previousPage',
+		value: function previousPage() {
+			alert("previous page");
+		}
+	}, {
+		key: 'nextPage',
+		value: function nextPage() {
+			alert("next page");
 		}
 	}, {
 		key: 'render',
@@ -56838,12 +56852,20 @@ var SinodaliasTable = function (_Component) {
 					{ className: 'row justify-content-md-center' },
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 						'button',
-						{ style: { marginRight: 5 }, className: 'btn' },
+						{ style: { marginRight: 5 },
+							className: 'btn',
+							onClick: function onClick() {
+								return _this7.previousPage();
+							} },
 						'Previo'
 					),
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 						'button',
-						{ className: 'btn' },
+						{ className: 'btn',
+							onClick: function onClick() {
+								return _this7.nextPage();
+							}
+						},
 						'Siguiente'
 					)
 				)

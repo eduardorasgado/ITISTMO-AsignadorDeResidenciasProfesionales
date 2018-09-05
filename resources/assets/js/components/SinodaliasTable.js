@@ -13,6 +13,8 @@ class SinodaliasTable extends Component {
 			sinodaliasListLength: 0,
 			minPage: 1,
 			maxPage: 1,
+			minSino:0,
+			maxSino: 4,
 		}
 
 		// bindings
@@ -20,6 +22,8 @@ class SinodaliasTable extends Component {
 		this.getSinodaliasData = this.getSinodaliasData.bind(this)
 		this.linked = this.linked.bind(this)
 		this.pullPeriodo = this.pullPeriodo.bind(this)
+		this.previousPage = this.previousPage.bind(this)
+		this.nextPage = this.nextPage.bind(this)
 	}
 
 	// traer las sinodalias
@@ -118,7 +122,8 @@ class SinodaliasTable extends Component {
 		showTableContent() {
 			return (
 					this.state.sinodalias.map((sinodalia, key) => (
-					  			<tr key={sinodalia.id}>
+					  			((key >= this.state.minSino && key <= this.state.maxSino) &&
+					  					<tr key={sinodalia.id}>
 					  				<td>{key+1}</td>
 							      <th scope="row">{sinodalia.residente}</th>
 							      <td>{sinodalia.proyecto}</td>
@@ -135,6 +140,7 @@ class SinodaliasTable extends Component {
 							      { sinodalia.aprobacion ? " ✔" : ""}
 							      </td>
 							    </tr>
+					  			 )
 					  		))
 				)
 		}
@@ -151,6 +157,13 @@ class SinodaliasTable extends Component {
 			console.log("pullPeriodo: "+id.value)
 			// peticion axios para traerse todos los datos
 			this.getSinodaliasData()
+		}
+
+		previousPage(){
+			alert("previous page")
+		}
+		nextPage(){
+			alert("next page")
 		}
 
 	render() {
@@ -216,9 +229,14 @@ class SinodaliasTable extends Component {
 					}
 					{ this.state.maxPage > 1 && 
 						<div className="row justify-content-md-center">
-							<button style={{ marginRight: 5 }} className="btn">Previo</button>
+							<button style={{ marginRight: 5 }} 
+											className="btn"
+											onClick={() => this.previousPage()}>
+											Previo</button>
 
-							<button className="btn">Siguiente</button>
+							<button className="btn" 
+											onClick={() => this.nextPage()}
+											>Siguiente</button>
 						</div>
 					}
 				</div>
