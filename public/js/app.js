@@ -56491,6 +56491,7 @@ var SinodaliasTable = function (_Component) {
 		_this.pullTeachers = _this.pullTeachers.bind(_this);
 		_this.previousPage = _this.previousPage.bind(_this);
 		_this.nextPage = _this.nextPage.bind(_this);
+		_this.getCotas = _this.getCotas.bind(_this);
 		return _this;
 	}
 
@@ -56538,25 +56539,30 @@ var SinodaliasTable = function (_Component) {
 					sinodaliasListLength: [].concat(validSinodalias).length
 				});
 
-				// calculando las paginas de 5 en 5
-				var pages = _this3.state.sinodaliasListLength / 5;
-				// console.log("Pages will be: ", pages)
-				var residuos = _this3.state.sinodaliasListLength % 5;
-
-				if (residuos > 0) {
-					// console.log("pagina extra")
-					pages++;
-					pages = Math.floor(pages);
-					//console.log("pages now is: ", pages)
-				}
-				_this3.setState({
-					maxPage: pages,
-					residuo: residuos
-				});
+				_this3.getCotas();
 
 				console.log(_this3.state.maxPage);
 			}).catch(function (error) {
 				console.log(error.message);
+			});
+		}
+	}, {
+		key: 'getCotas',
+		value: function getCotas() {
+			// calculando las paginas de 5 en 5
+			var pages = this.state.sinodaliasListLength / 5;
+			// console.log("Pages will be: ", pages)
+			var residuos = this.state.sinodaliasListLength % 5;
+
+			if (residuos > 0) {
+				// console.log("pagina extra")
+				pages++;
+				pages = Math.floor(pages);
+				//console.log("pages now is: ", pages)
+			}
+			this.setState({
+				maxPage: pages,
+				residuo: residuos
 			});
 		}
 	}, {
@@ -56689,12 +56695,68 @@ var SinodaliasTable = function (_Component) {
 					);
 				});
 			} else {
-				return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-					'tr',
-					null,
-					'hola ',
-					userFilter
-				);
+				return this.state.sinodalias.map(function (sinodalia, key) {
+					return (sinodalia.user_id == userFilter || sinodalia.id_secretario == userFilter || sinodalia.id_vocal == userFilter || sinodalia.id_vocal_sup == userFilter) && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'tr',
+						{ key: sinodalia.id },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'td',
+							null,
+							key + 1
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'th',
+							{ scope: 'row' },
+							sinodalia.residente
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'td',
+							null,
+							sinodalia.proyecto
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'td',
+							null,
+							sinodalia.carrera
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'td',
+							null,
+							sinodalia.num_control
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'td',
+							null,
+							_this6.compareTeaching(sinodalia.user_id)
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'td',
+							null,
+							_this6.compareTeaching(sinodalia.id_secretario)
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'td',
+							null,
+							_this6.compareTeaching(sinodalia.id_vocal)
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'td',
+							null,
+							_this6.compareTeaching(sinodalia.id_vocal_sup)
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'td',
+							null,
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'a',
+								{ href: _this6.linked(sinodalia.id), className: 'btn btn-success' },
+								'Editar'
+							),
+							sinodalia.proyecto_aprobacion ? " ✔" : "",
+							sinodalia.aprobacion ? " ✔" : ""
+						)
+					);
+				});
 			}
 		}
 

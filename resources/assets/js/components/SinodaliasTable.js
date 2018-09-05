@@ -29,6 +29,7 @@ class SinodaliasTable extends Component {
 		this.pullTeachers = this.pullTeachers.bind(this)
 		this.previousPage = this.previousPage.bind(this)
 		this.nextPage = this.nextPage.bind(this)
+		this.getCotas =  this.getCotas.bind(this)
 	}
 
 	// traer las sinodalias
@@ -63,7 +64,17 @@ class SinodaliasTable extends Component {
 					sinodaliasListLength: [...validSinodalias].length,
 				})
 				
-				// calculando las paginas de 5 en 5
+				this.getCotas()
+
+				console.log(this.state.maxPage)
+			})
+			.catch(error => {
+  			console.log(error.message);
+			})
+		}
+
+		getCotas(){
+			// calculando las paginas de 5 en 5
 				let pages = this.state.sinodaliasListLength / 5
 				// console.log("Pages will be: ", pages)
 				let residuos = this.state.sinodaliasListLength % 5
@@ -78,12 +89,6 @@ class SinodaliasTable extends Component {
 					maxPage: pages,
 					residuo: residuos,
 				})
-
-				console.log(this.state.maxPage)
-			})
-			.catch(error => {
-  			console.log(error.message);
-			})
 		}
 
 		getTeachersData() {
@@ -163,7 +168,31 @@ class SinodaliasTable extends Component {
 				)
 			}
 			else {
-				return <tr>hola {userFilter}</tr>
+				return (
+						this.state.sinodalias.map((sinodalia, key) => (
+								(sinodalia.user_id == userFilter 
+									|| sinodalia.id_secretario == userFilter 
+									|| sinodalia.id_vocal == userFilter
+									|| sinodalia.id_vocal_sup == userFilter) && 
+									<tr key={sinodalia.id}>
+					  				<td>{key+1}</td>
+							      <th scope="row">{sinodalia.residente}</th>
+							      <td>{sinodalia.proyecto}</td>
+							      <td>{sinodalia.carrera}</td>
+							      <td>{sinodalia.num_control}</td>
+							      <td>{this.compareTeaching(sinodalia.user_id)}</td>
+							      <td>{this.compareTeaching(sinodalia.id_secretario)}</td>
+							      <td>{this.compareTeaching(sinodalia.id_vocal)}</td>
+							      <td>{this.compareTeaching(sinodalia.id_vocal_sup)}</td>
+							      <td>
+							      <a href={this.linked(sinodalia.id)} className="btn btn-success">
+							      			Editar</a>
+							      { sinodalia.proyecto_aprobacion ? " ✔" : ""}
+							      { sinodalia.aprobacion ? " ✔" : ""}
+							      </td>
+							    </tr>
+							))
+					)
 			}
 		}
 
