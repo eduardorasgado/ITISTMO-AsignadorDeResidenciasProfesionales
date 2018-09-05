@@ -15,8 +15,20 @@ class SinodaliaController extends Controller
             if (Auth::user()->cargo != 0){
                 return view('home');
             }
-            // $allSinodalias = Sinodalia::where('aprobacion', '!=', 1)->get();
-            $allSinodalias = Sinodalia::all();
+            $periodosValidos = Periodo::where('estado', '=', 1)->get();
+            // return dd($periodosValidos);
+
+            // guardando en un array los ids de los periodos activos
+            $periodosIds = [];
+            foreach ($periodosValidos as $key => $value) {
+                array_push($periodosIds, $value->id);
+            }
+            // return dd($periodosIds);
+
+            // devolver todas las sinodalias de los periodos activos
+            $allSinodalias = Sinodalia::where('periodo_id', '=', $periodosIds)->get();
+            // $allSinodalias = Sinodalia::all();
+            
             return response()->json([
                 'sinodalias' => $allSinodalias,
             ]);
