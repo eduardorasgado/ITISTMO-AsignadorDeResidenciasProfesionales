@@ -44,7 +44,7 @@ class SinodaliasTable extends Component {
 				let sinodaliasList = response.data.sinodalias
 				let validSinodalias = []
 				sinodaliasList.map((sinodal) => {
-					sinodal.periodo_id == this.state.periodoSeleccionado && validSinodalias.push(sinodal)
+					(sinodal.periodo_id == this.state.periodoSeleccionado) && validSinodalias.push(sinodal)
 
 				})
 				this.setState({
@@ -98,8 +98,9 @@ class SinodaliasTable extends Component {
 		// renderiza la tabla completa, puede llamarse
 		showTableContent() {
 			return (
-					this.state.sinodalias.map(sinodalia => (
+					this.state.sinodalias.map((sinodalia, key) => (
 					  			<tr key={sinodalia.id}>
+					  				<td>{key+1}</td>
 							      <th scope="row">{sinodalia.residente}</th>
 							      <td>{sinodalia.proyecto}</td>
 							      <td>{sinodalia.carrera}</td>
@@ -171,6 +172,7 @@ class SinodaliasTable extends Component {
 					<table className="table">
 						<thead className="thead-dark">
 					    <tr>
+					    	<th scope="col">#</th>
 					      <th scope="col">Residente</th>
 					      <th scope="col">Proyecto</th>
 					      <th scope="col">Carrera</th>

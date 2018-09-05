@@ -56584,10 +56584,15 @@ var SinodaliasTable = function (_Component) {
 		value: function showTableContent() {
 			var _this6 = this;
 
-			return this.state.sinodalias.map(function (sinodalia) {
+			return this.state.sinodalias.map(function (sinodalia, key) {
 				return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'tr',
 					{ key: sinodalia.id },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'td',
+						null,
+						key + 1
+					),
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 						'th',
 						{ scope: 'row' },
@@ -56741,6 +56746,11 @@ var SinodaliasTable = function (_Component) {
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 							'tr',
 							null,
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'th',
+								{ scope: 'col' },
+								'#'
+							),
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 								'th',
 								{ scope: 'col' },
