@@ -56625,68 +56625,77 @@ var SinodaliasTable = function (_Component) {
 			var teacherFiltered = this.state.teacherFiltered;
 			var userFilter = teacherFiltered != null ? teacherFiltered : false;
 			console.log("Filtrado en existencia: ", userFilter);
-			return this.state.sinodalias.map(function (sinodalia, key) {
-				return key >= min_sino && key <= max_sino && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-					'tr',
-					{ key: sinodalia.id },
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'td',
-						null,
-						key + 1
-					),
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'th',
-						{ scope: 'row' },
-						sinodalia.residente
-					),
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'td',
-						null,
-						sinodalia.proyecto
-					),
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'td',
-						null,
-						sinodalia.carrera
-					),
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'td',
-						null,
-						sinodalia.num_control
-					),
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'td',
-						null,
-						_this6.compareTeaching(sinodalia.user_id)
-					),
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'td',
-						null,
-						_this6.compareTeaching(sinodalia.id_secretario)
-					),
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'td',
-						null,
-						_this6.compareTeaching(sinodalia.id_vocal)
-					),
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'td',
-						null,
-						_this6.compareTeaching(sinodalia.id_vocal_sup)
-					),
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'td',
-						null,
+			if (!userFilter) {
+				return this.state.sinodalias.map(function (sinodalia, key) {
+					return key >= min_sino && key <= max_sino && !userFilter && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'tr',
+						{ key: sinodalia.id },
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							'a',
-							{ href: _this6.linked(sinodalia.id), className: 'btn btn-success' },
-							'Editar'
+							'td',
+							null,
+							key + 1
 						),
-						sinodalia.proyecto_aprobacion ? " ✔" : "",
-						sinodalia.aprobacion ? " ✔" : ""
-					)
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'th',
+							{ scope: 'row' },
+							sinodalia.residente
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'td',
+							null,
+							sinodalia.proyecto
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'td',
+							null,
+							sinodalia.carrera
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'td',
+							null,
+							sinodalia.num_control
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'td',
+							null,
+							_this6.compareTeaching(sinodalia.user_id)
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'td',
+							null,
+							_this6.compareTeaching(sinodalia.id_secretario)
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'td',
+							null,
+							_this6.compareTeaching(sinodalia.id_vocal)
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'td',
+							null,
+							_this6.compareTeaching(sinodalia.id_vocal_sup)
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'td',
+							null,
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'a',
+								{ href: _this6.linked(sinodalia.id), className: 'btn btn-success' },
+								'Editar'
+							),
+							sinodalia.proyecto_aprobacion ? " ✔" : "",
+							sinodalia.aprobacion ? " ✔" : ""
+						)
+					);
+				});
+			} else {
+				return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'tr',
+					null,
+					'hola ',
+					userFilter
 				);
-			});
+			}
 		}
 
 		// se trae los datos del formulario para el filtro
@@ -56695,16 +56704,17 @@ var SinodaliasTable = function (_Component) {
 	}, {
 		key: 'pullPeriodo',
 		value: function pullPeriodo() {
+			// quitar filtro por profesor
 			this.setState({
 				teacherFiltered: null
 			});
 			var id = document.getElementById("periodos-form");
 
-			// cambiando il id del periodo para mostrarlos
+			// cambiando el id del periodo para mostrarlos
 			this.setState({
 				periodoSeleccionado: id.value
 			});
-			console.log("pullPeriodo: " + id.value);
+			// console.log("pullPeriodo: "+id.value)
 			// peticion axios para traerse todos los datos
 			this.getSinodaliasData();
 		}
@@ -56716,7 +56726,7 @@ var SinodaliasTable = function (_Component) {
 			this.setState({
 				teacherFiltered: id.value
 			});
-			console.log("teacher filtered: ", this.state.teacherFiltered);
+			// console.log("teacher filtered: ", this.state.teacherFiltered)
 		}
 	}, {
 		key: 'previousPage',

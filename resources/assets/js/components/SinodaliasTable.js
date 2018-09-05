@@ -137,44 +137,50 @@ class SinodaliasTable extends Component {
 			let teacherFiltered = this.state.teacherFiltered
 			let userFilter = teacherFiltered != null ? teacherFiltered : false
 			console.log("Filtrado en existencia: ", userFilter)
-			return (
+			if (!userFilter) {
+				return (
 					this.state.sinodalias.map((sinodalia, key) => (						
-					  			(((key >= min_sino) && (key <= max_sino)) &&
+					  			(((key >= min_sino) && (key <= max_sino) && !userFilter) &&
 					  					<tr key={sinodalia.id}>
-					  				<td>{key+1}</td>
-							      <th scope="row">{sinodalia.residente}</th>
-							      <td>{sinodalia.proyecto}</td>
-							      <td>{sinodalia.carrera}</td>
-							      <td>{sinodalia.num_control}</td>
-							      <td>{this.compareTeaching(sinodalia.user_id)}</td>
-							      <td>{this.compareTeaching(sinodalia.id_secretario)}</td>
-							      <td>{this.compareTeaching(sinodalia.id_vocal)}</td>
-							      <td>{this.compareTeaching(sinodalia.id_vocal_sup)}</td>
-							      <td>
-							      <a href={this.linked(sinodalia.id)} className="btn btn-success">
-							      			Editar</a>
-							      { sinodalia.proyecto_aprobacion ? " ✔" : ""}
-							      { sinodalia.aprobacion ? " ✔" : ""}
-							      </td>
-							    </tr>
+							  				<td>{key+1}</td>
+									      <th scope="row">{sinodalia.residente}</th>
+									      <td>{sinodalia.proyecto}</td>
+									      <td>{sinodalia.carrera}</td>
+									      <td>{sinodalia.num_control}</td>
+									      <td>{this.compareTeaching(sinodalia.user_id)}</td>
+									      <td>{this.compareTeaching(sinodalia.id_secretario)}</td>
+									      <td>{this.compareTeaching(sinodalia.id_vocal)}</td>
+									      <td>{this.compareTeaching(sinodalia.id_vocal_sup)}</td>
+									      <td>
+									      <a href={this.linked(sinodalia.id)} className="btn btn-success">
+									      			Editar</a>
+									      { sinodalia.proyecto_aprobacion ? " ✔" : ""}
+									      { sinodalia.aprobacion ? " ✔" : ""}
+									      </td>
+									    </tr>
 					  			 )
 					  		))
 				)
+			}
+			else {
+				return <tr>hola {userFilter}</tr>
+			}
 		}
 
 		// se trae los datos del formulario para el filtro
 		// por periodo
 		pullPeriodo() {
+			// quitar filtro por profesor
 			this.setState({
 				teacherFiltered: null,
 			})
 			let id = document.getElementById("periodos-form")
 
-			// cambiando il id del periodo para mostrarlos
+			// cambiando el id del periodo para mostrarlos
 			this.setState({
 				periodoSeleccionado: id.value,
 			})
-			console.log("pullPeriodo: "+id.value)
+			// console.log("pullPeriodo: "+id.value)
 			// peticion axios para traerse todos los datos
 			this.getSinodaliasData()
 		}
@@ -184,7 +190,7 @@ class SinodaliasTable extends Component {
 			this.setState({
 				teacherFiltered: id.value
 			})
-			console.log("teacher filtered: ", this.state.teacherFiltered)
+			// console.log("teacher filtered: ", this.state.teacherFiltered)
 		}
 
 		previousPage(){
