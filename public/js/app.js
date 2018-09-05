@@ -56478,7 +56478,8 @@ var SinodaliasTable = function (_Component) {
 			maxPage: 1,
 			actualPage: 1,
 			minSino: 0,
-			maxSino: 4
+			maxSino: 4,
+			residuo: 0
 
 			// bindings
 		};_this.compareTeaching = _this.compareTeaching.bind(_this);
@@ -56538,6 +56539,7 @@ var SinodaliasTable = function (_Component) {
 				var pages = _this3.state.sinodaliasListLength / 5;
 				// console.log("Pages will be: ", pages)
 				var residuos = _this3.state.sinodaliasListLength % 5;
+
 				if (residuos > 0) {
 					// console.log("pagina extra")
 					pages++;
@@ -56545,7 +56547,8 @@ var SinodaliasTable = function (_Component) {
 					//console.log("pages now is: ", pages)
 				}
 				_this3.setState({
-					maxPage: pages
+					maxPage: pages,
+					residuo: residuos
 				});
 
 				console.log(_this3.state.maxPage);
@@ -56698,9 +56701,14 @@ var SinodaliasTable = function (_Component) {
 			// no sobrepasar las sinos maximas
 			var mns = this.state.minSino;
 			var min = mns - 5 >= 0 ? mns - 5 : 0;
+			var max = this.state.maxSino - 5;
+			if (this.state.actualPage - 1 == this.state.maxPage - 1) {
+				max = max + this.state.residuo;
+			}
+
 			this.setState({
 				minSino: min,
-				maxSino: this.state.maxSino - 5,
+				maxSino: max,
 				actualPage: this.state.actualPage - 1
 			});
 		}
@@ -56715,9 +56723,10 @@ var SinodaliasTable = function (_Component) {
 			// las sinodalias se cuentan desde cero
 			var sll = this.state.sinodaliasListLength;
 			var max = mxs + 5 <= sll ? mxs + 5 : sll;
+			var min = this.state.minSino + 5;
 
 			this.setState({
-				minSino: this.state.minSino + 5,
+				minSino: min,
 				maxSino: max,
 				actualPage: this.state.actualPage + 1
 			});

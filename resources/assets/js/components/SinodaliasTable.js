@@ -16,6 +16,7 @@ class SinodaliasTable extends Component {
 			actualPage: 1,
 			minSino:0,
 			maxSino: 4,
+			residuo: 0,
 		}
 
 		// bindings
@@ -63,6 +64,7 @@ class SinodaliasTable extends Component {
 				let pages = this.state.sinodaliasListLength / 5
 				// console.log("Pages will be: ", pages)
 				let residuos = this.state.sinodaliasListLength % 5
+
 				if(residuos >0){
 					// console.log("pagina extra")
 					pages++
@@ -71,6 +73,7 @@ class SinodaliasTable extends Component {
 				}
 				this.setState({
 					maxPage: pages,
+					residuo: residuos,
 				})
 
 				console.log(this.state.maxPage)
@@ -167,9 +170,14 @@ class SinodaliasTable extends Component {
 			// no sobrepasar las sinos maximas
 			let mns = this.state.minSino
 			let min = ((mns - 5) >= 0 ) ? (mns - 5) : 0
+			let max = this.state.maxSino-5
+			if((this.state.actualPage - 1) == (this.state.maxPage - 1)){
+				max = max + this.state.residuo
+			} 
+
 			this.setState({
 				minSino: min,
-				maxSino: this.state.maxSino-5,
+				maxSino: max,
 				actualPage: this.state.actualPage - 1,
 			})
 		}
@@ -182,9 +190,10 @@ class SinodaliasTable extends Component {
 			// las sinodalias se cuentan desde cero
 			let sll = this.state.sinodaliasListLength
 			let max = ((mxs + 5) <= sll) ? (mxs + 5) : sll
+			let min = this.state.minSino+5
 
 			this.setState({
-				minSino: this.state.minSino+5,
+				minSino: min,
 				maxSino: max,
 				actualPage: this.state.actualPage + 1
 			})
