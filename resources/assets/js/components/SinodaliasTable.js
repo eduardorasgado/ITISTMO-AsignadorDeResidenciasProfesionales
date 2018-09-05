@@ -164,6 +164,7 @@ class SinodaliasTable extends Component {
 		}
 
 		previousPage(){
+			// cota limite inferior de paginacion
 			if ((this.state.actualPage - 1) <= 0) {
 				return false
 			}
@@ -182,12 +183,15 @@ class SinodaliasTable extends Component {
 			})
 		}
 		nextPage(){
+			// cota limite superior de pagina
 			if ((this.state.actualPage + 1) > this.state.maxPage) {
 				return false
 			}
 			// no sobrepasar las sinos maximas
 			let mxs = this.state.maxSino
 			// las sinodalias se cuentan desde cero
+
+			// sll = sinodaliasListLength
 			let sll = this.state.sinodaliasListLength
 			let max = ((mxs + 5) <= sll) ? (mxs + 5) : sll
 			let min = this.state.minSino+5
@@ -267,7 +271,7 @@ class SinodaliasTable extends Component {
 											onClick={() => this.previousPage()}>
 											Previo</button>
 											<p style={{ display: 'inline', fontSize:24, margin:5 }}>
-												...{this.state.maxPage} paginas
+												{this.state.actualPage}/{this.state.maxPage}
 											</p>
 							<button className="btn" 
 											onClick={() => this.nextPage()}

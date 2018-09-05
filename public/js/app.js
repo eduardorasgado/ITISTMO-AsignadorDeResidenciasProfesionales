@@ -56695,6 +56695,7 @@ var SinodaliasTable = function (_Component) {
 	}, {
 		key: 'previousPage',
 		value: function previousPage() {
+			// cota limite inferior de paginacion
 			if (this.state.actualPage - 1 <= 0) {
 				return false;
 			}
@@ -56715,12 +56716,15 @@ var SinodaliasTable = function (_Component) {
 	}, {
 		key: 'nextPage',
 		value: function nextPage() {
+			// cota limite superior de pagina
 			if (this.state.actualPage + 1 > this.state.maxPage) {
 				return false;
 			}
 			// no sobrepasar las sinos maximas
 			var mxs = this.state.maxSino;
 			// las sinodalias se cuentan desde cero
+
+			// sll = sinodaliasListLength
 			var sll = this.state.sinodaliasListLength;
 			var max = mxs + 5 <= sll ? mxs + 5 : sll;
 			var min = this.state.minSino + 5;
@@ -56895,9 +56899,9 @@ var SinodaliasTable = function (_Component) {
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 						'p',
 						{ style: { display: 'inline', fontSize: 24, margin: 5 } },
-						'...',
-						this.state.maxPage,
-						' paginas'
+						this.state.actualPage,
+						'/',
+						this.state.maxPage
 					),
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 						'button',
