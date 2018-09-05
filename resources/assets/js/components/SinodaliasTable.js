@@ -10,6 +10,9 @@ class SinodaliasTable extends Component {
 			periodosAct: [],
 			periodoSeleccionado: 0,
 			ready: false,
+			sinodaliasListLength: 0,
+			minPage: 1,
+			maxPage: 1,
 		}
 
 		// bindings
@@ -48,7 +51,24 @@ class SinodaliasTable extends Component {
 				})
 				this.setState({
 					sinodalias: [...validSinodalias],
+					sinodaliasListLength: [...validSinodalias].length,
 				})
+				
+				// calculando las paginas de 5 en 5
+				let pages = this.state.sinodaliasListLength / 5
+				// console.log("Pages will be: ", pages)
+				let residuos = this.state.sinodaliasListLength % 5
+				if(residuos >0){
+					// console.log("pagina extra")
+					pages++
+					pages = Math.round(pages)
+					//console.log("pages now is: ", pages)
+				}
+				this.setState({
+					maxPage: pages,
+				})
+
+				console.log(this.state.maxPage)
 			})
 			.catch(error => {
   			console.log(error.message);
@@ -193,6 +213,13 @@ class SinodaliasTable extends Component {
 					  		Aún no has agregado ninguna sinodalía
 							</div>
 			  		</div>
+					}
+					{ this.state.maxPage > 1 && 
+						<div className="row justify-content-md-center">
+							<button style={{ marginRight: 5 }} className="btn">Previo</button>
+
+							<button className="btn">Siguiente</button>
+						</div>
 					}
 				</div>
 			)

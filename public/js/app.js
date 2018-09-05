@@ -56472,7 +56472,10 @@ var SinodaliasTable = function (_Component) {
 			teachers: [],
 			periodosAct: [],
 			periodoSeleccionado: 0,
-			ready: false
+			ready: false,
+			sinodaliasListLength: 0,
+			minPage: 1,
+			maxPage: 1
 
 			// bindings
 		};_this.compareTeaching = _this.compareTeaching.bind(_this);
@@ -56522,8 +56525,25 @@ var SinodaliasTable = function (_Component) {
 					sinodal.periodo_id == _this3.state.periodoSeleccionado && validSinodalias.push(sinodal);
 				});
 				_this3.setState({
-					sinodalias: [].concat(validSinodalias)
+					sinodalias: [].concat(validSinodalias),
+					sinodaliasListLength: [].concat(validSinodalias).length
 				});
+
+				// calculando las paginas de 5 en 5
+				var pages = _this3.state.sinodaliasListLength / 5;
+				// console.log("Pages will be: ", pages)
+				var residuos = _this3.state.sinodaliasListLength % 5;
+				if (residuos > 0) {
+					// console.log("pagina extra")
+					pages++;
+					pages = Math.round(pages);
+					//console.log("pages now is: ", pages)
+				}
+				_this3.setState({
+					maxPage: pages
+				});
+
+				console.log(_this3.state.maxPage);
 			}).catch(function (error) {
 				console.log(error.message);
 			});
@@ -56811,6 +56831,20 @@ var SinodaliasTable = function (_Component) {
 						'div',
 						{ className: 'alert alert-danger', role: 'alert', style: { marginRight: 15 } },
 						'A\xFAn no has agregado ninguna sinodal\xEDa'
+					)
+				),
+				this.state.maxPage > 1 && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'div',
+					{ className: 'row justify-content-md-center' },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'button',
+						{ style: { marginRight: 5 }, className: 'btn' },
+						'Previo'
+					),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'button',
+						{ className: 'btn' },
+						'Siguiente'
 					)
 				)
 			);
