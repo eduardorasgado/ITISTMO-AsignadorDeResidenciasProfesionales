@@ -164,7 +164,7 @@ class SinodaliasTable extends Component {
 		}
 
 		previousPage(){
-			if ((this.state.actualPage - 1) < 0) {
+			if ((this.state.actualPage - 1) <= 0) {
 				return false
 			}
 			// no sobrepasar las sinos maximas
@@ -182,7 +182,7 @@ class SinodaliasTable extends Component {
 			})
 		}
 		nextPage(){
-			if ((this.state.actualPage + 1) > this.state.sinodaliasListLength) {
+			if ((this.state.actualPage + 1) > this.state.maxPage) {
 				return false
 			}
 			// no sobrepasar las sinos maximas
@@ -274,6 +274,7 @@ class SinodaliasTable extends Component {
 											>Siguiente</button>
 						</div>
 					}
+					<br/><br/><br/><br/><br/>
 				</div>
 			)
 	}

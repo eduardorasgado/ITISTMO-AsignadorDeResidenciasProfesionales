@@ -56695,7 +56695,7 @@ var SinodaliasTable = function (_Component) {
 	}, {
 		key: 'previousPage',
 		value: function previousPage() {
-			if (this.state.actualPage - 1 < 0) {
+			if (this.state.actualPage - 1 <= 0) {
 				return false;
 			}
 			// no sobrepasar las sinos maximas
@@ -56715,7 +56715,7 @@ var SinodaliasTable = function (_Component) {
 	}, {
 		key: 'nextPage',
 		value: function nextPage() {
-			if (this.state.actualPage + 1 > this.state.sinodaliasListLength) {
+			if (this.state.actualPage + 1 > this.state.maxPage) {
 				return false;
 			}
 			// no sobrepasar las sinos maximas
@@ -56908,7 +56908,12 @@ var SinodaliasTable = function (_Component) {
 						},
 						'Siguiente'
 					)
-				)
+				),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null)
 			);
 		}
 	}]);
