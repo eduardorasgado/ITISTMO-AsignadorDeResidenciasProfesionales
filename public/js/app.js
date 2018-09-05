@@ -56805,7 +56805,55 @@ var SinodaliasTable = function (_Component) {
 							)
 						)
 					),
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'col-md-3' })
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'div',
+						{ className: 'col-md-6' },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'form',
+							{ action: '' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'div',
+								{ className: 'form-group' },
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'label',
+									{ htmlFor: 'periodos-form' },
+									'Selecci\xF3n de profesores'
+								),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'select',
+									{ id: 'periodos-form', name: 'periodos-form', className: 'form-control' },
+									this.state.ready ? this.state.periodosAct.map(function (periodo) {
+										return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+											'option',
+											{ key: periodo.id, value: periodo.id },
+											periodo.name
+										);
+									}) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+										'option',
+										null,
+										'No disponible'
+									)
+								)
+							)
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'div',
+							{ className: 'row' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'col-md-8' }),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'div',
+								{ className: 'col-md-2' },
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'button',
+									{ className: 'btn btn-secondary ',
+										onClick: function onClick() {
+											return _this7.pullPeriodo();
+										} },
+									'Filtrar por profesores'
+								)
+							)
+						)
+					)
 				),
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(

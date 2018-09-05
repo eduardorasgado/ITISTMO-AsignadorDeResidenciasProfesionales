@@ -233,8 +233,27 @@ class SinodaliasTable extends Component {
 								</div>
 							</div>
 						</div>
-						<div className="col-md-3">
-							
+						<div className="col-md-6">
+							<form action="">
+							<div className="form-group">
+							<label htmlFor="periodos-form">Selección de profesores</label>
+							<select id="periodos-form" name="periodos-form" className="form-control">
+								{ this.state.ready ? this.state.periodosAct.map((periodo) => (
+										<option key={ periodo.id } value={ periodo.id }>{ periodo.name }</option>
+									)) : <option>No disponible</option> }
+							</select>
+							</div>
+						</form>
+						
+							<div className="row">
+								<div className="col-md-8">
+								</div>
+								<div className="col-md-2">
+									<button className="btn btn-secondary "
+											onClick={() => this.pullPeriodo()}>
+											Filtrar por profesores</button>
+								</div>
+							</div>
 						</div>
 					</div>
 					<br/>
