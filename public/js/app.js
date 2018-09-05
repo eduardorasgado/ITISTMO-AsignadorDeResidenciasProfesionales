@@ -56692,12 +56692,35 @@ var SinodaliasTable = function (_Component) {
 	}, {
 		key: 'previousPage',
 		value: function previousPage() {
-			alert("previous page");
+			if (this.state.actualPage - 1 < 0) {
+				return false;
+			}
+			// no sobrepasar las sinos maximas
+			var mns = this.state.minSino;
+			var min = mns - 5 >= 0 ? mns - 5 : 0;
+			this.setState({
+				minSino: min,
+				maxSino: this.state.maxSino - 5,
+				actualPage: this.state.actualPage - 1
+			});
 		}
 	}, {
 		key: 'nextPage',
 		value: function nextPage() {
-			alert("next page");
+			if (this.state.actualPage + 1 > this.state.sinodaliasListLength) {
+				return false;
+			}
+			// no sobrepasar las sinos maximas
+			var mxs = this.state.maxSino;
+			// las sinodalias se cuentan desde cero
+			var sll = this.state.sinodaliasListLength;
+			var max = mxs + 5 <= sll ? mxs + 5 : sll;
+
+			this.setState({
+				minSino: this.state.minSino + 5,
+				maxSino: max,
+				actualPage: this.state.actualPage + 1
+			});
 		}
 	}, {
 		key: 'render',

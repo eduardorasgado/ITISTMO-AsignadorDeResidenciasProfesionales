@@ -161,10 +161,33 @@ class SinodaliasTable extends Component {
 		}
 
 		previousPage(){
-			alert("previous page")
+			if ((this.state.actualPage - 1) < 0) {
+				return false
+			}
+			// no sobrepasar las sinos maximas
+			let mns = this.state.minSino
+			let min = ((mns - 5) >= 0 ) ? (mns - 5) : 0
+			this.setState({
+				minSino: min,
+				maxSino: this.state.maxSino-5,
+				actualPage: this.state.actualPage - 1,
+			})
 		}
 		nextPage(){
-			alert("next page")
+			if ((this.state.actualPage + 1) > this.state.sinodaliasListLength) {
+				return false
+			}
+			// no sobrepasar las sinos maximas
+			let mxs = this.state.maxSino
+			// las sinodalias se cuentan desde cero
+			let sll = this.state.sinodaliasListLength
+			let max = ((mxs + 5) <= sll) ? (mxs + 5) : sll
+
+			this.setState({
+				minSino: this.state.minSino+5,
+				maxSino: max,
+				actualPage: this.state.actualPage + 1
+			})
 		}
 
 	render() {
