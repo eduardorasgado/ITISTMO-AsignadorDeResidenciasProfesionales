@@ -9,6 +9,7 @@ class SinodaliasTable extends Component {
 			teachers: [],
 			periodosAct: [],
 			periodoSeleccionado: 0,
+			teachersSeleccionado: '',
 			ready: false,
 			sinodaliasListLength: 0,
 			minPage: 1,
@@ -24,6 +25,7 @@ class SinodaliasTable extends Component {
 		this.getSinodaliasData = this.getSinodaliasData.bind(this)
 		this.linked = this.linked.bind(this)
 		this.pullPeriodo = this.pullPeriodo.bind(this)
+		this.pullTeachers = this.pullTeachers.bind(this)
 		this.previousPage = this.previousPage.bind(this)
 		this.nextPage = this.nextPage.bind(this)
 	}
@@ -68,7 +70,7 @@ class SinodaliasTable extends Component {
 				if(residuos >0){
 					// console.log("pagina extra")
 					pages++
-					pages = Math.round(pages)
+					pages = Math.floor(pages)
 					//console.log("pages now is: ", pages)
 				}
 				this.setState({
@@ -124,6 +126,10 @@ class SinodaliasTable extends Component {
 
 		// renderiza la tabla completa, puede llamarse
 		showTableContent() {
+			console.log("minSino: ", this.state.minSino)
+			console.log("maxSino: ", this.state.maxSino)
+			console.log("maxPage: ", this.state.maxPage)
+			console.log("residuo: ", this.state.residuo)
 			return (
 					this.state.sinodalias.map((sinodalia, key) => (
 					  			((key >= this.state.minSino && key <= this.state.maxSino) &&
@@ -162,6 +168,11 @@ class SinodaliasTable extends Component {
 			// peticion axios para traerse todos los datos
 			this.getSinodaliasData()
 		}
+		pullTeachers() {
+			let id = document.getElementById("teachers-form")
+			alert(id.value)
+
+		}
 
 		previousPage(){
 			// cota limite inferior de paginacion
@@ -171,11 +182,7 @@ class SinodaliasTable extends Component {
 			// no sobrepasar las sinos maximas
 			let mns = this.state.minSino
 			let min = ((mns - 5) >= 0 ) ? (mns - 5) : 0
-			let max = this.state.maxSino-5
-			if((this.state.actualPage - 1) == (this.state.maxPage - 1)){
-				max = max + this.state.residuo
-			} 
-
+			let max = this.state.maxSino - 5
 			this.setState({
 				minSino: min,
 				maxSino: max,
@@ -193,7 +200,10 @@ class SinodaliasTable extends Component {
 
 			// sll = sinodaliasListLength
 			let sll = this.state.sinodaliasListLength
-			let max = ((mxs + 5) <= sll) ? (mxs + 5) : sll
+			// v1
+			// let max = ((mxs + 5) <= sll) ? (mxs + 5) : sll
+			// actual version
+			let max = mxs + 5
 			let min = this.state.minSino+5
 
 			this.setState({
@@ -227,7 +237,7 @@ class SinodaliasTable extends Component {
 								<div className="col-md-8">
 								</div>
 								<div className="col-md-2">
-									<button className="btn btn-secondary "
+									<button className="btn btn-secondary"
 											onClick={() => this.pullPeriodo()}>
 											Filtrar periodo</button>
 								</div>
@@ -237,7 +247,7 @@ class SinodaliasTable extends Component {
 							<form action="">
 							<div className="form-group">
 							<label htmlFor="periodos-form">Selección de profesores</label>
-							<select id="periodos-form" name="periodos-form" className="form-control">
+							<select id="teachers-form" name="periodos-form" className="form-control">
 								{ this.state.ready ? this.state.teachers.map((teacher) => (
 										(teacher.num_asignaciones > 0) && (
 											<option key={ teacher.id } value={ teacher.id }>{ teacher.name }</option>
@@ -251,8 +261,8 @@ class SinodaliasTable extends Component {
 								<div className="col-md-8">
 								</div>
 								<div className="col-md-2">
-									<button className="btn btn-secondary "
-											onClick={() => this.pullPeriodo()}>
+									<button className="btn btn-secondary"
+											onClick={() => this.pullTeachers()}>
 											Filtrar por profesores</button>
 								</div>
 							</div>

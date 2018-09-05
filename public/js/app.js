@@ -56472,6 +56472,7 @@ var SinodaliasTable = function (_Component) {
 			teachers: [],
 			periodosAct: [],
 			periodoSeleccionado: 0,
+			teachersSeleccionado: '',
 			ready: false,
 			sinodaliasListLength: 0,
 			minPage: 1,
@@ -56486,6 +56487,7 @@ var SinodaliasTable = function (_Component) {
 		_this.getSinodaliasData = _this.getSinodaliasData.bind(_this);
 		_this.linked = _this.linked.bind(_this);
 		_this.pullPeriodo = _this.pullPeriodo.bind(_this);
+		_this.pullTeachers = _this.pullTeachers.bind(_this);
 		_this.previousPage = _this.previousPage.bind(_this);
 		_this.nextPage = _this.nextPage.bind(_this);
 		return _this;
@@ -56543,7 +56545,7 @@ var SinodaliasTable = function (_Component) {
 				if (residuos > 0) {
 					// console.log("pagina extra")
 					pages++;
-					pages = Math.round(pages);
+					pages = Math.floor(pages);
 					//console.log("pages now is: ", pages)
 				}
 				_this3.setState({
@@ -56612,6 +56614,10 @@ var SinodaliasTable = function (_Component) {
 		value: function showTableContent() {
 			var _this6 = this;
 
+			console.log("minSino: ", this.state.minSino);
+			console.log("maxSino: ", this.state.maxSino);
+			console.log("maxPage: ", this.state.maxPage);
+			console.log("residuo: ", this.state.residuo);
 			return this.state.sinodalias.map(function (sinodalia, key) {
 				return key >= _this6.state.minSino && key <= _this6.state.maxSino && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'tr',
@@ -56693,6 +56699,12 @@ var SinodaliasTable = function (_Component) {
 			this.getSinodaliasData();
 		}
 	}, {
+		key: 'pullTeachers',
+		value: function pullTeachers() {
+			var id = document.getElementById("teachers-form");
+			alert(id.value);
+		}
+	}, {
 		key: 'previousPage',
 		value: function previousPage() {
 			// cota limite inferior de paginacion
@@ -56703,10 +56715,6 @@ var SinodaliasTable = function (_Component) {
 			var mns = this.state.minSino;
 			var min = mns - 5 >= 0 ? mns - 5 : 0;
 			var max = this.state.maxSino - 5;
-			if (this.state.actualPage - 1 == this.state.maxPage - 1) {
-				max = max + this.state.residuo;
-			}
-
 			this.setState({
 				minSino: min,
 				maxSino: max,
@@ -56726,7 +56734,10 @@ var SinodaliasTable = function (_Component) {
 
 			// sll = sinodaliasListLength
 			var sll = this.state.sinodaliasListLength;
-			var max = mxs + 5 <= sll ? mxs + 5 : sll;
+			// v1
+			// let max = ((mxs + 5) <= sll) ? (mxs + 5) : sll
+			// actual version
+			var max = mxs + 5;
 			var min = this.state.minSino + 5;
 
 			this.setState({
@@ -56796,7 +56807,7 @@ var SinodaliasTable = function (_Component) {
 								{ className: 'col-md-2' },
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'button',
-									{ className: 'btn btn-secondary ',
+									{ className: 'btn btn-secondary',
 										onClick: function onClick() {
 											return _this7.pullPeriodo();
 										} },
@@ -56821,7 +56832,7 @@ var SinodaliasTable = function (_Component) {
 								),
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'select',
-									{ id: 'periodos-form', name: 'periodos-form', className: 'form-control' },
+									{ id: 'teachers-form', name: 'periodos-form', className: 'form-control' },
 									this.state.ready ? this.state.teachers.map(function (teacher) {
 										return teacher.num_asignaciones > 0 && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 											'option',
@@ -56845,9 +56856,9 @@ var SinodaliasTable = function (_Component) {
 								{ className: 'col-md-2' },
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'button',
-									{ className: 'btn btn-secondary ',
+									{ className: 'btn btn-secondary',
 										onClick: function onClick() {
-											return _this7.pullPeriodo();
+											return _this7.pullTeachers();
 										} },
 									'Filtrar por profesores'
 								)
