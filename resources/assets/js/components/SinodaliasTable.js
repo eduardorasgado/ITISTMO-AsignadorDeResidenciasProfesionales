@@ -13,6 +13,7 @@ class SinodaliasTable extends Component {
 			sinodaliasListLength: 0,
 			minPage: 1,
 			maxPage: 1,
+			actualPage: 1,
 			minSino:0,
 			maxSino: 4,
 		}
@@ -233,7 +234,9 @@ class SinodaliasTable extends Component {
 											className="btn"
 											onClick={() => this.previousPage()}>
 											Previo</button>
-
+											<p style={{ display: 'inline', fontSize:24, margin:5 }}>
+												...{this.state.maxPage} paginas
+											</p>
 							<button className="btn" 
 											onClick={() => this.nextPage()}
 											>Siguiente</button>

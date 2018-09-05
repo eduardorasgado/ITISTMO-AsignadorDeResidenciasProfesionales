@@ -56476,6 +56476,7 @@ var SinodaliasTable = function (_Component) {
 			sinodaliasListLength: 0,
 			minPage: 1,
 			maxPage: 1,
+			actualPage: 1,
 			minSino: 0,
 			maxSino: 4
 
@@ -56858,6 +56859,13 @@ var SinodaliasTable = function (_Component) {
 								return _this7.previousPage();
 							} },
 						'Previo'
+					),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'p',
+						{ style: { display: 'inline', fontSize: 24, margin: 5 } },
+						'...',
+						this.state.maxPage,
+						' paginas'
 					),
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 						'button',
