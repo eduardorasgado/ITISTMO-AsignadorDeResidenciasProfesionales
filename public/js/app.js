@@ -56822,11 +56822,11 @@ var SinodaliasTable = function (_Component) {
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'select',
 									{ id: 'periodos-form', name: 'periodos-form', className: 'form-control' },
-									this.state.ready ? this.state.periodosAct.map(function (periodo) {
-										return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									this.state.ready ? this.state.teachers.map(function (teacher) {
+										return teacher.num_asignaciones > 0 && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 											'option',
-											{ key: periodo.id, value: periodo.id },
-											periodo.name
+											{ key: teacher.id, value: teacher.id },
+											teacher.name
 										);
 									}) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 										'option',

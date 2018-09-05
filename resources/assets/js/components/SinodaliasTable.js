@@ -238,8 +238,10 @@ class SinodaliasTable extends Component {
 							<div className="form-group">
 							<label htmlFor="periodos-form">Selección de profesores</label>
 							<select id="periodos-form" name="periodos-form" className="form-control">
-								{ this.state.ready ? this.state.periodosAct.map((periodo) => (
-										<option key={ periodo.id } value={ periodo.id }>{ periodo.name }</option>
+								{ this.state.ready ? this.state.teachers.map((teacher) => (
+										(teacher.num_asignaciones > 0) && (
+											<option key={ teacher.id } value={ teacher.id }>{ teacher.name }</option>
+										)
 									)) : <option>No disponible</option> }
 							</select>
 							</div>
