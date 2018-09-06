@@ -88,9 +88,6 @@ class SinodaliasTable extends Component {
 				this.setState({
 					maxPage: pages,
 					residuo: residuos,
-					actualPage: 1,
-					minSino: 0,
-					maxSino: 4,
 				})
 		}
 
@@ -211,6 +208,9 @@ class SinodaliasTable extends Component {
 			// cambiando el id del periodo para mostrarlos
 			this.setState({
 				periodoSeleccionado: id.value,
+				actualPage: 1,
+				minSino: 0,
+				maxSino: 4,
 			})
 			// alert(this.state.periodoSeleccionado)
 			// peticion axios para traerse todos los datos
@@ -221,7 +221,10 @@ class SinodaliasTable extends Component {
 			// pasa el id del profesor desde el filtro
 			let id = document.getElementById("teachers-form")
 			this.setState({
-				teacherFiltered: id.value
+				teacherFiltered: id.value,
+				actualPage: 1,
+				minSino: 0,
+				maxSino: 4,
 			})
 			// console.log("teacher filtered: ", this.state.teacherFiltered)
 		}

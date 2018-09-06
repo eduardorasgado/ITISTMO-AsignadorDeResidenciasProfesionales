@@ -56564,10 +56564,7 @@ var SinodaliasTable = function (_Component) {
 			}
 			this.setState({
 				maxPage: pages,
-				residuo: residuos,
-				actualPage: 1,
-				minSino: 0,
-				maxSino: 4
+				residuo: residuos
 			});
 		}
 	}, {
@@ -56779,7 +56776,10 @@ var SinodaliasTable = function (_Component) {
 
 			// cambiando el id del periodo para mostrarlos
 			this.setState({
-				periodoSeleccionado: id.value
+				periodoSeleccionado: id.value,
+				actualPage: 1,
+				minSino: 0,
+				maxSino: 4
 			});
 			// alert(this.state.periodoSeleccionado)
 			// peticion axios para traerse todos los datos
@@ -56792,7 +56792,10 @@ var SinodaliasTable = function (_Component) {
 			// pasa el id del profesor desde el filtro
 			var id = document.getElementById("teachers-form");
 			this.setState({
-				teacherFiltered: id.value
+				teacherFiltered: id.value,
+				actualPage: 1,
+				minSino: 0,
+				maxSino: 4
 			});
 			// console.log("teacher filtered: ", this.state.teacherFiltered)
 		}

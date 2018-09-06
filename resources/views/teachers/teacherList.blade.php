@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    Teachers here
+    {{ $users }}
 @endsection

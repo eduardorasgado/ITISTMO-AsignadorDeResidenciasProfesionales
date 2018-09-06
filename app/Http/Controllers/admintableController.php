@@ -29,6 +29,8 @@ class admintableController extends Controller
 
     public function teachersPanel()
     {
-        return view('teachers.teacherList');
+        // sending all teachers to frontend
+        $users = User::all();
+        return view('teachers.teacherList', compact('users'));
     }
 }
