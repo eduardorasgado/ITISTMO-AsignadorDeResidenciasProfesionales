@@ -56964,7 +56964,7 @@ var SinodaliasTable = function (_Component) {
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'table',
-					{ className: 'table' },
+					{ className: 'table table-hover' },
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 						'thead',
 						{ className: 'thead-dark' },

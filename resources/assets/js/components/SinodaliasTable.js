@@ -324,7 +324,7 @@ class SinodaliasTable extends Component {
 						</div>
 					</div>
 					<br/>
-					<table className="table">
+					<table className="table table-hover">
 						<thead className="thead-dark">
 					    <tr>
 					    	<th scope="col">#</th>
