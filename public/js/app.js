@@ -56110,16 +56110,18 @@ var CreateNewAssigment = function (_Component) {
 
 				// en caso de no haber suficientes para la asignacion
 				// que normalmente son 4, se van agragando extras
-				if (freeTeachers.length < 4) {
-					minor += 1;
-					// metiendolos en una lista nueva los de minor
-					availableTeachers.map(function (teacher) {
-						if (freeTeachers.length < 4) {
-							if (teacher.num_asignaciones == minor) {
-								freeTeachers.push(teacher);
+				while (freeTeachers.length < 4) {
+					if (freeTeachers.length < 4) {
+						minor++;
+						// metiendolos en una lista nueva los de minor
+						availableTeachers.map(function (teacher) {
+							if (freeTeachers.length < 4) {
+								if (teacher.num_asignaciones == minor) {
+									freeTeachers.push(teacher);
+								}
 							}
-						}
-					});
+						});
+					}
 				}
 
 				// los disponibles con menor cantidad de sinodalias
