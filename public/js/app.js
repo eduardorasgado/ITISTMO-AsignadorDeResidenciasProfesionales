@@ -56564,7 +56564,10 @@ var SinodaliasTable = function (_Component) {
 			}
 			this.setState({
 				maxPage: pages,
-				residuo: residuos
+				residuo: residuos,
+				actualPage: 1,
+				minSino: 0,
+				maxSino: 4
 			});
 		}
 	}, {
@@ -56785,6 +56788,7 @@ var SinodaliasTable = function (_Component) {
 	}, {
 		key: 'pullTeachers',
 		value: function pullTeachers() {
+
 			// pasa el id del profesor desde el filtro
 			var id = document.getElementById("teachers-form");
 			this.setState({
@@ -56916,7 +56920,7 @@ var SinodaliasTable = function (_Component) {
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'label',
 									{ htmlFor: 'teachers-form' },
-									'Selecci\xF3n de profesores'
+									'Selecci\xF3n de profesores del periodo filtrado'
 								),
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'select',

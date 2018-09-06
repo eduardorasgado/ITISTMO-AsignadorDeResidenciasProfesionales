@@ -88,6 +88,9 @@ class SinodaliasTable extends Component {
 				this.setState({
 					maxPage: pages,
 					residuo: residuos,
+					actualPage: 1,
+					minSino: 0,
+					maxSino: 4,
 				})
 		}
 
@@ -214,6 +217,7 @@ class SinodaliasTable extends Component {
 			this.getSinodaliasData()
 		}
 		pullTeachers() {
+
 			// pasa el id del profesor desde el filtro
 			let id = document.getElementById("teachers-form")
 			this.setState({
@@ -294,7 +298,7 @@ class SinodaliasTable extends Component {
 						<div className="col-md-6">
 							<form action="">
 							<div className="form-group">
-							<label htmlFor="teachers-form">Selección de profesores</label>
+							<label htmlFor="teachers-form">Selección de profesores del periodo filtrado</label>
 							<select id="teachers-form" name="teachers-form" className="form-control">
 								{ this.state.ready ? this.state.teachers.map((teacher) => (
 										(teacher.num_asignaciones > 0) && (
