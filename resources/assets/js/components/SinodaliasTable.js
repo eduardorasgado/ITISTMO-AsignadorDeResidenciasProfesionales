@@ -9,7 +9,6 @@ class SinodaliasTable extends Component {
 			teachers: [],
 			periodosAct: [],
 			periodoSeleccionado: 0,
-			teachersSeleccionado: '',
 			ready: false,
 			sinodaliasListLength: 0,
 			minPage: 1,
@@ -59,6 +58,7 @@ class SinodaliasTable extends Component {
 				sinodaliasList.map((sinodal) => {
 					(sinodal.periodo_id == this.state.periodoSeleccionado) && validSinodalias.push(sinodal)
 				})
+				// alert(validSinodalias)
 				this.setState({
 					sinodalias: [...validSinodalias],
 					sinodaliasListLength: [...validSinodalias].length,
@@ -209,7 +209,7 @@ class SinodaliasTable extends Component {
 			this.setState({
 				periodoSeleccionado: id.value,
 			})
-			// console.log("pullPeriodo: "+id.value)
+			// alert(this.state.periodoSeleccionado)
 			// peticion axios para traerse todos los datos
 			this.getSinodaliasData()
 		}
@@ -294,8 +294,8 @@ class SinodaliasTable extends Component {
 						<div className="col-md-6">
 							<form action="">
 							<div className="form-group">
-							<label htmlFor="periodos-form">Selección de profesores</label>
-							<select id="teachers-form" name="periodos-form" className="form-control">
+							<label htmlFor="teachers-form">Selección de profesores</label>
+							<select id="teachers-form" name="teachers-form" className="form-control">
 								{ this.state.ready ? this.state.teachers.map((teacher) => (
 										(teacher.num_asignaciones > 0) && (
 											<option key={ teacher.id } value={ teacher.id }>{ teacher.name }</option>

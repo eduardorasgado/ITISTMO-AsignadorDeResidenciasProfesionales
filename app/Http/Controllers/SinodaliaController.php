@@ -26,7 +26,7 @@ class SinodaliaController extends Controller
             // return dd($periodosIds);
 
             // devolver todas las sinodalias de los periodos activos
-            $allSinodalias = Sinodalia::where('periodo_id', '=', $periodosIds)->get();
+            $allSinodalias = Sinodalia::whereIn('periodo_id', $periodosIds)->get();
             //$allSinodalias = Sinodalia::all();
 
             return response()->json([

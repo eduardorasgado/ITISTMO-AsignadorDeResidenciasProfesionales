@@ -56474,7 +56474,6 @@ var SinodaliasTable = function (_Component) {
 			teachers: [],
 			periodosAct: [],
 			periodoSeleccionado: 0,
-			teachersSeleccionado: '',
 			ready: false,
 			sinodaliasListLength: 0,
 			minPage: 1,
@@ -56536,6 +56535,7 @@ var SinodaliasTable = function (_Component) {
 				sinodaliasList.map(function (sinodal) {
 					sinodal.periodo_id == _this3.state.periodoSeleccionado && validSinodalias.push(sinodal);
 				});
+				// alert(validSinodalias)
 				_this3.setState({
 					sinodalias: [].concat(validSinodalias),
 					sinodaliasListLength: [].concat(validSinodalias).length
@@ -56778,7 +56778,7 @@ var SinodaliasTable = function (_Component) {
 			this.setState({
 				periodoSeleccionado: id.value
 			});
-			// console.log("pullPeriodo: "+id.value)
+			// alert(this.state.periodoSeleccionado)
 			// peticion axios para traerse todos los datos
 			this.getSinodaliasData();
 		}
@@ -56915,12 +56915,12 @@ var SinodaliasTable = function (_Component) {
 								{ className: 'form-group' },
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'label',
-									{ htmlFor: 'periodos-form' },
+									{ htmlFor: 'teachers-form' },
 									'Selecci\xF3n de profesores'
 								),
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'select',
-									{ id: 'teachers-form', name: 'periodos-form', className: 'form-control' },
+									{ id: 'teachers-form', name: 'teachers-form', className: 'form-control' },
 									this.state.ready ? this.state.teachers.map(function (teacher) {
 										return teacher.num_asignaciones > 0 && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 											'option',

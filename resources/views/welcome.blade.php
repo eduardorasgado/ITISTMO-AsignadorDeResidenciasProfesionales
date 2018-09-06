@@ -21,7 +21,7 @@
                 margin: 0;
             }
 
-            #buttonStart {
+            #buttonStart, #button1, #button2 {
                 color: white;
                 background: orange;
                 padding: 10px;
@@ -29,7 +29,7 @@
                 border-radius: 5px;
                 transition: all 0.3s ease 0s;
             }
-            #buttonStart:hover {
+            #buttonStart:hover, #button1:hover, #button2:hover {
                 background: white;
                 color: gray;
 
@@ -102,8 +102,8 @@
                             <button id="buttonStart">Comencemos Aquí</button>
                         </a>
                     @else
-                        <a href="{{ route('login') }}">Entrar</a>
-                        <a href="{{ route('register') }}">Registro</a>
+                        <a href="{{ route('login') }}"><button id="button1">Entrar</button></a>
+                        <a href="{{ route('register') }}"><button id="button2">Registro</button></a>
                     @endauth
                 </div>
             @endif
