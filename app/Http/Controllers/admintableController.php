@@ -29,6 +29,6 @@ class admintableController extends Controller
 
     public function teachersPanel()
     {
-        return 'Aqui hay una lista de maestros';
+        return view('teachers.teacherList');
     }
 }
