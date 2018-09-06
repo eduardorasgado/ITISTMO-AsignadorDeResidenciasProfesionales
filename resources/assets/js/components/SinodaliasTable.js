@@ -343,7 +343,7 @@ class SinodaliasTable extends Component {
 							</div>
 			  		</div>
 					}
-					{ this.state.maxPage > 1 && 
+					{ (this.state.maxPage > 1 && this.state.teacherFiltered == null) && 
 						<div className="row justify-content-md-center">
 							<button style={{ marginRight: 5 }} 
 											className="btn"

@@ -57029,7 +57029,7 @@ var SinodaliasTable = function (_Component) {
 						'A\xFAn no has agregado ninguna sinodal\xEDa'
 					)
 				),
-				this.state.maxPage > 1 && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+				this.state.maxPage > 1 && this.state.teacherFiltered == null && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
 					{ className: 'row justify-content-md-center' },
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
