@@ -16,9 +16,9 @@ class admintableController extends Controller
     public function teachers(Request $request, User $user) 
     {
     	// evitar acceso de maestros y secretaria
-			if (Auth::user()->cargo != 0){
-				return view('home');
-			}
+		if (Auth::user()->cargo != 0){
+			return view('home');
+		}
     	$teachers = User::where('cargo', '!=', 1)
                     ->orderBy('num_asignaciones', 'desc')
                     ->get();
@@ -29,6 +29,10 @@ class admintableController extends Controller
 
     public function teachersPanel()
     {
+        // evitar acceso de maestros y secretaria
+        if (Auth::user()->cargo != 0){
+            return view('home');
+        }
         // sending all teachers to frontend
         $users = User::all();
         return view('teachers.teacherList', compact('users'));
@@ -36,6 +40,10 @@ class admintableController extends Controller
 
     public function editarTeacher(Request $request)
     {
+        // evitar acceso de maestros y secretaria
+        if (Auth::user()->cargo != 0){
+            return view('home');
+        }
         $id = $request->id;
         // $msg = "El id del profesor es: " . $id;
         return view('teachers.editTeacher',[

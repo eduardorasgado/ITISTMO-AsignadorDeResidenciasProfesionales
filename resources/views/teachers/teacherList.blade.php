@@ -14,7 +14,10 @@
     	@foreach($users as $user)
   			<div class="col-md-6" style="padding: 20px; font-size: 1.2em">
 
-  				<h3 class="alert alert-dark">{{ $user->name }} 
+  				<h3 class="alert alert-dark">{{ $user->name }}
+  					@if(Auth::user()->id == $user->id)
+  						(Tú)
+  					@endif
   					<a style="margin-left: 20px;
   										margin-right: 20px;" 
   										class="btn btn-outline-primary" 
