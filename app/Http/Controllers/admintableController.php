@@ -33,4 +33,11 @@ class admintableController extends Controller
         $users = User::all();
         return view('teachers.teacherList', compact('users'));
     }
+
+    public function editarTeacher(Request $request)
+    {
+        $id = $request->id;
+        $msg = "El id del profesor es: " . $id;
+        return $msg;
+    }
 }

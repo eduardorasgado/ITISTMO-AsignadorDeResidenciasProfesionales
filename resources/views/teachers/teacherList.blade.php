@@ -13,8 +13,9 @@
   				<h3 class="alert alert-dark">{{ $user->name }} 
   					<a style="margin-left: 20px;
   										margin-right: 20px;" 
-  										class="btn btn-primary" href="">Editar</a>
-  					<a class="btn btn-danger" href="">Eliminar</a>
+  										class="btn btn-outline-primary" 
+  										href={{ route('editarTeacher', $user->id) }}>Editar</a>
+  					<a class="btn btn-outline-danger" href="">Eliminar </a>
   				</h3>
 
   				<div class="alert alert-primary">
