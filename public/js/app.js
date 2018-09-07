@@ -57179,7 +57179,7 @@ var AllTeachersListing = function (_Component) {
 						this.state.teachers.map(function (teacher) {
 							return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 								'div',
-								{ key: teacher.id, className: 'alert alert-success', role: 'alert', style: { marginRight: 15 } },
+								{ key: teacher.id, className: 'alert alert-warning', role: 'alert', style: { marginRight: 15 } },
 								teacher.name,
 								' | ',
 								teacher.num_asignaciones,

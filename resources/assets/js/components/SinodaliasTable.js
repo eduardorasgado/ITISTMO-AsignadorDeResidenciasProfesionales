@@ -274,7 +274,7 @@ class SinodaliasTable extends Component {
 					<div className="container">
 						<h2 className="text-center alert alert-primary">Lista de Sinodalías creadas</h2>
 						<br/>
-					</div>
+					</div>			
 					<div className="row">
 						<div className="col-md-5">
 							<form action="">

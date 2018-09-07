@@ -37,7 +37,9 @@ class admintableController extends Controller
     public function editarTeacher(Request $request)
     {
         $id = $request->id;
-        $msg = "El id del profesor es: " . $id;
-        return $msg;
+        // $msg = "El id del profesor es: " . $id;
+        return view('teachers.editTeacher',[
+            'id' => $id,
+        ]);
     }
 }

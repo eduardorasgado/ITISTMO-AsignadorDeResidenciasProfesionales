@@ -48,7 +48,7 @@ class AllTeachersListing extends Component {
 				<div className="jumbotron" style={{background: '#525252', padding:30}}>
 					<div className="row">			
 						{ this.state.teachers.map((teacher) => (
-							<div key={teacher.id} className="alert alert-success" role="alert" style={{ marginRight:15 }}>
+							<div key={teacher.id} className="alert alert-warning" role="alert" style={{ marginRight:15 }}>
 							  {teacher.name} | {teacher.num_asignaciones} asig.
 							</div>
 							)) }
