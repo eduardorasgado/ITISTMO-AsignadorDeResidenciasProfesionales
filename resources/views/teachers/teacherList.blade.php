@@ -3,9 +3,13 @@
 @section('content')
     <div class="container">
     	<h2 class="text-center">Profesorado perteneciente a la academia</h2>
-    	<a class="btn btn-primary" href="{{ URL::previous() != url()->current() ? URL::previous() : "/home" }}">Atrás</a>
+    	<a class="btn btn-primary" href="/home">Atrás</a>
     	<br>
     	<hr>
+    	<h4>Acciones posibles</h4>
+    	<a href="" class="btn btn-primary">Agregar nuevo profesor</a>
+    	<hr>
+    	<h4>Lista de integrantes actuales</h4>
     	<div class="row justify-content-md-center">
     	@foreach($users as $user)
   			<div class="col-md-6" style="padding: 20px; font-size: 1.2em">
