@@ -56233,7 +56233,7 @@ var CreateNewAssigment = function (_Component) {
 					{ className: 'card-header' },
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 						'h2',
-						null,
+						{ className: 'text-center' },
 						'Asignaci\xF3n de nueva Sinodal\xEDa'
 					)
 				),
@@ -56851,10 +56851,10 @@ var SinodaliasTable = function (_Component) {
 				null,
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
-					null,
+					{ className: 'container' },
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 						'h2',
-						{ className: 'text-center' },
+						{ className: 'text-center alert alert-primary' },
 						'Lista de Sinodal\xEDas creadas'
 					),
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null)
@@ -56874,7 +56874,7 @@ var SinodaliasTable = function (_Component) {
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'label',
 									{ htmlFor: 'periodos-form' },
-									'Selecci\xF3n de Periodo(solo disponibles)'
+									'Selecci\xF3n de Periodo(solo activos)'
 								),
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'select',
@@ -56923,7 +56923,7 @@ var SinodaliasTable = function (_Component) {
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'label',
 									{ htmlFor: 'teachers-form' },
-									'Selecci\xF3n de profesores del periodo filtrado'
+									'Selecci\xF3n de profesores del periodo filtrado actual'
 								),
 								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 									'select',
@@ -57158,40 +57158,37 @@ var AllTeachersListing = function (_Component) {
 	}, {
 		key: 'render',
 		value: function render() {
-			var _this4 = this;
-
 			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 				'div',
 				{ className: 'container' },
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
-					null,
+					{ className: 'alert alert-info' },
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 						'h2',
-						null,
-						'Detalles de maestros'
+						{ className: 'text-center' },
+						'Asignaciones de maestros'
 					)
 				),
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
-					{ className: 'row' },
-					this.state.teachers.map(function (teacher) {
-						return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							'div',
-							{ key: teacher.id, className: 'alert alert-success', role: 'alert', style: { marginRight: 15 } },
-							teacher.name,
-							' | ',
-							teacher.num_asignaciones,
-							' | ',
-							_this4.disponible(teacher.disponibilidad)
-						);
-					})
+					{ className: 'jumbotron', style: { background: '#525252', padding: 30 } },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'div',
+						{ className: 'row' },
+						this.state.teachers.map(function (teacher) {
+							return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'div',
+								{ key: teacher.id, className: 'alert alert-success', role: 'alert', style: { marginRight: 15 } },
+								teacher.name,
+								' | ',
+								teacher.num_asignaciones,
+								' asig.'
+							);
+						})
+					)
 				),
-				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-					'p',
-					null,
-					'L = Lleno; D = Disponible'
-				)
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null)
 			);
 		}
 	}]);

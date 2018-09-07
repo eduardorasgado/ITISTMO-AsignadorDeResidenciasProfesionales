@@ -211,7 +211,7 @@ class CreateNewAssigment extends Component {
 		return(
 				<div className="card">
 					<div className="card-header">
-						<h2>Asignación de nueva Sinodalía</h2>
+						<h2 className="text-center">Asignación de nueva Sinodalía</h2>
 					</div>
 					<div className="card-body">
 						<form onSubmit={this.handleSubmit}>

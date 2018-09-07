@@ -42,18 +42,19 @@ class AllTeachersListing extends Component {
 	render() {
 		return (
 			<div className="container">
-				<div >
-					<h2>Detalles de maestros</h2>
+				<div className="alert alert-info">
+					<h2 className="text-center">Asignaciones de maestros</h2>
 				</div>
-				<div className="row">
-				
-					{ this.state.teachers.map((teacher) => (
-						<div key={teacher.id} className="alert alert-success" role="alert" style={{ marginRight:15 }}>
-						  {teacher.name} | {teacher.num_asignaciones} | { this.disponible(teacher.disponibilidad) }
-						</div>
-						)) }
+				<div className="jumbotron" style={{background: '#525252', padding:30}}>
+					<div className="row">			
+						{ this.state.teachers.map((teacher) => (
+							<div key={teacher.id} className="alert alert-success" role="alert" style={{ marginRight:15 }}>
+							  {teacher.name} | {teacher.num_asignaciones} asig.
+							</div>
+							)) }
+					</div>
 				</div>
-				<p>L = Lleno; D = Disponible</p>
+				<hr/>
 			</div>
 			)
 	}

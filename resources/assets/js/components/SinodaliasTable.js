@@ -271,15 +271,15 @@ class SinodaliasTable extends Component {
 	render() {
 		return (
 				<div>
-					<div>
-						<h2 className="text-center">Lista de Sinodalías creadas</h2>
+					<div className="container">
+						<h2 className="text-center alert alert-primary">Lista de Sinodalías creadas</h2>
 						<br/>
 					</div>
 					<div className="row">
 						<div className="col-md-5">
 							<form action="">
 							<div className="form-group">
-							<label htmlFor="periodos-form">Selección de Periodo(solo disponibles)</label>
+							<label htmlFor="periodos-form">Selección de Periodo(solo activos)</label>
 							<select id="periodos-form" name="periodos-form" className="form-control">
 								{ this.state.ready ? this.state.periodosAct.map((periodo) => (
 										<option key={ periodo.id } value={ periodo.id }>{ periodo.name }</option>
@@ -301,7 +301,8 @@ class SinodaliasTable extends Component {
 						<div className="col-md-6">
 							<form action="">
 							<div className="form-group">
-							<label htmlFor="teachers-form">Selección de profesores del periodo filtrado</label>
+							<label htmlFor="teachers-form">
+								Selección de profesores del periodo filtrado actual</label>
 							<select id="teachers-form" name="teachers-form" className="form-control">
 								{ this.state.ready ? this.state.teachers.map((teacher) => (
 										(teacher.num_asignaciones > 0) && (
