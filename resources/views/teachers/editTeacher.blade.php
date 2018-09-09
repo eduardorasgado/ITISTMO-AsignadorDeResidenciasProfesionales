@@ -10,23 +10,23 @@
   		<div class="col-md-6">
   			<form>
   				<div class="form-group">
-  					<label>Nombre: </label>
-  					<input type="text" class="form-control" value="{{ $user->name }}"></input>
+  					<label for="name">Nombre: </label>
+  					<input type="text" class="form-control" name="name" id="name" value="{{ $user->name }}"></input>
   				</div>
   				<div class="form-group">
-  					<label>Número de control: </label>
-  					<input type="text" class="form-control" value="{{ $user->num_control }}"></input>
+  					<label for="num_control">Número de control: </label>
+  					<input type="text" class="form-control" name="num_control" id="num_control" value="{{ $user->num_control }}"></input>
   				</div>
   				<div class="form-group">
-  					<label>Telefono celular: </label>
-  					<input type="text" class="form-control" value="{{ $user->telefono }}"></input>
+  					<label for="telefono">Telefono celular: </label>
+  					<input type="text" class="form-control" name="telefono" id="telefono" value="{{ $user->telefono }}"></input>
   				</div>
   				<div class="form-group">
-  					<label>Cargo: </label>
-  					<select class="form-control">
-  						<option>Asignador</option>
-  						<option>Profesorado</option>
-  						<option>Aministrativo</option>
+  					<label for="cargo">Cargo: </label>
+  					<select class="form-control" name="cargo" id="cargo">
+  						<option value="0" {{ ($user->cargo == 0) ? 'selected' : '' }}>Asignador</option>
+  						<option value="2" {{ ($user->cargo == 2) ? 'selected' : '' }}>Profesorado</option>
+  						<option value="1" {{ ($user->cargo == 1) ? 'selected' : '' }}>Aministrativo</option>
   					</select>
   				</div>
   			</form>
