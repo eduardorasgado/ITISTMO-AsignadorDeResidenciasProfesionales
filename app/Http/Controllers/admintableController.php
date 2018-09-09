@@ -45,9 +45,11 @@ class admintableController extends Controller
             return view('home');
         }
         $id = $request->id;
+        $user = User::find($id);
         // $msg = "El id del profesor es: " . $id;
         return view('teachers.editTeacher',[
             'id' => $id,
+            'user' => $user,
         ]);
     }
 }
