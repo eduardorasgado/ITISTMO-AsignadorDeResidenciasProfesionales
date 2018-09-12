@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Auth;
 
 class RegisterController extends Controller
 {
@@ -98,5 +99,17 @@ class RegisterController extends Controller
             'telefono' => $num_phone, 
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    protected function showRegistrationForm() {
+        if(User::all()->isEmpty()){
+            return view('auth.register');
+        }
+        else if(Auth::user() != null){
+            if(Auth::check()->cargo == 0){
+                return view('auth.register');
+            }
+        }
+        return view('/welcome');
     }
 }

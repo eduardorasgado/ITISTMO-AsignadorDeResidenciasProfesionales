@@ -49,7 +49,7 @@ class AllTeachersListing extends Component {
 					<div className="row">			
 						{ this.state.teachers.map((teacher) => (
 							<div key={teacher.id} className="alert alert-warning" role="alert" style={{ marginRight:15 }}>
-							  {teacher.name} | {teacher.num_asignaciones} asig.
+							  {teacher.name} | {teacher.num_asignaciones}
 							</div>
 							)) }
 					</div>

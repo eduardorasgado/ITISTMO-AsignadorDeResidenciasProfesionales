@@ -57182,8 +57182,7 @@ var AllTeachersListing = function (_Component) {
 								{ key: teacher.id, className: 'alert alert-warning', role: 'alert', style: { marginRight: 15 } },
 								teacher.name,
 								' | ',
-								teacher.num_asignaciones,
-								' asig.'
+								teacher.num_asignaciones
 							);
 						})
 					)
