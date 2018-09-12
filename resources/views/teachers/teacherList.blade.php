@@ -7,7 +7,7 @@
     	<br>
     	<hr>
     	<h4>Acciones posibles</h4>
-    	<a href="" class="btn btn-primary">Agregar nuevo profesor</a>
+    	<a href="/register" class="btn btn-primary">Agregar nuevo profesor</a>
     	<hr>
     	<h4>Lista de integrantes actuales</h4>
     	<div class="row justify-content-md-center">

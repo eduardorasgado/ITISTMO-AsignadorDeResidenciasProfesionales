@@ -106,7 +106,7 @@ class RegisterController extends Controller
             return view('auth.register');
         }
         else if(Auth::user() != null){
-            if(Auth::check()->cargo == 0){
+            if(Auth::user()->cargo == 0){
                 return view('auth.register');
             }
         }

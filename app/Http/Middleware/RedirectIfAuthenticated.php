@@ -17,7 +17,9 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::guard($guard)->check()) {
+        // proteccion del register para todo el que no
+        // sea asignador
+        if (Auth::guard($guard)->check() && Auth::user()->cargo != 0) {
             return redirect('/home');
         }
 
