@@ -53,7 +53,7 @@ class admintableController extends Controller
         ]);
     }
 
-    public function update(){
-        return 'hola';
+    public function update(Request $request){
+        return redirect('/teachersPanel')->with('userChanged','El integrante '.$request->name.' ha sido correctamente editado.');
     }
 }

@@ -16,7 +16,14 @@
       @endif
     	<hr>
     	<h4>Lista de integrantes actuales</h4>
-    	<div class="row justify-content-md-center">
+
+      @if(Session::has('userChanged'))
+        <div class="alert alert-success" role="alert" style="margin-top: 5px">
+            <span class="text-success">{{ Session::get('userChanged') }}</span>
+        </div>
+      @endif
+    	
+      <div class="row justify-content-md-center">
     	@foreach($users as $user)
   			<div class="col-md-6" style="padding: 20px; font-size: 1.2em">
 
