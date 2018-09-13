@@ -33,6 +33,8 @@ Route::group(['middleware' => ['auth']], function() {
 	{
 	    return Redirect::to('/');
 	});
+	// llamado desde teacherList blade
+	Route::get('/edeleteTeacher/{id}', 'admintableController@delete')->name('deleteTeacher');
 	// SINODALIAS
 	Route::get('/sinodalias', 'SinodaliaController@index');
 

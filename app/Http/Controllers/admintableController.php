@@ -54,6 +54,10 @@ class admintableController extends Controller
     }
 
     public function update(Request $request){
+        // evitar acceso de maestros y secretaria
+        if (Auth::user()->cargo != 0){
+            return view('home');
+        }
         $integrante = User::find($request->idTeacher);
         // return $request->idTeacher;
         // alterando los datos del user
@@ -65,5 +69,10 @@ class admintableController extends Controller
         $integrante->save();
         // redireccionando a la lista de profesores
         return redirect('/teachersPanel')->with('userChanged','El integrante '.$request->name.' ha sido correctamente editado.');
+    }
+
+    public function delete(Request $request){
+        // $users = User::findOrFail($id);
+        return 'deleting';
     }
 }
