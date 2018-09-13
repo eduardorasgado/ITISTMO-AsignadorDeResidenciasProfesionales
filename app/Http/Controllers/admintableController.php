@@ -80,9 +80,13 @@ class admintableController extends Controller
         $user = User::findOrFail($request->id);
         // si el profesor tiene asignaciones
         if ($user->num_asignaciones > 0) {
-            return 'cannot delete';
+            // no se puede borrar
+            return redirect()->back()->with('cannotDeleted','El/La integrante '.$user->name.' no puede ser eliminado/a, tiene sinodalias pendientes.');
         }
         // en caso de que el profesor no tenga asign
-        return 'deleting';
+        //borrando al usuario
+        $user->delete();
+
+        return redirect()->back()->with('userDeleted','El/La integrante '.$user->name.' ha sido eliminado/a.');
     }
 }

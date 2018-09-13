@@ -22,6 +22,16 @@
             <span class="text-success">{{ Session::get('userChanged') }}</span>
         </div>
       @endif
+      @if(Session::has('userDeleted'))
+        <div class="alert alert-danger" role="alert" style="margin-top: 5px">
+            <span class="text-danger">{{ Session::get('userDeleted') }}</span>
+        </div>
+      @endif
+      @if(Session::has('cannotDeleted'))
+        <div class="alert alert-danger" role="alert" style="margin-top: 5px">
+            <span class="text-danger">{{ Session::get('cannotDeleted') }}</span>
+        </div>
+      @endif
     	
       <div class="row justify-content-md-center">
     	@foreach($users as $user)
