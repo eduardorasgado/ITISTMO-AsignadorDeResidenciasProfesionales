@@ -56,7 +56,6 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'cargo' => 'required|string',
             'num_control' => 'required|string|max:80|unique:users',
-            'telefono' => 'digits:10',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
@@ -104,14 +103,19 @@ class RegisterController extends Controller
     }
 
     protected function showRegistrationForm() {
+        // si aun no existe ningun usuario registrado
         if(User::all()->isEmpty()){
+            // se puede abrir el registro
             return view('auth.register');
         }
+        // si el usuario esta logueado
         else if(Auth::user() != null){
+            // y si el usuario logueado es asignador
             if(Auth::user()->cargo == 0){
                 return view('auth.register');
             }
         }
+        // ninguno de los casos mencionados
         return view('/welcome');
     }
 
@@ -121,6 +125,7 @@ class RegisterController extends Controller
         // despues del registro en vez de loggear
         $validator = $this->validator($request->all());
 
+        // en caso de error
         if ($validator->fails()) {
             $this->throwValidationException(
                 $request, $validator
@@ -128,7 +133,13 @@ class RegisterController extends Controller
         }   
 
         $this->create($request->all());
-
+        if (Auth::user() != null) {
+            // si el usuario esta logueado
+            // regresar a dashboard
+            return redirect('/teachersPanel');
+        }
+        // si el registro se hizo desde fuera
+        // sin que el asignador este logueado
         return redirect($this->redirectPath());
     } 
 }

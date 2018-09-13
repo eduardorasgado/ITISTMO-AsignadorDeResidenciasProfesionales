@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="container">
+    @auth
+        <a href="/teachersPanel" class="btn btn-primary">Regresar</a>
+    @endauth
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -74,7 +77,7 @@
                             <label for="telefono" class="col-md-4 col-form-label text-md-right">{{ __('Num. telefónico') }}</label>
 
                             <div class="col-md-6">
-                                <input id="telefono" type="number" class="form-control{{ $errors->has('telefono') ? ' is-invalid' : '' }}" name="telefono" value="{{ old('telefono') }}" required>
+                                <input id="telefono" type="number" class="form-control{{ $errors->has('telefono') ? ' is-invalid' : '' }}" name="telefono" value="{{ old('telefono') }}">
 
                                 @if ($errors->has('telefono'))
                                     <span class="invalid-feedback" role="alert">
