@@ -29,6 +29,7 @@
   						<option value="1" {{ ($user->cargo == 1) ? 'selected' : '' }}>Aministrativo</option>
   					</select>
   				</div>
+  				<input class="form-control btn btn-danger" type="submit" name="" value="Guardar cambios">
   			</form>
   		</div>
   	</div>
