@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+
+use Illuminate\Http\Request;
 use Auth;
 
 class RegisterController extends Controller
@@ -112,4 +114,21 @@ class RegisterController extends Controller
         }
         return view('/welcome');
     }
+
+    public function register(Request $request)
+    {
+        // esta funcion permite redireccionar 
+        // despues del registro en vez de loggear
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );  
+        }   
+
+        $this->create($request->all());
+
+        return redirect($this->redirectPath());
+    } 
 }
