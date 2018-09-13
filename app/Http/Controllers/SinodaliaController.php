@@ -333,6 +333,18 @@ class SinodaliaController extends Controller
                     DE ASIGNACIONES DE LOS
                     PROFESORES AQUI
                     */
+                    $mySinodalia = Sinodalia::find($idSinodal);
+                    //Actualizando numero de asignaciones
+                    $presidente = User::find($mySinodalia->user_id);
+                    $presidente->decrement('num_asignaciones');
+                    $secretario = User::find($mySinodalia->id_secretario);
+                    $secretario->decrement('num_asignaciones');
+                    $vocal = User::find($mySinodalia->id_vocal);
+                    $vocal->decrement('num_asignaciones');
+                    $sup = User::find($mySinodalia->id_vocal_sup);
+                    $sup->decrement('num_asignaciones');
+
+                    // actualizar el estado de la sino
                     DB::update('update sinodalias set aprobacion = ? where id = ?',[1, $idSinodal]);
                     return redirect()->back()->with('proyecto','Aprobaste el Proyecto');
                 } else {
