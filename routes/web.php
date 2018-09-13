@@ -93,4 +93,6 @@ Route::group(['middleware' => ['auth']], function() {
 	    return Redirect::to('/');
 	});
 
+	Route::get('/historial', 'admintableController@historialIndex')->name('historial');
+
 });

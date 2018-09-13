@@ -89,4 +89,8 @@ class admintableController extends Controller
 
         return redirect()->back()->with('userDeleted','El/La integrante '.$user->name.' ha sido eliminado/a.');
     }
+
+    public function historialIndex(){
+        return 'Its me';
+    }
 }

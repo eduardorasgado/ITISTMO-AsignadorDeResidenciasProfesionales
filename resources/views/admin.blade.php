@@ -30,7 +30,7 @@
             <a class="btn btn-primary" href="{{ route('teachersPanel') }}">Maestros</a>
         </div>
         <div class="col-md-1">
-            <a class="btn btn-primary" href="">Historial</a>
+            <a class="btn btn-primary" href="{{ route('historial') }}">Historial</a>
         </div>
         <div class="col-md-1">
             <a class="btn btn-primary" href="">Gráficas</a>
