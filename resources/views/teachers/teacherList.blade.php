@@ -8,6 +8,12 @@
     	<hr>
     	<h4>Acciones posibles</h4>
     	<a href="/register" class="btn btn-primary">Agregar nuevo profesor</a>
+      @if(session('success'))
+          <div class="alert alert-success" role="alert" style="margin-top: 5px">
+              <span class="text-success">{{ session('success') }}</span>
+          </div>
+      
+      @endif
     	<hr>
     	<h4>Lista de integrantes actuales</h4>
     	<div class="row justify-content-md-center">

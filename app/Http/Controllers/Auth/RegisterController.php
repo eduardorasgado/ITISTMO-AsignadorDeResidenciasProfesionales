@@ -136,7 +136,7 @@ class RegisterController extends Controller
         if (Auth::user() != null) {
             // si el usuario esta logueado
             // regresar a dashboard
-            return redirect('/teachersPanel');
+            return redirect('/teachersPanel')->withSuccess("El nuevo usuario se creó con éxito");
         }
         // si el registro se hizo desde fuera
         // sin que el asignador este logueado
