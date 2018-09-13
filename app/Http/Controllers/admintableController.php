@@ -52,4 +52,8 @@ class admintableController extends Controller
             'user' => $user,
         ]);
     }
+
+    public function update(){
+        return 'hola';
+    }
 }

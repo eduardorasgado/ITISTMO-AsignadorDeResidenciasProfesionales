@@ -8,7 +8,11 @@
   	<hr>
   	<div class="row">
   		<div class="col-md-6">
-  			<form>
+  			<form action="{{ url('/editarTeacher/update') }}" method="POST"
+                    onsubmit="return confirm('Estás realmente seguro/a de modificar este integrante?');">
+                {{-- funcion que provee laravel para generar un token --}}
+	              {{-- Sin ello, el form no es reconocido por laravel --}}
+	              {{ csrf_field() }}
   				<div class="form-group">
   					<label for="name">Nombre: </label>
   					<input type="text" class="form-control" name="name" id="name" value="{{ $user->name }}"></input>
@@ -29,7 +33,7 @@
   						<option value="1" {{ ($user->cargo == 1) ? 'selected' : '' }}>Aministrativo</option>
   					</select>
   				</div>
-  				<input class="form-control btn btn-danger" type="submit" name="" value="Guardar cambios">
+  				<input class="form-control btn btn-danger" type="submit" name="guardar" value="Guardar cambios">
   			</form>
   		</div>
   	</div>

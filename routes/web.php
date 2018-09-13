@@ -27,7 +27,13 @@ Route::group(['middleware' => ['auth']], function() {
 
 	Route::get('/teachersPanel', 'admintableController@teachersPanel')->name('teachersPanel');
 	Route::get('/editarTeacher/{id}', 'admintableController@editarTeacher')->name('editarTeacher');
-
+	// llamado desde editTeacher blade
+	Route::post('/editarTeacher/update', 'admintableController@update')->name('saveTeacher');
+	Route::get('/saveTeacher', function()
+	{
+	    return Redirect::to('/');
+	});
+	// SINODALIAS
 	Route::get('/sinodalias', 'SinodaliaController@index');
 
 	Route::get('/sinodalias/{id}', 'SinodaliaController@showSinodal');
