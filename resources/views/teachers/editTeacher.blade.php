@@ -25,6 +25,10 @@
   					<input type="text" class="form-control" name="num_control" id="num_control" value="{{ $user->num_control }}"></input>
   				</div>
   				<div class="form-group">
+  					<label for="num_control">Email: </label>
+  					<input type="text" class="form-control" name="email" id="email" value="{{ $user->email }}"></input>
+  				</div>
+  				<div class="form-group">
   					<label for="telefono">Telefono celular: </label>
   					<input type="text" class="form-control" name="telefono" id="telefono" value="{{ $user->telefono }}"></input>
   				</div>

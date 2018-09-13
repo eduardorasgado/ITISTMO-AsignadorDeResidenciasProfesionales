@@ -55,7 +55,15 @@ class admintableController extends Controller
 
     public function update(Request $request){
         $integrante = User::find($request->idTeacher);
-        return $request->idTeacher;
+        // return $request->idTeacher;
+        // alterando los datos del user
+        $integrante->name = $request->name;
+        $integrante->num_control = $request->num_control;
+        $integrante->telefono = $request->telefono;
+        $integrante->cargo = $request->cargo;
+        // guardando los cambios
+        $integrante->save();
+        // redireccionando a la lista de profesores
         return redirect('/teachersPanel')->with('userChanged','El integrante '.$request->name.' ha sido correctamente editado.');
     }
 }
