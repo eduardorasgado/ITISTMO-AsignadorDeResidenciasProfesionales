@@ -91,6 +91,10 @@ class admintableController extends Controller
     }
 
     public function historialIndex(){
+        // evitar acceso de maestros y secretaria
+        if (Auth::user()->cargo != 0){
+            return view('home');
+        }
         return 'Its me';
     }
 }
