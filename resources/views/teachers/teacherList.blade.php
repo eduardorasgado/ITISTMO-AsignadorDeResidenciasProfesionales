@@ -35,7 +35,7 @@
   										margin-right: 20px;" 
   										class="btn btn-outline-primary" 
   										href={{ route('editarTeacher', $user->id) }}>Editar</a>
-  					<a class="btn btn-outline-danger" href="{{ route('deleteTeacher', $user->id) }}" onclick="return confirm('Estás realmente seguro/a de modificar este integrante?');">Eliminar </a>
+  					<a class="btn btn-outline-danger" href="{{ route('deleteTeacher', $user->id) }}" onclick="return confirm('Estás a punto de eliminar a un integrante de la academia. Estás realmente segura/a?');">Eliminar </a>
   				</h3>
 
   				<div class="alert alert-primary">

@@ -72,7 +72,17 @@ class admintableController extends Controller
     }
 
     public function delete(Request $request){
-        // $users = User::findOrFail($id);
+        // eliminar un usuario
+        // evitar acceso de maestros y secretaria
+        if (Auth::user()->cargo != 0){
+            return view('home');
+        }
+        $user = User::findOrFail($request->id);
+        // si el profesor tiene asignaciones
+        if ($user->num_asignaciones > 0) {
+            return 'cannot delete';
+        }
+        // en caso de que el profesor no tenga asign
         return 'deleting';
     }
 }
