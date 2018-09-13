@@ -13,6 +13,9 @@
                 {{-- funcion que provee laravel para generar un token --}}
 	              {{-- Sin ello, el form no es reconocido por laravel --}}
 	              {{ csrf_field() }}
+	            
+	            <input type="hidden" name="idTeacher" id="idTeacher" value="{{ $user->id }}">
+  				
   				<div class="form-group">
   					<label for="name">Nombre: </label>
   					<input type="text" class="form-control" name="name" id="name" value="{{ $user->name }}"></input>
